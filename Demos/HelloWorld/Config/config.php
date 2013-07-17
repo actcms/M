@@ -18,13 +18,5 @@ return array(
         'database'  =>  'm',
     ),
 
-    /*
-     * set include path
-     */
-    'path'  =>  array(
-        'App'       =>  'E:/www/M/demos',
-        'M'         =>  'E:/www/M',
-    ),
-
 
 );

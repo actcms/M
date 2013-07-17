@@ -7,10 +7,10 @@
 
 use M\M;
 use M\Http\Request\Request;
+
 $config = require_once 'Config/config.php';
 
+
 require_once '../../M/M.php';
-
-
 
 M::run($config);

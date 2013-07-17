@@ -10,8 +10,27 @@ namespace M\Mvc\Controller;
 
 class Controller extends AbstractController
 {
+    private $view;
+
+
+    public function assign()
+    {
+
+    }
+
     public function display()
     {
-        echo "display";
+
     }
+
+    public function success($message)
+    {
+        echo $message;
+    }
+
+    public function error($message)
+    {
+        echo $message;
+    }
+
 }

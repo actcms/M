@@ -21,7 +21,7 @@ class Request extends AbstractRequest
         }
         else
         {
-            self::$request = 'Index/index';
+            self::$request = '';
         }
     }
 

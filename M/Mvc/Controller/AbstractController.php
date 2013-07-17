@@ -10,6 +10,17 @@ namespace M\Mvc\Controller;
 
 abstract class AbstractController
 {
+    public function __construct()
+    {
+        $this->init();
+    }
 
+    /*
+     * Initialization
+     */
+    public function init()
+    {
+
+    }
 
 }

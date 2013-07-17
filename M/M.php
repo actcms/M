@@ -10,6 +10,7 @@ namespace M;
 
 use M\Config\Config;
 use M\Dispatcher\Dispatcher;
+use M\Loader\Loader;
 
 class M
 {
@@ -17,9 +18,10 @@ class M
 
     private static function init()
     {
-        //set_include_path(get_include_path().PATH_SEPARATOR.'E:/www/M'.PATH_SEPARATOR.'E:/www/M/Demos');
         set_include_path(get_include_path().PATH_SEPARATOR.'E:/www/M'.PATH_SEPARATOR.'E:/www/M/Demos');
-        spl_autoload_register(array('M\M','autoload'));
+
+        require_once 'Loader/Loader.php';
+        Loader::register();
     }
 
     public static function run($config)
@@ -29,18 +31,10 @@ class M
         //get configs
         Config::init($config);
         self::$config = Config::getConfig('db');
-        print_r(self::$config);
-
 
         $dispatcher = new Dispatcher();
     }
 
-    public static function autoload($class)
-    {
-
-        $file = str_replace('\\','/',$class).'.php';
-        require_once $file;
-    }
 
     public static function getConfig($name = '')
     {

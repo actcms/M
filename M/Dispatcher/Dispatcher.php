@@ -7,8 +7,9 @@
 
 namespace M\Dispatcher;
 
-
 use M\Http\Request\Request;
+
+use HelloWorld\Controller;
 
 class Dispatcher
 {
@@ -20,38 +21,41 @@ class Dispatcher
 
     public function __construct()
     {
-        $this->doRequest();
-    }
-
-    public function doRequest()
-    {
         $this->getRequest();
         $this->getController();
         $this->getAction();
 
+        $index = new Controller\Index();
+        $index->index();
+
+        //$this->doRequest();
+    }
+
+    public function doRequest()
+    {
         if(class_exists($this->controller))
         {
             if(method_exists($this->controller,$this->action))
             {
-                $controller = new $this->controller;
+                $controller = new $this->controller();
                 $action = $this->action;
                 $controller->$action();
             }
             else
             {
-                echo 'action not find';
+                echo $this->action.' action not find';
             }
         }
         else
         {
-            echo 'controller not find';
+            echo $this->controller.' controller not find';
+
         }
-
-
     }
 
     public function getRequest()
     {
+        Request::init();
         $this->request = Request::parseRequest();
     }
 
@@ -59,15 +63,14 @@ class Dispatcher
     {
         if(!empty($this->request[0]))
         {
-            $this->controller = $this->request[0];
+            $this->controller = 'Controller\\'.$this->request[0];
         }
         else
         {
-            $this->controller = 'Index';
+            $this->controller = 'Controller\Index';
         }
 
         return $this->controller;
-
     }
 
     public function getAction()

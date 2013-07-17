@@ -11,4 +11,27 @@ namespace M\Loader;
 class Loader
 {
 
+    public static function autoload($class)
+    {
+
+        $file = str_replace('\\','/',$class).'.php';
+
+        $file = stream_resolve_include_path($file);
+
+        if(file_exists($file))
+        {
+            require_once $file;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public static function register()
+    {
+        spl_autoload_register('M\Loader\Loader::autoload');
+    }
+
 }
