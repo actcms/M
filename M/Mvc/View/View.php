@@ -10,6 +10,10 @@ namespace M\Mvc\View;
 
 class View extends AbstractView
 {
+    public static function  init()
+    {
+        return new View();
+    }
     public function assign()
     {
 

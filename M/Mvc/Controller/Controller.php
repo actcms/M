@@ -7,11 +7,16 @@
 
 namespace M\Mvc\Controller;
 
+use M\Mvc\View\View;
 
 class Controller extends AbstractController
 {
     private $view;
 
+    public function init()
+    {
+        $this->view = View::init();
+    }
 
     public function assign()
     {
