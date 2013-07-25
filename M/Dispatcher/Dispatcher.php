@@ -7,6 +7,7 @@
 
 namespace M\Dispatcher;
 
+use M\Config\Config;
 use M\Http\Request\Request;
 
 use HelloWorld\Controller;
@@ -21,14 +22,22 @@ class Dispatcher
 
     public function __construct()
     {
+        $this->init();
+
+        $config = Config::getConfig('app');         //get the app configs
+        $appBasePath = $config['basePath'];         //get the app basePath
+
+        $this->controller = $appBasePath.'\Controller\\'.$this->controller;
+
+        $this->doRequest();
+
+    }
+
+    private function init()
+    {
         $this->getRequest();
         $this->getController();
         $this->getAction();
-
-        $index = new Controller\Index();
-        $index->index();
-
-        //$this->doRequest();
     }
 
     public function doRequest()
@@ -38,8 +47,10 @@ class Dispatcher
             if(method_exists($this->controller,$this->action))
             {
                 $controller = new $this->controller();
-                $action = $this->action;
-                $controller->$action();
+
+                //$controller = new $this->controller;          //this is also true,but I don't know why?
+
+                $controller->{$this->action}();
             }
             else
             {
@@ -63,11 +74,11 @@ class Dispatcher
     {
         if(!empty($this->request[0]))
         {
-            $this->controller = 'Controller\\'.$this->request[0];
+            $this->controller = $this->request[0];
         }
         else
         {
-            $this->controller = 'Controller\Index';
+            $this->controller = 'Index';
         }
 
         return $this->controller;

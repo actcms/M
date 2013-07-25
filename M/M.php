@@ -16,14 +16,6 @@ class M
 {
     private static $config;
 
-    private static function init()
-    {
-        set_include_path(get_include_path().PATH_SEPARATOR.'E:/www/M'.PATH_SEPARATOR.'E:/www/M/Demos');
-
-        require_once 'Loader/Loader.php';
-        Loader::register();
-    }
-
     public static function run($config)
     {
         self::init();
@@ -34,6 +26,16 @@ class M
 
         $dispatcher = new Dispatcher();
     }
+
+    private static function init()
+    {
+        set_include_path(get_include_path().PATH_SEPARATOR.'E:/www/M'.PATH_SEPARATOR.'E:/www/M/Demos');
+
+        require_once 'Loader/Loader.php';
+        Loader::register();
+    }
+
+
 
 
     public static function getConfig($name = '')

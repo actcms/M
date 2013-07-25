@@ -10,5 +10,13 @@ namespace M\Mvc\View;
 
 class View extends AbstractView
 {
+    public function assign()
+    {
 
+    }
+
+    public function display($tpl)
+    {
+
+    }
 }

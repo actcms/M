@@ -9,6 +9,7 @@ return array(
 
     'app'   =>   array(
         'name'  =>  'Hello World',
+        'basePath' => 'HelloWorld',
     ),
 
     'db'    =>   array(

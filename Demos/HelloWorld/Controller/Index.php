@@ -13,7 +13,12 @@ class Index extends Controller
 {
     public function index()
     {
-        $this->success("good");
+        $this->success("it works");
 
+    }
+
+    public function hello()
+    {
+        $this->success("hello world");
     }
 }

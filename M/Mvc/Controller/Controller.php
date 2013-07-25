@@ -18,9 +18,18 @@ class Controller extends AbstractController
 
     }
 
-    public function display()
+    public function display($tpl='')
     {
+        if(!empty($tpl))
+        {
 
+        }
+        else
+        {
+
+        }
+
+        $this->view->display($tpl);
     }
 
     public function success($message)
