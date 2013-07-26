@@ -13,7 +13,8 @@ class Index extends Controller
 {
     public function index()
     {
-        $this->success("hello Mlog");
+        $this->assign('app','Mlog');
+        $this->display('Index/index.php');
     }
 
 }
