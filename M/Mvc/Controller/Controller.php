@@ -7,7 +7,6 @@
 
 namespace M\Mvc\Controller;
 
-use M\Config\Config;
 use M\Mvc\View\View;
 
 class Controller extends AbstractController
@@ -28,8 +27,7 @@ class Controller extends AbstractController
     {
         if(!empty($tpl))
         {
-            $config = Config::getConfig('app');
-            $tpl = $config['basePath'].'/View/'.$tpl;
+
         }
         else
         {

@@ -29,6 +29,7 @@ class M
 
     private static function init()
     {
+        //todo the path must can be config at app config files
         set_include_path(get_include_path().PATH_SEPARATOR.'E:/www/M'.PATH_SEPARATOR.'E:/www/M/Demos');
 
         require_once 'Loader/Loader.php';
