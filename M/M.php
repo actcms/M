@@ -36,11 +36,14 @@ class M
         Loader::register();
     }
 
-
-
-
     public static function getConfig($name = '')
     {
         return Config::getConfig($name);
     }
+
+    public static function import()
+    {
+
+    }
 }
+

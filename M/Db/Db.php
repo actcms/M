@@ -20,6 +20,14 @@ class Db
         $this->user = $user;
         $this->pwd = $pwd;
         $this->database = $database;
+
+        //echo "db can connect now if you need";
+        $this->connect();
+    }
+
+    public function connect()
+    {
+
     }
 
     public function add()

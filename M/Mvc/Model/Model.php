@@ -8,6 +8,8 @@
 namespace M\Mvc\Model;
 
 
+use M\Db\Db;
+
 class Model extends AbstractModel
 {
 
@@ -17,6 +19,11 @@ class Model extends AbstractModel
 
     protected $where;
     protected $order;
+
+    public function init()
+    {
+        $this->db = new Db('localhost','root','root','m');
+    }
 
     public function where($where)
     {
