@@ -4,7 +4,6 @@
  * Date: 13-7-13
  * Time: 下午11:23
  */
-
 namespace M;
 //define('MPATH',str_replace('\\','/',dirname(__FILE__).'/'));
 
@@ -12,10 +11,20 @@ use M\Config\Config;
 use M\Dispatcher\Dispatcher;
 use M\Loader\Loader;
 
+/**
+ * Class M
+ * @package M
+ */
 class M
 {
+    /**
+     * @var
+     */
     private static $config;
 
+    /**
+     * @param $config
+     */
     public static function run($config)
     {
         self::init();
@@ -27,6 +36,9 @@ class M
         $dispatcher = new Dispatcher();
     }
 
+    /**
+     *
+     */
     private static function init()
     {
         //todo the path must can be config at app config files
@@ -36,11 +48,18 @@ class M
         Loader::register();
     }
 
+    /**
+     * @param string $name
+     * @return mixed
+     */
     public static function getConfig($name = '')
     {
         return Config::getConfig($name);
     }
 
+    /**
+     *
+     */
     public static function import()
     {
 

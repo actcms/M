@@ -7,11 +7,20 @@
 
 namespace M\Http\Request;
 
-
+/**
+ * Class Request
+ * @package M\Http\Request
+ */
 class Request extends AbstractRequest
 {
+    /**
+     * @var
+     */
     protected static $request;
 
+    /**
+     *
+     */
     public static function init()
     {
         $request = $_SERVER['QUERY_STRING'];
@@ -25,11 +34,17 @@ class Request extends AbstractRequest
         }
     }
 
+    /**
+     * @return mixed
+     */
     public static function getRequest()
     {
         return self::$request;
     }
 
+    /**
+     * @return array
+     */
     public static function parseRequest()
     {
         return explode('/',self::$request);

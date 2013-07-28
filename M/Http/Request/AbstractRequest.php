@@ -7,7 +7,10 @@
 
 namespace M\Http\Request;
 
-
+/**
+ * Class AbstractRequest
+ * @package M\Http\Request
+ */
 abstract class AbstractRequest
 {
 

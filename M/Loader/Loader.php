@@ -10,7 +10,10 @@ namespace M\Loader;
 
 class Loader
 {
-
+    /**
+     * @param $class
+     * @return bool
+     */
     public static function autoload($class)
     {
 
@@ -29,6 +32,9 @@ class Loader
         }
     }
 
+    /**
+     *
+     */
     public static function register()
     {
         spl_autoload_register('M\Loader\Loader::autoload');

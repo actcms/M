@@ -12,14 +12,32 @@ use M\Http\Request\Request;
 
 use HelloWorld\Controller;
 
+/**
+ * Class Dispatcher
+ * @package M\Dispatcher
+ */
 class Dispatcher
 {
+    /**
+     * @var string
+     */
     private $controller;
+    /**
+     * @var
+     */
     private $action;
+    /**
+     * @var
+     */
     private $parameter;
-
+    /**
+     * @var
+     */
     private $request;
 
+    /**
+     *
+     */
     public function __construct()
     {
         $this->init();
@@ -33,6 +51,9 @@ class Dispatcher
 
     }
 
+    /**
+     *
+     */
     private function init()
     {
         $this->getRequest();
@@ -40,6 +61,9 @@ class Dispatcher
         $this->getAction();
     }
 
+    /**
+     *
+     */
     public function doRequest()
     {
         if(class_exists($this->controller))
@@ -64,12 +88,18 @@ class Dispatcher
         }
     }
 
+    /**
+     *
+     */
     public function getRequest()
     {
         Request::init();
         $this->request = Request::parseRequest();
     }
 
+    /**
+     * @return string
+     */
     public function getController()
     {
         if(!empty($this->request[0]))
@@ -84,6 +114,9 @@ class Dispatcher
         return $this->controller;
     }
 
+    /**
+     * @return string
+     */
     public function getAction()
     {
         if(!empty($this->request[1]))
@@ -98,10 +131,12 @@ class Dispatcher
         return $this->action;
     }
 
+    /**
+     * @return mixed
+     */
     public function getParameter()
     {
         return $this->parameter;
     }
-
 
 }

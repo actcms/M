@@ -9,12 +9,24 @@ namespace M\Mvc\View;
 
 use M\Config\Config;
 
+/**
+ * Class View
+ * @package M\Mvc\View
+ */
 class View extends AbstractView
 {
+    /**
+     * @var
+     */
     private static $viewPath;
-
+    /**
+     * @var array
+     */
     private $var = array();
 
+    /**
+     * @return View
+     */
     public static function init()
     {
         $config = Config::getConfig('app');
@@ -25,11 +37,18 @@ class View extends AbstractView
 
     }
 
+    /**
+     * @param $key
+     * @param $value
+     */
     public function assign($key,$value)
     {
         $this->var[$key] = $value;
     }
 
+    /**
+     * @param $tpl
+     */
     public function display($tpl)
     {
         $name = array_keys($this->var);
@@ -41,6 +60,5 @@ class View extends AbstractView
         $tpl = self::$viewPath.$tpl;
         include_once $tpl;
     }
-
 
 }

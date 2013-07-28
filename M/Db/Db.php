@@ -6,17 +6,44 @@
  */
 namespace M\Db;
 
-
+/**
+ * Class Db
+ * @package M\Db
+ */
 class Db
 {
+    /**
+     * @var
+     */
     private $db;
-
+    /**
+     * @var
+     */
     private $drive;
+    /**
+     * @var
+     */
     private $host;
+    /**
+     * @var
+     */
     private $user;
+    /**
+     * @var
+     */
     private $pwd;
+    /**
+     * @var
+     */
     private $database;
 
+    /**
+     * @param $drive
+     * @param $host
+     * @param $database
+     * @param $user
+     * @param $pwd
+     */
     public function __construct($drive,$host,$database,$user,$pwd)
     {
         $this->drive = $drive;
@@ -28,6 +55,9 @@ class Db
         $this->connect();
     }
 
+    /**
+     *
+     */
     public function connect()
     {
         try
@@ -41,21 +71,34 @@ class Db
 
     }
 
+    /**
+     * @param $sql
+     */
     public function add($sql)
     {
 
     }
 
+    /**
+     * @param $sql
+     */
     public function del($sql)
     {
 
     }
 
+    /**
+     * @param $sql
+     */
     public function update($sql)
     {
 
     }
 
+    /**
+     * @param $sql
+     * @return mixed
+     */
     public function select($sql)
     {
         $res = $this->db->query($sql);
@@ -63,7 +106,4 @@ class Db
         return $result;
 
     }
-
-
-
 }
