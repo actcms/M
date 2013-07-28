@@ -13,16 +13,16 @@ use M\Db\Db;
 class Model extends AbstractModel
 {
 
-    protected $db;
-    protected $table;
-    protected $key;
+    private $db;
+    private $table;
+    private $key;
 
-    protected $where;
+    private $where;
     protected $order;
 
     public function init()
     {
-        $this->db = new Db('localhost','root','root','m');
+        $this->db = new Db('mysql','localhost','m','root','root');
     }
 
     public function where($where)
@@ -35,6 +35,12 @@ class Model extends AbstractModel
     {
         $this->order =$order;
         return $this;
+    }
+
+    public function select($sql)
+    {
+        $result = $this->db->select($sql);
+        return $result;
     }
 
     public function find()

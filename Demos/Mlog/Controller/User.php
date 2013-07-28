@@ -9,15 +9,15 @@ namespace Mlog\Controller;
 
 
 use M\Mvc\Controller\Controller;
-use Mlog\Model\User as Muser;
+use Mlog\Model\User as MUser;
 
 class User extends Controller
 {
     public function index()
     {
-        $user = new Muser();
+        $user = new MUser();
 
-        $user->setUsername("Jim");
-        echo $user->getUsername();
+        $user = $user->select("select * from m_user");
+        print_r($user);
     }
 }
