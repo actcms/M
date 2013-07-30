@@ -1,10 +1,9 @@
 <?php
 /**
- * User: Guowei
- * Date: 13-7-13
- * Time: 下午10:36
+ * @link https://github.com/MaGuowei/M
+ * @copyright 2013 maguowei.com
+ * @author Ma Guowei <imaguowei@gmail.com>
  */
-
 namespace M\Mvc\Controller;
 
 use M\Mvc\View\View;
@@ -21,7 +20,7 @@ class Controller extends AbstractController
     private $view;
 
     /**
-     *
+     *控制器初始化
      */
     public function init()
     {
@@ -62,9 +61,6 @@ class Controller extends AbstractController
         echo $message;
     }
 
-    /**
-     * @param $message
-     */
     public function error($message)
     {
         echo $message;

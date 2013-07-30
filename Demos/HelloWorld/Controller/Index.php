@@ -1,10 +1,9 @@
 <?php
 /**
- * User: Guowei
- * Date: 13-7-13
- * Time: 下午10:56
+ * @link https://github.com/MaGuowei/M
+ * @copyright 2013 maguowei.com
+ * @author Ma Guowei <imaguowei@gmail.com>
  */
-
 namespace HelloWorld\Controller;
 
 use M\Mvc\Controller\Controller;

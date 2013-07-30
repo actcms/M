@@ -1,10 +1,9 @@
 <?php
 /**
- * User: Guowei
- * Date: 13-7-14
- * Time: 上午10:31
+ * @link https://github.com/MaGuowei/M
+ * @copyright 2013 maguowei.com
+ * @author: Ma Guowei <imaguowei@gmail.com>
  */
-
 namespace M\Dispatcher;
 
 use M\Config\Config;
@@ -14,6 +13,9 @@ use HelloWorld\Controller;
 
 /**
  * Class Dispatcher
+ *
+ * 对用户请求进行调度
+ *
  * @package M\Dispatcher
  */
 class Dispatcher
@@ -52,7 +54,7 @@ class Dispatcher
     }
 
     /**
-     *
+     *初始化操作
      */
     private function init()
     {
@@ -62,7 +64,7 @@ class Dispatcher
     }
 
     /**
-     *
+     *处理请求
      */
     public function doRequest()
     {
@@ -89,7 +91,7 @@ class Dispatcher
     }
 
     /**
-     *
+     *获取请求
      */
     public function getRequest()
     {
@@ -98,6 +100,8 @@ class Dispatcher
     }
 
     /**
+     * 从请求中获取控制器
+     *
      * @return string
      */
     public function getController()
@@ -115,6 +119,8 @@ class Dispatcher
     }
 
     /**
+     * 从请求中获取动作
+     *
      * @return string
      */
     public function getAction()

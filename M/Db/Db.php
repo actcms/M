@@ -1,41 +1,44 @@
 <?php
 /**
- * User: Guowei
- * Date: 13-7-17
- * Time: 下午2:31
+ * @link https://github.com/MaGuowei/M
+ * @copyright 2013 maguowei.com
+ * @author Ma Guowei <imaguowei@gmail.com>
  */
 namespace M\Db;
 
 /**
  * Class Db
+ *
+ * 利用PDO对数据库操作
  * @package M\Db
  */
 class Db
 {
     /**
-     * @var
+     * @var \PDO 数据库连接实例
      */
     private $db;
     /**
-     * @var
+     * @var string 数据库类别
      */
     private $drive;
+
     /**
-     * @var
+     * @var string 数据库名
+     */
+    private $database;
+    /**
+     * @var string 数据库主机地址
      */
     private $host;
     /**
-     * @var
+     * @var string 数据库用户名
      */
     private $user;
     /**
-     * @var
+     * @var string 数据库用户密码
      */
     private $pwd;
-    /**
-     * @var
-     */
-    private $database;
 
     /**
      * @param $drive
@@ -56,7 +59,7 @@ class Db
     }
 
     /**
-     *
+     *建立数据库连接
      */
     public function connect()
     {
@@ -72,7 +75,9 @@ class Db
     }
 
     /**
-     * @param $sql
+     * 向数据库添加一条记录
+     *
+     * @param $sql  string
      */
     public function add($sql)
     {
@@ -80,7 +85,9 @@ class Db
     }
 
     /**
-     * @param $sql
+     *删除数据库中一条记录
+     *
+     * @param $sql string
      */
     public function del($sql)
     {
@@ -88,7 +95,9 @@ class Db
     }
 
     /**
-     * @param $sql
+     * 更新数据库中的一条记录
+     *
+     * @param $sql string
      */
     public function update($sql)
     {
@@ -96,7 +105,9 @@ class Db
     }
 
     /**
-     * @param $sql
+     * 查询数据库中的记录
+     *
+     * @param $sql string
      * @return mixed
      */
     public function select($sql)
