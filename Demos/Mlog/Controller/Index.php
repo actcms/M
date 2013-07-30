@@ -10,9 +10,12 @@ use M\Mvc\Controller\Controller;
 
 class Index extends Controller
 {
+    protected $layout = "main";
+
     public function index()
     {
         $this->assign('app','Mlog');
+        $this->assign('word','hello world');
         $this->display('Index/index.php');
     }
 

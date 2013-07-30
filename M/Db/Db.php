@@ -10,6 +10,7 @@ namespace M\Db;
  * Class Db
  *
  * 利用PDO对数据库操作
+ *
  * @package M\Db
  */
 class Db

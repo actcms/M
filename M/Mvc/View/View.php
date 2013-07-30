@@ -15,8 +15,12 @@ use M\Config\Config;
 class View extends AbstractView
 {
     /**
-     * @var string 模板视图的默认根路径
+     * @var string 模板布局
      */
+    private static $layout;
+    /**
+    * @var string 模板视图的默认根路径
+    */
     private static $viewPath;
     /**
      * @var array 模板可以使用的所有变量
@@ -62,7 +66,20 @@ class View extends AbstractView
         }
 
         $tpl = self::$viewPath.$tpl;
-        include_once $tpl;
+
+        $layout = self::$viewPath.'Layout/'.self::$layout.'.php';
+        include_once $layout;
     }
+
+    public function getLayout()
+    {
+        return self::$layout;
+    }
+
+    public function setLayout($layout)
+    {
+        self::$layout = $layout;
+    }
+
 
 }
