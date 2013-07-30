@@ -8,17 +8,21 @@ namespace M\Http\Request;
 
 /**
  * Class Request
+ *
+ * 获取并保存用户请求
+ *
  * @package M\Http\Request
  */
+
 class Request extends AbstractRequest
 {
     /**
-     * @var
+     * @var string 保存用户请求
      */
     protected static $request;
 
     /**
-     *
+     *初始化，获取并保存用户请求
      */
     public static function init()
     {
@@ -34,7 +38,7 @@ class Request extends AbstractRequest
     }
 
     /**
-     * @return mixed
+     * @return string 返回用户请求的原始字符串
      */
     public static function getRequest()
     {
@@ -42,7 +46,7 @@ class Request extends AbstractRequest
     }
 
     /**
-     * @return array
+     * @return array 将原始请求字符串拆分为数组
      */
     public static function parseRequest()
     {

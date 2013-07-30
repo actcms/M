@@ -13,7 +13,7 @@ namespace M\Mvc\Model;
 abstract class AbstractModel
 {
     /**
-     *
+     *构造器
      */
     public function __construct()
     {
@@ -21,7 +21,7 @@ abstract class AbstractModel
     }
 
     /**
-     *
+     *初始化，用于子类覆盖，自动加入构造器
      */
     public function init()
     {

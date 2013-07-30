@@ -37,7 +37,7 @@ class M
     }
 
     /**
-     *
+     *应用初始化相关配置
      */
     private static function init()
     {
@@ -49,6 +49,7 @@ class M
     }
 
     /**
+     * 获取配置信息
      * @param string $name
      * @return mixed
      */
@@ -58,7 +59,7 @@ class M
     }
 
     /**
-     *
+     *导入扩展
      */
     public static function import()
     {

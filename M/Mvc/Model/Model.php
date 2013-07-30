@@ -37,7 +37,7 @@ class Model extends AbstractModel
     protected $order;
 
     /**
-     *
+     *初始化
      */
     public function init()
     {
@@ -75,7 +75,7 @@ class Model extends AbstractModel
     }
 
     /**
-     *
+     *查出单条记录
      */
     public function find()
     {
@@ -83,7 +83,7 @@ class Model extends AbstractModel
     }
 
     /**
-     *
+     *删除一条记录
      */
     public function delete()
     {
@@ -91,7 +91,7 @@ class Model extends AbstractModel
     }
 
     /**
-     *
+     *增加一条记录
      */
     public function add()
     {
@@ -99,7 +99,7 @@ class Model extends AbstractModel
     }
 
     /**
-     *
+     *保存记录
      */
     public function save()
     {
@@ -107,7 +107,7 @@ class Model extends AbstractModel
     }
 
     /**
-     *
+     *更新一条记录
      */
     public function update()
     {

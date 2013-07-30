@@ -15,15 +15,17 @@ use M\Config\Config;
 class View extends AbstractView
 {
     /**
-     * @var
+     * @var string 模板视图的默认根路径
      */
     private static $viewPath;
     /**
-     * @var array
+     * @var array 模板可以使用的所有变量
      */
     private $var = array();
 
     /**
+     * 初始化
+     *
      * @return View
      */
     public static function init()
@@ -33,12 +35,13 @@ class View extends AbstractView
 
         return new View();
 
-
     }
 
     /**
-     * @param $key
-     * @param $value
+     * 模板标量赋值
+     *
+     * @param $key 赋值变量
+     * @param $value 变量的值
      */
     public function assign($key,$value)
     {
@@ -46,7 +49,9 @@ class View extends AbstractView
     }
 
     /**
-     * @param $tpl
+     * 选择要显示的视图模板
+     *
+     * @param string $tpl 模板文件路径
      */
     public function display($tpl)
     {

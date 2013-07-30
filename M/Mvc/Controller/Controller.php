@@ -10,12 +10,15 @@ use M\Mvc\View\View;
 
 /**
  * Class Controller
+ *
+ * 控制器
+ *
  * @package M\Mvc\Controller
  */
 class Controller extends AbstractController
 {
     /**
-     * @var
+     * @var View 保存的模板实例
      */
     private $view;
 
@@ -28,8 +31,10 @@ class Controller extends AbstractController
     }
 
     /**
-     * @param $key
-     * @param $value
+     * 向视图赋值
+     *
+     * @param $key 赋值变量
+     * @param $value 变量值
      */
     public function assign($key,$value)
     {
@@ -37,7 +42,9 @@ class Controller extends AbstractController
     }
 
     /**
-     * @param string $tpl
+     * 选择要显示的视图模板
+     *
+     * @param string $tpl 模板路径
      */
     public function display($tpl='')
     {
@@ -54,13 +61,19 @@ class Controller extends AbstractController
     }
 
     /**
-     * @param $message
+     * 当操作成功时返回的内容
+     * @param string $message 传递的字符消息
      */
     public function success($message)
     {
         echo $message;
     }
 
+    /**
+     * 操作失败时返回的内容
+     *
+     * @param string $message
+     */
     public function error($message)
     {
         echo $message;

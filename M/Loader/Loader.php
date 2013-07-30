@@ -6,10 +6,15 @@
  */
 namespace M\Loader;
 
+/**
+ * Class Loader
+ * @package M\Loader
+ */
 
 class Loader
 {
     /**
+     * 建立自动加载函数，加载规则
      * @param $class
      * @return bool
      */
@@ -17,7 +22,6 @@ class Loader
     {
 
         $file = str_replace('\\','/',$class).'.php';
-
         $file = stream_resolve_include_path($file);
 
         if(file_exists($file))
@@ -32,7 +36,7 @@ class Loader
     }
 
     /**
-     *
+     *注册自动加载函数
      */
     public static function register()
     {

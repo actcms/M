@@ -21,24 +21,24 @@ use HelloWorld\Controller;
 class Dispatcher
 {
     /**
-     * @var string
+     * @var string 控制器
      */
     private $controller;
     /**
-     * @var
+     * @var string 动作
      */
     private $action;
     /**
-     * @var
+     * @var array 参数数组
      */
     private $parameter;
     /**
-     * @var
+     * @var array 用户请求命令的数组
      */
     private $request;
 
     /**
-     *
+     *构造方法
      */
     public function __construct()
     {
@@ -54,7 +54,7 @@ class Dispatcher
     }
 
     /**
-     *初始化操作
+     *请求初始化操作
      */
     private function init()
     {
@@ -138,7 +138,7 @@ class Dispatcher
     }
 
     /**
-     * @return mixed
+     * @return string 获取参数数组
      */
     public function getParameter()
     {
