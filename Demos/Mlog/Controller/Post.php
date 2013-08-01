@@ -11,5 +11,14 @@ use M\Mvc\Controller\Controller;
 
 class Post extends Controller
 {
-
+    public function init()
+    {
+        parent::init();
+        $this->setLayout("main");
+    }
+    public function index()
+    {
+        $this->assign('name','post');
+        $this->display('Post/index.php');
+    }
 }

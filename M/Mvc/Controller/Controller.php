@@ -21,7 +21,6 @@ class Controller extends AbstractController
      * @var View 保存的模板实例
      */
     private $view;
-    protected $layout;
 
     /**
      *控制器初始化
@@ -29,7 +28,11 @@ class Controller extends AbstractController
     public function init()
     {
         $this->view = View::init();
-        $this->view->setLayout($this->layout);
+    }
+
+    public function setLayout($layout)
+    {
+        $this->view->setLayout($layout);
     }
 
     /**

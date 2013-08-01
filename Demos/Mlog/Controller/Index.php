@@ -10,7 +10,12 @@ use M\Mvc\Controller\Controller;
 
 class Index extends Controller
 {
-    protected $layout = "main";
+
+    public function init()
+    {
+        parent::init();
+        $this->setLayout("main");
+    }
 
     public function index()
     {
