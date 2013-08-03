@@ -13,6 +13,9 @@ namespace M\Form;
  */
 class Form extends AbstractForm
 {
+    /**
+     *验证规则
+     */
     public function rule()
     {
 

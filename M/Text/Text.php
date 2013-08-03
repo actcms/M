@@ -7,8 +7,20 @@
 
 namespace M\Text;
 
-
-class Text extends  AbstractText
+/**
+ * 字符处理
+ * Class Text
+ * @package M\Text
+ */
+class Text
 {
+    public static function substr()
+    {
 
+    }
+
+    public static function equal()
+    {
+
+    }
 }

@@ -9,7 +9,7 @@ namespace M\Http\Request;
 /**
  * Class Request
  *
- * 获取并保存用户请求
+ * 获取并保存请求
  *
  * @package M\Http\Request
  */
@@ -17,19 +17,19 @@ namespace M\Http\Request;
 class Request extends AbstractRequest
 {
     /**
-     * @var string 保存用户请求
+     * @var string 保存请求
      */
     protected static $request;
 
     /**
-     *初始化，获取并保存用户请求
+     *初始化，获取并保存请求
      */
     public static function init()
     {
-        $request = $_SERVER['QUERY_STRING'];
-        if(!empty($request))
+
+        if(!empty($_SERVER['QUERY_STRING']))
         {
-            self::$request = $request;
+            self::$request = $_SERVER['QUERY_STRING'];
         }
         else
         {
@@ -38,7 +38,7 @@ class Request extends AbstractRequest
     }
 
     /**
-     * @return string 返回用户请求的原始字符串
+     * @return string 返回请求的原始字符串
      */
     public static function getRequest()
     {

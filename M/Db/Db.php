@@ -71,6 +71,7 @@ class Db
         catch(\PDOException $e)
         {
             echo '数据库连接错误！'.$e->getMessage();
+            exit();
         }
 
     }

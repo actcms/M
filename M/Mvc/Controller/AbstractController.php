@@ -28,4 +28,33 @@ abstract class AbstractController
 
     }
 
+    /**
+     * @param $name
+     * @return null
+     */
+    public function __get($name)
+    {
+        $name = 'get'.ucfirst($name);
+
+        if(method_exists($this,$name))
+        {
+            return $this->$name();
+        }
+        else
+        {
+            return null;
+        }
+
+    }
+
+    /**
+     * @param $name
+     * @param $value
+     */
+    public function __set($name,$value)
+    {
+
+    }
+
+
 }

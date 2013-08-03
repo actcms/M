@@ -13,22 +13,8 @@ namespace M\Form;
  */
 Abstract class AbstractForm
 {
-    /**
-     * @var string
-     */
-    private $username;
-    /**
-     * @var string
-     */
-    private $password;
-    /**
-     * @var string
-     */
-    private $email;
 
-    /**
-     * 构造器
-     */
+
     public function __construct()
     {
 
@@ -37,17 +23,45 @@ Abstract class AbstractForm
     /**
      *
      */
-    public function required()
+    public function init()
     {
 
     }
 
-    public function email()
+
+
+
+
+    /**
+     *获取Post表单
+     */
+    public function getPost()
+    {
+        return $this->post = $_POST;
+    }
+
+    /**
+     *必须填写的项
+     */
+    public static function required()
+    {
+
+    }
+
+    /**
+     *
+     */
+    public static function email()
     {
 
     }
 
     public function password()
+    {
+
+    }
+
+    public static function equal()
     {
 
     }

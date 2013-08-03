@@ -18,20 +18,12 @@ use M\Loader\Loader;
 class M
 {
     /**
-     * @var
-     */
-    private static $config;
-
-    /**
      * @param $config
      */
     public static function run($config)
     {
         self::init();
-
-        //get configs
         Config::init($config);
-        self::$config = Config::getConfig('db');
 
         $dispatcher = new Dispatcher();
     }
@@ -65,5 +57,10 @@ class M
     {
 
     }
+}
+
+class App extends M
+{
+
 }
 

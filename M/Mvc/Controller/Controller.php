@@ -22,6 +22,13 @@ class Controller extends AbstractController
      */
     private $view;
 
+    private $ll = 'jj';
+
+    public function getLl()
+    {
+        return $this->ll;
+    }
+
     /**
      *控制器初始化
      */
