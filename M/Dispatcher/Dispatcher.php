@@ -7,6 +7,7 @@
 namespace M\Dispatcher;
 
 use M\Config\Config;
+use M\Http\Request\PathRequest;
 use M\Http\Request\Request;
 
 use HelloWorld\Controller;

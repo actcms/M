@@ -16,7 +16,7 @@ class User extends Controller
     {
         $user = new MUser();
 
-        $user = $user->select("select * from m_user");
+        $user = $user->select("select * from user");
         print_r($user);
     }
 }

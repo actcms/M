@@ -13,10 +13,12 @@ return array(
     ),
 
     'db'    =>   array(
+        'driver'    =>  'mysql',
         'host'      =>  'localhost',
-        'user'      =>  'root',
-        'pwd'       =>  'root',
         'database'  =>  'm',
+        'user'      =>  'root',
+        'password'       =>  'root',
+
     ),
 
 

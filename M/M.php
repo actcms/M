@@ -59,8 +59,6 @@ class M
     }
 }
 
-class App extends M
-{
 
-}
+
 
