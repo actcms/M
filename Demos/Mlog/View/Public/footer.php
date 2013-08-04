@@ -1,5 +1,5 @@
 <div id="footer">
-    <p>&copy <a href="">M</a></p>
+    <p class="text-center">&copy <a href="">M</a></p>
 <div>
 <!-- include js -->
 <script src="Public/jquery/jquery-2.0.2.min.js"></script>

@@ -14,14 +14,21 @@ class Index extends Controller
     public function init()
     {
         parent::init();
+
+        $this->assign('app','Mlog');
+
         $this->setLayout("main");
     }
 
     public function index()
     {
-        $this->assign('app','Mlog');
         $this->assign('word','hello world');
         $this->display('Index/index.php');
+    }
+
+    public function login()
+    {
+        $this->display('Index/login.php');
     }
 
 }

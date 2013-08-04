@@ -6,8 +6,8 @@
  */
 namespace Mlog\Controller;
 
-
 use M\Mvc\Controller\Controller;
+
 
 class Post extends Controller
 {
@@ -16,9 +16,33 @@ class Post extends Controller
         parent::init();
         $this->setLayout("main");
     }
+
     public function index()
     {
         $this->assign('name','post');
         $this->display('Post/index.php');
     }
+
+    public function add()
+    {
+        if(isset($_POST['add']))
+        {
+
+        }
+        else
+        {
+            $this->display('Post/add.php');
+        }
+    }
+
+    public function delete()
+    {
+
+    }
+
+    public function update()
+    {
+
+    }
+
 }
