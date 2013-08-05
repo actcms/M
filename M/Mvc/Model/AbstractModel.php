@@ -1,9 +1,10 @@
 <?php
 /**
- * @link https://github.com/MaGuowei/M
+ * @link https://github.com/MaGuowei
  * @copyright 2013 maguowei.com
  * @author Ma Guowei <imaguowei@gmail.com>
  */
+
 namespace M\Mvc\Model;
 
 /**
@@ -13,18 +14,21 @@ namespace M\Mvc\Model;
 abstract class AbstractModel
 {
     /**
-     *构造器
+     * @var
      */
-    public function __construct()
+    protected $table;
+    /**
+     * 构造方法
+     */
+    public function __construct($table)
     {
+        $this->table = $table;
         $this->init();
     }
 
     /**
-     *初始化，用于子类覆盖，自动加入构造器
+     *
      */
-    public function init()
-    {
+    abstract public function init();
 
-    }
 }

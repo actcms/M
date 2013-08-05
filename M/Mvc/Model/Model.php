@@ -18,11 +18,7 @@ class Model extends AbstractModel
     /**
      * @var
      */
-    private $db;
-    /**
-     * @var
-     */
-    private $table;
+    private static $db;
     /**
      * @var
      */
@@ -41,9 +37,11 @@ class Model extends AbstractModel
      */
     public function init()
     {
-        $db = M::getConfig('db');
-
-        $this->db = new Db($db['driver'],$db['host'],$db['database'],$db['user'],$db['password']);
+        if(empty(self::$db))
+        {
+            $db = M::getConfig('db');
+            self::$db = new Db($db['driver'],$db['host'],$db['database'],$db['user'],$db['password']);
+        }
     }
 
     /**
@@ -72,7 +70,7 @@ class Model extends AbstractModel
      */
     public function select($sql)
     {
-        $result = $this->db->select($sql);
+        $result = self::$db->select($sql);
         return $result;
     }
 

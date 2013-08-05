@@ -17,7 +17,14 @@ use M\Loader\Loader;
  */
 class M
 {
+    /**
+     * 配置信息实例
+     * @var Config
+     */
     private static $config;
+    /**
+     * @var
+     */
     private static $app;
     /**
      * @param $configs
@@ -68,9 +75,9 @@ class M
     }
 
     /**
-     *导入扩展
+     * @param $class
      */
-    public static function import()
+    public static function import($class)
     {
 
     }
