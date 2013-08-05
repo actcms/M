@@ -43,6 +43,14 @@ class M
     }
 
     /**
+     * @return float
+     */
+    public static function getVersion()
+    {
+        return 0.001;
+    }
+
+    /**
      * 获取配置信息的公用方法
      *
      * 所有需要获取配置信息的部分都需要通过调用此方法获取

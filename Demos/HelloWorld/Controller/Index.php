@@ -6,6 +6,7 @@
  */
 namespace HelloWorld\Controller;
 
+use M\M;
 use M\Mvc\Controller\Controller;
 
 class Index extends Controller
@@ -13,7 +14,6 @@ class Index extends Controller
     public function index()
     {
         $this->success("it works");
-
     }
 
     public function hello()
