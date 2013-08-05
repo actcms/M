@@ -6,9 +6,8 @@
  */
 namespace M\Mvc\Model;
 
-
-use M\Config\Config;
 use M\Db\Db;
+use M\M;
 
 /**
  * Class Model
@@ -42,7 +41,7 @@ class Model extends AbstractModel
      */
     public function init()
     {
-        $db = Config::getConfig('db');
+        $db = M::getConfig('db');
 
         $this->db = new Db($db['driver'],$db['host'],$db['database'],$db['user'],$db['password']);
     }

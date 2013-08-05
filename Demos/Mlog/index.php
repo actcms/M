@@ -7,9 +7,11 @@
 
 use M\M;
 
-$config = require_once 'Config/config.php';
+$configs = require_once 'Config/config.php';
 
 
 require_once '../../M/M.php';
 
-M::run($config);
+M::run($configs);
+
+

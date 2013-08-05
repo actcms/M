@@ -6,7 +6,7 @@
  */
 namespace M\Mvc\View;
 
-use M\Config\Config;
+use M\M;
 
 /**
  * Class View
@@ -34,7 +34,7 @@ class View extends AbstractView
      */
     public static function init()
     {
-        $config = Config::getConfig('app');
+        $config = M::getConfig('app');
         self::$viewPath = $config['basePath'].'/View/';
 
         return new View();

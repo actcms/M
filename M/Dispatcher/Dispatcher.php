@@ -6,7 +6,7 @@
  */
 namespace M\Dispatcher;
 
-use M\Config\Config;
+use M\M;
 use M\Http\Request\PathRequest;
 use M\Http\Request\Request;
 
@@ -45,7 +45,7 @@ class Dispatcher
     {
         $this->init();
 
-        $config = Config::getConfig('app');         //get the app configs
+        $config = M::getConfig('app');         //get the app configs
         $appBasePath = $config['basePath'];         //get the app basePath
 
         $this->controller = $appBasePath.'\Controller\\'.$this->controller;

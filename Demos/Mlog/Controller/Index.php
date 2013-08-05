@@ -6,6 +6,7 @@
  */
 namespace Mlog\Controller;
 
+use M\App;
 use M\Mvc\Controller\Controller;
 
 class Index extends Controller

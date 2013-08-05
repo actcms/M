@@ -17,15 +17,17 @@ use M\Loader\Loader;
  */
 class M
 {
+    private static $config;
+    private static $app;
     /**
-     * @param $config
+     * @param $configs
      */
-    public static function run($config)
+    public static function run($configs)
     {
         self::init();
-        Config::init($config);
 
-        $dispatcher = new Dispatcher();
+        self::$config = Config::init($configs);
+        self::$app = new Dispatcher();
     }
 
     /**
@@ -41,13 +43,20 @@ class M
     }
 
     /**
-     * 获取配置信息
+     * 获取配置信息的公用方法
+     *
+     * 所有需要获取配置信息的部分都需要通过调用此方法获取
      * @param string $name
      * @return mixed
      */
     public static function getConfig($name = '')
     {
-        return Config::getConfig($name);
+        return self::$config->getConfig($name);
+    }
+
+    public static function getApp()
+    {
+        return self::$app;
     }
 
     /**
@@ -58,6 +67,7 @@ class M
 
     }
 }
+
 
 
 
