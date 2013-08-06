@@ -27,8 +27,45 @@ abstract class AbstractModel
     }
 
     /**
-     *
+     *子类覆盖用于配置初始化
      */
     abstract public function init();
+
+    /**
+     * @param $name
+     * @return null
+     */
+    public function __get($name)
+    {
+        $method = 'get'.ucfirst($name);
+        if(method_exists($this,$method))
+        {
+            return $this->$method();
+        }
+        else
+        {
+            return null;
+        }
+
+    }
+
+    /**
+     * @param $name
+     * @param $value
+     * @return null
+     */
+    public function __set($name,$value)
+    {
+        $method = 'set'.ucfirst($name);
+        if(method_exists($this,$method))
+        {
+            $this->$method($value);
+        }
+        else
+        {
+            return null;
+        }
+
+    }
 
 }

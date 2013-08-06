@@ -19,10 +19,10 @@ class Model extends AbstractModel
      * @var
      */
     private static $db;
-    /**
-     * @var
-     */
-    private $key;
+
+    protected $table;
+    protected $key;
+    protected $data;
     /**
      * @var
      */
@@ -93,8 +93,31 @@ class Model extends AbstractModel
     /**
      *增加一条记录
      */
-    public function add($sql)
+    public function add()
     {
+        $sql ="INSERT INTO `$this->table` (";
+        foreach ($this->data as $key=>$value)
+        {
+            if(!empty($this->$value))
+            {
+                $sql .= "`$key`,";
+            }
+        }
+
+        $sql = rtrim($sql,',');		//去掉产生的sql语句末尾逗号
+
+        $sql .= ") VALUES (";
+        foreach ($this->data as $key=>$value)
+        {
+            if(!empty($this->$value))
+            {
+                $sql .= "'".$this->$value."'".',';
+            }
+        }
+
+        $sql = rtrim($sql,',');		//去除末尾逗号
+
+        $sql .= ")";
         $result = self::$db->insert($sql);
         return $result;
     }
@@ -114,5 +137,6 @@ class Model extends AbstractModel
     {
 
     }
+
 
 }

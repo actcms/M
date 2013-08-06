@@ -16,8 +16,18 @@ class User extends Controller
     {
         $user = new MUser('user');
 
-        //$user = $user->select("select * from user");
-        $re = $user->add("insert into user (username,password,email) values ('hello','hhhh','hhh@hh.com')");
-        print_r($re);
+        $user->username = 'test';
+        $user->password = 'pass';
+        $user->email = 'test@test.com';
+
+        $re = $user->add();
+        if($re)
+        {
+            echo '插入成功';
+        }
+        else
+        {
+            echo '失败';
+        }
     }
 }
