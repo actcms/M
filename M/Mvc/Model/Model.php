@@ -40,7 +40,7 @@ class Model extends AbstractModel
         if(empty(self::$db))
         {
             $db = M::getConfig('db');
-            self::$db = new Db($db['driver'],$db['host'],$db['database'],$db['user'],$db['password']);
+            self::$db = new Db($db['dsn'],$db['user'],$db['password']);
         }
     }
 
@@ -93,9 +93,10 @@ class Model extends AbstractModel
     /**
      *增加一条记录
      */
-    public function add()
+    public function add($sql)
     {
-
+        $result = self::$db->insert($sql);
+        return $result;
     }
 
     /**

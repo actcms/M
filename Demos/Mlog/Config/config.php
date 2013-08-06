@@ -1,23 +1,23 @@
 <?php
 /**
- * User: Guowei
- * Date: 13-7-13
- * Time: 下午10:54
+ * 配置文件
  */
 
 return array(
+
+    //应用配置
 
     'app'   =>   array(
         'name'  =>  'Mlog',
         'basePath' => 'Mlog',
     ),
 
+    //数据库配置
+
     'db'    =>   array(
-        'driver'    =>  'mysql',
-        'host'      =>  'localhost',
-        'database'  =>  'm',
+        'dsn'       =>  'mysql:host=localhost;dbname=m',
         'user'      =>  'root',
-        'password'       =>  'root',
+        'password'  =>  'root',
 
     ),
 

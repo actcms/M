@@ -20,18 +20,9 @@ class Db
      */
     private $db;
     /**
-     * @var string 数据库类别
+     * @var string dsn
      */
-    private $drive;
-
-    /**
-     * @var string 数据库名
-     */
-    private $database;
-    /**
-     * @var string 数据库主机地址
-     */
-    private $host;
+    private $dsn;
     /**
      * @var string 数据库用户名
      */
@@ -42,19 +33,15 @@ class Db
     private $pwd;
 
     /**
-     * @param $drive
-     * @param $host
-     * @param $database
+     * @param $dsn
      * @param $user
      * @param $pwd
      */
-    public function __construct($drive,$host,$database,$user,$pwd)
+    public function __construct($dsn,$user,$pwd)
     {
-        $this->drive = $drive;
-        $this->host = $host;
+        $this->dsn = $dsn;
         $this->user = $user;
         $this->pwd = $pwd;
-        $this->database = $database;
 
         $this->connect();
     }
@@ -66,7 +53,8 @@ class Db
     {
         try
         {
-            $this->db = new \PDO($this->drive.':host='.$this->host.';dbname='.$this->database,$this->user,$this->pwd);
+            $this->db = new \PDO($this->dsn,$this->user,$this->pwd,array(
+                \PDO::ATTR_PERSISTENT => true));
         }
         catch(\PDOException $e)
         {
@@ -77,33 +65,33 @@ class Db
     }
 
     /**
-     * 向数据库添加一条记录
-     *
-     * @param $sql  string
+     * @param $sql
+     * @return int
      */
-    public function add($sql)
+    public function insert($sql)
     {
-
+        $result = $this->db->exec($sql);
+        return $result;
     }
 
     /**
-     *删除数据库中一条记录
-     *
-     * @param $sql string
+     * @param $sql
+     * @return int
      */
-    public function del($sql)
+    public function delete($sql)
     {
-
+        $result = $this->db->exec($sql);
+        return $result;
     }
 
     /**
-     * 更新数据库中的一条记录
-     *
-     * @param $sql string
+     * @param $sql
+     * @return int
      */
     public function update($sql)
     {
-
+        $result = $this->db->exec($sql);
+        return $result;
     }
 
     /**

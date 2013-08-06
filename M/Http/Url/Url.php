@@ -31,6 +31,17 @@ class Url
     }
 
     /**
+     * @param $controller
+     * @param $action
+     * @param $parameter
+     * @return string
+     */
+    public static function build($controller,$action,$parameter)
+    {
+        return "?/$controller/$action/$parameter";
+    }
+
+    /**
      *
      */
     public static function jump()
