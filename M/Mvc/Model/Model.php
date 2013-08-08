@@ -91,7 +91,7 @@ class Model extends AbstractModel
     }
 
     /**
-     *增加一条记录
+     * @return mixed
      */
     public function add()
     {

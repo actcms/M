@@ -17,7 +17,12 @@ namespace M\Http\Request;
 class Request extends AbstractRequest
 {
     /**
-     * @var string 保存请求
+     * 原始请求
+     * @var
+     */
+    private static $rawRequest;
+    /**
+     * @var string 保存处理后的请求
      */
     protected static $request;
 
@@ -29,19 +34,21 @@ class Request extends AbstractRequest
 
         if(!empty($_SERVER['QUERY_STRING']))
         {
-            self::$request = $_SERVER['QUERY_STRING'];
+            self::$rawRequest = $_SERVER['QUERY_STRING'];
         }
         else
         {
-            self::$request = '';
+            self::$rawRequest = '';
         }
     }
 
     /**
-     * @return string 返回请求的原始字符串
+     * @return string 返回处理后的字符串
      */
     public static function getRequest()
     {
+        self::init();
+        self::parseRequest();
         return self::$request;
     }
 
@@ -50,6 +57,6 @@ class Request extends AbstractRequest
      */
     public static function parseRequest()
     {
-        return explode('/',self::$request);
+        self::$request = explode('/',self::$rawRequest);
     }
 }

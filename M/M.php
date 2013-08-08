@@ -9,6 +9,7 @@ namespace M;
 
 use M\Config\Config;
 use M\Dispatcher\Dispatcher;
+use M\Http\Request\Request;
 use M\Loader\Loader;
 
 /**
@@ -22,6 +23,7 @@ class M
      * @var Config
      */
     private static $config;
+    private static $request;
     /**
      * @var
      */
@@ -34,7 +36,9 @@ class M
         self::init();
 
         self::$config = Config::init($configs);
-        self::$app = new Dispatcher();
+        self::$request = Request::getRequest();
+
+        self::$app = new Dispatcher(self::$request);
     }
 
     /**
@@ -50,6 +54,7 @@ class M
     }
 
     /**
+     * 获取框架版本号
      * @return float
      */
     public static function getVersion()

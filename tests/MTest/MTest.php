@@ -4,6 +4,7 @@
  * Date: 13-7-14
  * Time: 上午9:23
  */
+namespace MTest;
 
 class MTest
 {

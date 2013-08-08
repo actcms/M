@@ -7,10 +7,6 @@
 namespace M\Dispatcher;
 
 use M\M;
-use M\Http\Request\PathRequest;
-use M\Http\Request\Request;
-
-use HelloWorld\Controller;
 
 /**
  * Class Dispatcher
@@ -41,8 +37,11 @@ class Dispatcher
     /**
      *构造方法
      */
-    public function __construct()
+    public function __construct($request)
     {
+        //获取传入的请求
+        $this->request = $request;
+
         $this->init();
 
         $config = M::getConfig('app');         //get the app configs
@@ -59,7 +58,6 @@ class Dispatcher
      */
     private function init()
     {
-        $this->getRequest();
         $this->getController();
         $this->getAction();
     }
@@ -89,15 +87,6 @@ class Dispatcher
             echo $this->controller.' controller not find';
 
         }
-    }
-
-    /**
-     *获取请求
-     */
-    public function getRequest()
-    {
-        Request::init();
-        $this->request = Request::parseRequest();
     }
 
     /**
