@@ -14,4 +14,5 @@ require_once '../../M/M.php';
 
 M::run($configs);
 
+echo \M\App::getHello();
 

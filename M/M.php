@@ -9,6 +9,7 @@ namespace M;
 
 use M\Config\Config;
 use M\Dispatcher\Dispatcher;
+use M\Http\Request\PathRequest;
 use M\Http\Request\Request;
 use M\Loader\Loader;
 
@@ -27,7 +28,7 @@ class M
     /**
      * @var
      */
-    private static $app;
+    private static $dispatcher;
     /**
      * @param $configs
      */
@@ -37,8 +38,9 @@ class M
 
         self::$config = Config::init($configs);
         self::$request = Request::getRequest();
+        //self::$request = PathRequest::getRequest();
 
-        self::$app = new Dispatcher(self::$request);
+        self::$dispatcher = new Dispatcher(self::$request);
     }
 
     /**
@@ -86,8 +88,31 @@ class M
     {
 
     }
+}
 
-
+/**
+ * Class App
+ * @package M
+ */
+class App extends M
+{
+    /**
+     * 实现方法委托
+     * @param $name
+     * @param $args
+     * @return mixed
+     */
+    public static function __callStatic($name,$args)
+    {
+        if(method_exists('\M\Http\Server\Server',$name))
+        {
+            return Http\Server\Server::$name();
+        }
+        else
+        {
+            return null;
+        }
+    }
 }
 
 

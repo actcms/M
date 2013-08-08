@@ -14,10 +14,6 @@ class Index extends Controller
 
     public function init()
     {
-        parent::init();
-
-        $this->assign('app','Mlog');
-
         $this->setLayout("main");
     }
 

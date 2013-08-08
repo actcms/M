@@ -22,19 +22,23 @@ class Controller extends AbstractController
      */
     private $view;
 
-    private $ll = 'jj';
-
-    public function getLl()
-    {
-        return $this->ll;
-    }
-
     /**
      *控制器初始化
      */
-    public function init()
+    public function __construct()
     {
         $this->view = View::init();
+
+        parent::__construct();
+
+        $app = \M\M::getConfig('app');
+        $name = $app['name'];
+        $this->assign('appName',$name);
+    }
+
+    public function init()
+    {
+
     }
 
     public function setLayout($layout)

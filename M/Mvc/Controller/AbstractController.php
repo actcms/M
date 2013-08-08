@@ -23,10 +23,7 @@ abstract class AbstractController
     /**
      *初始化，子类可以覆盖该方法以降初始化内容放入构造器
      */
-    public function init()
-    {
-
-    }
+    abstract function init();
 
     /**
      * @param $name

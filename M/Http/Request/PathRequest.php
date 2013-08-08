@@ -12,17 +12,24 @@ namespace M\Http\Request;
  * Class PathRequest
  * @package M\Http\Request
  */
-class PathRequest extends Request
+class PathRequest extends AbstractRequest
 {
-    public static function init()
+    public function init()
     {
         if(!empty($_SERVER['PATH_INFO']))
         {
-            self::$request = ltrim($_SERVER['PATH_INFO'],'/');
+            $this->setRawRequests($_SERVER['PATH_INFO']);
         }
         else
         {
-            self::$request = '';
+            $this->setRawRequests('');
         }
+    }
+
+    public function parseRequest()
+    {
+        $requests = ltrim($this->rawRequests,'/');
+        $requests = explode('/',$requests);
+        $this->setRequests($requests);
     }
 }

@@ -6,6 +6,7 @@
  */
 namespace M\Dispatcher;
 
+use M\Http\Request\AbstractRequest;
 use M\M;
 
 /**
@@ -37,10 +38,10 @@ class Dispatcher
     /**
      *构造方法
      */
-    public function __construct($request)
+    public function __construct(AbstractRequest $request)
     {
         //获取传入的请求
-        $this->request = $request;
+        $this->request = $request->requests;
 
         $this->init();
 
