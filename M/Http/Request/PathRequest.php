@@ -14,6 +14,9 @@ namespace M\Http\Request;
  */
 class PathRequest extends AbstractRequest
 {
+    /**
+     * @return mixed|void
+     */
     public function init()
     {
         if(!empty($_SERVER['PATH_INFO']))
@@ -26,6 +29,9 @@ class PathRequest extends AbstractRequest
         }
     }
 
+    /**
+     * @return mixed|void
+     */
     public function parseRequest()
     {
         $requests = ltrim($this->rawRequests,'/');

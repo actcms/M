@@ -42,11 +42,13 @@ abstract class AbstractRequest
         $this->parseRequest();
     }
 
+    /**
+     * @return static
+     */
     public static function getRequest()
     {
         return new static();
     }
-
     /**
      * @return string
      */
@@ -54,7 +56,6 @@ abstract class AbstractRequest
     {
         return $this->requests;
     }
-
     /**
      * @param $value
      */
@@ -95,6 +96,4 @@ abstract class AbstractRequest
             return null;
         }
     }
-
-
 }

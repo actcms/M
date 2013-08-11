@@ -117,7 +117,7 @@ class Model extends AbstractModel
 
         $sql = rtrim($sql,',');		//去除末尾逗号
 
-        $sql .= ")";
+        echo $sql .= ")";
         $result = self::$db->insert($sql);
         return $result;
     }

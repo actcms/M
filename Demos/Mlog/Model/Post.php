@@ -6,15 +6,24 @@
  */
 namespace Mlog\Model;
 
-
 use M\Mvc\Model\Model;
 
 class Post extends Model
 {
-    private $id;
-    private $title;
-    private $content;
-    private $pdate;
+    protected $id;
+    protected $title;
+    protected $content;
+    protected $createTime;
+
+    protected $table = 'post';
+    protected $key = 'id';
+
+    protected $data = array(
+        'id' => 'id',
+        'title' => 'title',
+        'content' =>'content',
+        'create_time' => 'createTime',
+    );
 
     public function getId()
     {
@@ -43,14 +52,14 @@ class Post extends Model
         return $this;
     }
 
-    public function getPdate()
+    public function getCreateTime()
     {
-        return $this->pdate;
+        return $this->createTime;
     }
 
-    public function setPdate($pdate)
+    public function setCreateTime($createTime)
     {
-        $this->pdate = $pdate;
+        $this->createTime = $createTime;
         return $this;
     }
 

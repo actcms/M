@@ -97,16 +97,22 @@ class M
 class App extends M
 {
     /**
-     * 实现方法委托
      * @param $name
-     * @param $args
-     * @return mixed
+     * @param $arguments
+     * @return null
      */
-    public static function __callStatic($name,$args)
+    public static function __callStatic($name,$arguments)
     {
         if(method_exists('\M\Http\Server\Server',$name))
         {
             return Http\Server\Server::$name();
+        }
+        else if(method_exists('\M\Http\Url\Url',$name))
+        {
+            $controller = $arguments[0];
+            $action = $arguments[1];
+
+            return Http\Url\Url::$name($controller,$action);
         }
         else
         {
@@ -114,8 +120,3 @@ class App extends M
         }
     }
 }
-
-
-
-
-

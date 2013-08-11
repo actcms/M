@@ -36,9 +36,17 @@ class Url
      * @param $parameter
      * @return string
      */
-    public static function build($controller,$action,$parameter)
+    public static function urlBuild($controller,$action,$parameter='')
     {
-        return "?/$controller/$action/$parameter";
+        if(empty($parameter))
+        {
+            return "?$controller/$action";
+        }
+        else
+        {
+            return "?$controller/$action/$parameter";
+        }
+
     }
 
     /**
