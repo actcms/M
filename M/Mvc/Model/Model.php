@@ -26,7 +26,7 @@ class Model extends AbstractModel
     /**
      * @var
      */
-    private $where;
+    protected $where;
     /**
      * @var
      */
@@ -65,11 +65,12 @@ class Model extends AbstractModel
     }
 
     /**
-     * @param $sql
      * @return mixed
      */
-    public function select($sql)
+    public function select()
     {
+        $sql = 'SELECT * FROM ';
+        $sql .= $this->table;
         $result = self::$db->select($sql);
         return $result;
     }
@@ -117,7 +118,7 @@ class Model extends AbstractModel
 
         $sql = rtrim($sql,',');		//去除末尾逗号
 
-        echo $sql .= ")";
+        $sql .= ")";
         $result = self::$db->insert($sql);
         return $result;
     }

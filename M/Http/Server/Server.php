@@ -7,19 +7,39 @@
 
 namespace M\Http\Server;
 
-
+/**
+ * Class Server
+ * @package M\Http\Server
+ */
 class Server
 {
+    /**
+     * @return mixed
+     */
+    public static function getServerName()
+    {
+        return $_SERVER['SERVER_NAME'];
+    }
+
+    /**
+     * @return mixed
+     */
     public static function getScriptName()
     {
         return $_SERVER['SCRIPT_NAME'];
     }
 
+    /**
+     * @return mixed
+     */
     public static function getHomeUrl()
     {
         return self::getScriptName();
     }
 
+    /**
+     * @return string
+     */
     public static function getBaseUrl()
     {
         return dirname(self::getScriptName());

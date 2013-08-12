@@ -15,19 +15,8 @@ class User extends Controller
     public function index()
     {
         $user = new MUser('user');
+        $u = $user->select();
 
-        $user->username = 'test';
-        $user->password = 'pass';
-        $user->email = 'test@test.com';
-
-        $re = $user->add();
-        if($re)
-        {
-            echo '插入成功';
-        }
-        else
-        {
-            echo '失败';
-        }
+        print_r($u);
     }
 }

@@ -15,22 +15,6 @@ namespace M\Http\Url;
 class Url
 {
     /**
-     * @return mixed
-     */
-    public static function getServerName()
-    {
-        return $_SERVER['SERVER_NAME'];
-    }
-
-    /**
-     * @return mixed
-     */
-    public static function getScriptName()
-    {
-        return $_SERVER['SCRIPT_NAME'];
-    }
-
-    /**
      * @param $controller
      * @param $action
      * @param $parameter
