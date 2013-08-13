@@ -113,6 +113,8 @@ class App extends M
         {
             $controller = $arguments[0];
             $action = $arguments[1];
+            $parameter = $arguments[2];
+
             if(self::getConfig('urlRules')=='path')
             {
                 $mode = '/';
@@ -123,7 +125,7 @@ class App extends M
             }
             Http\Url\Url::$mode = $mode;
 
-            return Http\Url\Url::$name($controller,$action);
+            return Http\Url\Url::$name($controller,$action,$parameter);
         }
         else
         {

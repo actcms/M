@@ -78,9 +78,11 @@ class Model extends AbstractModel
     /**
      *查出单条记录
      */
-    public function find()
+    public function find($id)
     {
-
+        $sql = "SELECT * FROM $this->table WHERE $this->key = $id";
+        $result = self::$db->find($sql);
+        return $result;
     }
 
     /**

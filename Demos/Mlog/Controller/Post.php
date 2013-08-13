@@ -11,9 +11,12 @@ use Mlog\Model\Post as MPost;
 
 class Post extends Controller
 {
-    public function index()
+    public function index($id)
     {
-        $this->assign('name','post');
+        $post = new MPost();
+        $post = $post->find($id);
+
+        $this->assign('post',$post);
         $this->display('Post/index.php');
     }
 

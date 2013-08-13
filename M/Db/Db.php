@@ -107,4 +107,12 @@ class Db
         return $result;
 
     }
+
+    public function find($sql)
+    {
+        $res = $this->db->query($sql);
+        $result = $res->fetch();
+        return $result;
+
+    }
 }

@@ -61,6 +61,7 @@ class Dispatcher
     {
         $this->getController();
         $this->getAction();
+        $this->getParameter();
     }
 
     /**
@@ -74,7 +75,7 @@ class Dispatcher
 
             if(method_exists($this->controller,$this->action))
             {
-                $controller->{$this->action}();
+                $controller->{$this->action}($this->parameter);
             }
             else
             {
@@ -132,6 +133,15 @@ class Dispatcher
      */
     public function getParameter()
     {
+        if(!empty($this->request[2]))
+        {
+            $this->parameter = $this->request[2];
+        }
+        else
+        {
+            $this->request = '';
+        }
+
         return $this->parameter;
     }
 
