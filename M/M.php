@@ -37,8 +37,15 @@ class M
         self::init();
 
         self::$config = Config::init($configs);
-        self::$request = Request::getRequest();
-        //self::$request = PathRequest::getRequest();
+
+        if(self::getConfig('urlRules')=='path')
+        {
+            self::$request = PathRequest::getRequest();
+        }
+        else
+        {
+            self::$request = Request::getRequest();
+        }
 
         self::$dispatcher = new Dispatcher(self::$request);
     }
@@ -76,11 +83,6 @@ class M
         return self::$config->getConfig($name);
     }
 
-    public static function getApp()
-    {
-        return self::$app;
-    }
-
     /**
      * @param $class
      */
@@ -111,6 +113,15 @@ class App extends M
         {
             $controller = $arguments[0];
             $action = $arguments[1];
+            if(self::getConfig('urlRules')=='path')
+            {
+                $mode = '/';
+            }
+            else
+            {
+                $mode = '?';
+            }
+            Http\Url\Url::$mode = $mode;
 
             return Http\Url\Url::$name($controller,$action);
         }

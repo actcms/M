@@ -15,11 +15,12 @@ abstract class AbstractRequest
 {
     /**
      * 原始请求
-     * @var
+     * @var string
      */
     private $rawRequests;
     /**
-     * @var string 保存处理后的请求
+     * 处理后的请求
+     * @var array
      */
     private $requests;
 
@@ -57,7 +58,7 @@ abstract class AbstractRequest
         return $this->requests;
     }
     /**
-     * @param $value
+     * @param $value array
      */
     public function setRequests($value)
     {
@@ -65,7 +66,7 @@ abstract class AbstractRequest
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getRawRequests()
     {
@@ -73,7 +74,7 @@ abstract class AbstractRequest
     }
 
     /**
-     * @param $value
+     * @param $value string
      */
     public function setRawRequests($value)
     {

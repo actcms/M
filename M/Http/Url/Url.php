@@ -6,6 +6,7 @@
  */
 
 namespace M\Http\Url;
+use M\Http\Server\Server;
 
 /**
  * URL处理类
@@ -14,6 +15,12 @@ namespace M\Http\Url;
  */
 class Url
 {
+    /**
+     * url模式分隔符
+     * 默认为'?'形式
+     * @var string
+     */
+    public static $mode = '?';
     /**
      * @param $controller
      * @param $action
@@ -24,12 +31,14 @@ class Url
     {
         if(empty($parameter))
         {
-            return "?$controller/$action";
+            $path = self::$mode."$controller/$action";
         }
         else
         {
-            return "?$controller/$action/$parameter";
+            $path = self::$mode."$controller/$action/$parameter";
         }
+
+        return Server::getHomeUrl().$path;
 
     }
 

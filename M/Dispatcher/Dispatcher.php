@@ -74,8 +74,6 @@ class Dispatcher
             {
                 $controller = new $this->controller();
 
-                //$controller = new $this->controller;          //this is also true,but I don't know why?
-
                 $controller->{$this->action}();
             }
             else
