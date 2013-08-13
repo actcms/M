@@ -14,7 +14,7 @@ class User extends Controller
 {
     public function index()
     {
-        $user = new MUser('user');
+        $user = new MUser();
         $u = $user->select();
 
         print_r($u);

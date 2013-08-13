@@ -15,6 +15,10 @@ use M\M;
 class View extends AbstractView
 {
     /**
+     * @var array
+     */
+    public $data = array();
+    /**
      * @var string 模板布局
      */
     private static $layout;
@@ -71,14 +75,31 @@ class View extends AbstractView
         include_once $layout;
     }
 
+    /**
+     * 获取布局文件
+     * @return string
+     */
     public function getLayout()
     {
         return self::$layout;
     }
 
+    /**
+     * 设置布局文件
+     * @param $layout
+     */
     public function setLayout($layout)
     {
         self::$layout = $layout;
+    }
+
+    /**
+     * 设置控制器全局数据
+     * @param $data
+     */
+    public function setData($data)
+    {
+        $this->data = $data;
     }
 
 

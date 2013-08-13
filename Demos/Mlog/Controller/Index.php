@@ -6,26 +6,50 @@
  */
 namespace Mlog\Controller;
 
-use M\App;
 use M\Mvc\Controller\Controller;
+use Mlog\Model\Post;
 
 class Index extends Controller
 {
-
-    public function init()
-    {
-        $this->setLayout("main");
-    }
+    public $data = array(
+        'controller' => 'Index',
+        'title' => '首页',
+    );
+    protected $layout = 'test';
 
     public function index()
     {
-        $this->assign('word','hello world');
+        $post = new Post();
+        $post = $post->select();
+
+        $this->assign('post',$post);
         $this->display('Index/index.php');
     }
 
     public function login()
     {
-        $this->display('Index/login.php');
+        if(isset($_POST['login']))
+        {
+
+        }
+        else
+        {
+            $this->display('Index/login.php');
+        }
+
+    }
+
+    public function reg()
+    {
+        if(isset($_POST['reg']))
+        {
+
+        }
+        else
+        {
+            $this->display('Index/reg.php');
+        }
+
     }
 
 }

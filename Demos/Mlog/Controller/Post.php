@@ -11,12 +11,6 @@ use Mlog\Model\Post as MPost;
 
 class Post extends Controller
 {
-    public function init()
-    {
-        parent::init();
-        $this->setLayout("main");
-    }
-
     public function index()
     {
         $this->assign('name','post');
@@ -27,7 +21,7 @@ class Post extends Controller
     {
         if(isset($_POST['post']))
         {
-            $post = new MPost('post');
+            $post = new MPost();
             $post->title = $_POST['title'];
             $post->content = $_POST['content'];
             $post->createTime = time();

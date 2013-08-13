@@ -10,6 +10,7 @@ namespace M\Mvc\View;
  * Class AbstractView
  * @package M\Mvc\View
  */
-abstract class AbstractView {
+abstract class AbstractView
+{
 
 }

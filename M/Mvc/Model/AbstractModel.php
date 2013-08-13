@@ -20,9 +20,9 @@ abstract class AbstractModel
     /**
      * 构造方法
      */
-    public function __construct($table)
+    public function __construct()
     {
-        $this->table = $table;
+        //$this->table = $table;
         $this->init();
     }
 

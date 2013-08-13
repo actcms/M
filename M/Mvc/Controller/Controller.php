@@ -6,6 +6,7 @@
  */
 namespace M\Mvc\Controller;
 
+use M\M;
 use M\Mvc\View\View;
 
 /**
@@ -21,19 +22,32 @@ class Controller extends AbstractController
      * @var View 保存的模板实例
      */
     private $view;
+    /**
+     * 控制器全局变量，所有视图内都可以使用
+     * @var array
+     */
+    protected $data = array();
+    /**
+     *指定默认布局文件
+     * @var string
+     */
+    protected $layout = 'main';
 
     /**
      *控制器初始化
      */
     public function __construct()
     {
-        $this->view = View::init();
-
         parent::__construct();
 
-        $app = \M\M::getConfig('app');
-        $name = $app['name'];
-        $this->assign('appName',$name);
+        $this->view = View::init();         //实例化 View
+
+        $app = M::getConfig('app');
+        $this->assign('app',$app);
+
+        $this->setData($this->data);
+
+        $this->setLayout($this->layout);        //设置布局模板
     }
 
     public function init()
@@ -41,9 +55,23 @@ class Controller extends AbstractController
 
     }
 
+    /**
+     * @param $layout
+     */
     public function setLayout($layout)
     {
         $this->view->setLayout($layout);
+    }
+
+    /**
+     * 设置控制器全局变量
+     *
+     * 在控制器所有视图中都可以使用
+     * @param $data array
+     */
+    public function setData($data)
+    {
+        $this->view->setData($data);
     }
 
     /**

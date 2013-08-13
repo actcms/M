@@ -10,6 +10,7 @@ return array(
     'app'   =>   array(
         'name'  =>  'Mlog',
         'basePath' => 'Mlog',
+        'info'  => 'a simple blog!',
     ),
 
     //数据库配置

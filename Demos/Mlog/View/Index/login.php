@@ -14,6 +14,6 @@
                 <input type="checkbox"> Remember me
             </label>
         </div>
-        <button type="submit" name="login" class="btn btn-default">Login</button>
+        <button type="submit" name="login" class="btn btn-default pull-right">Login</button>
     </fieldset>
 </div>
