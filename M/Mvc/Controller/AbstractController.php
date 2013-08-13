@@ -24,6 +24,16 @@ abstract class AbstractController
      *初始化，子类可以覆盖该方法以降初始化内容放入构造器
      */
     abstract function init();
+    abstract function assign($key,$value);
+    abstract function display($tpl);
+
+    /**
+     * 指定404错误页
+     */
+    public function error_404()
+    {
+        $this->display('Error/404.php');
+    }
 
     /**
      * @param $name

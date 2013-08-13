@@ -70,20 +70,21 @@ class Dispatcher
     {
         if(class_exists($this->controller))
         {
+            $controller = new $this->controller();
+
             if(method_exists($this->controller,$this->action))
             {
-                $controller = new $this->controller();
-
                 $controller->{$this->action}();
             }
             else
             {
-                echo $this->action.' action not find';
+                $controller->error_404();
             }
         }
         else
         {
-            echo $this->controller.' controller not find';
+            $controller = new \M\Mvc\Controller\Controller();
+            $controller->error_404();
 
         }
     }
