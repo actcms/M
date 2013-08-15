@@ -12,7 +12,7 @@ class Tag extends Common
     public function index()
     {
         $this->assign('word','hello world');
-        $this->display('Tag/index.php');
+        $this->display('Tag/index');
     }
 
 }

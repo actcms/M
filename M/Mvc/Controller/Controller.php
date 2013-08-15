@@ -94,7 +94,7 @@ class Controller extends AbstractController
 
         if(!empty($tpl))
         {
-
+            $tpl = $tpl.'.php';
         }
         else
         {

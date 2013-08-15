@@ -18,6 +18,6 @@ class User extends Common
         $user = new MUser();
         $user = $user->select();
         $this->assign('user',$user);
-        $this->display('User/index.php');
+        $this->display('User/index');
     }
 }

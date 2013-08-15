@@ -24,7 +24,7 @@ class Index extends Common
         $post = $post->select();
 
         $this->assign('post',$post);
-        $this->display('Index/index.php');
+        $this->display('Index/index');
     }
 
     public function login()
@@ -35,7 +35,7 @@ class Index extends Common
         }
         else
         {
-            $this->display('Index/login.php');
+            $this->display('Index/login');
         }
 
     }
@@ -48,7 +48,7 @@ class Index extends Common
         }
         else
         {
-            $this->display('Index/reg.php');
+            $this->display('Index/reg');
         }
 
     }

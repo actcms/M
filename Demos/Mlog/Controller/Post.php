@@ -23,7 +23,7 @@ class Post extends Common
         $this->data['title'] = $post['title'];
 
         $this->assign('post',$post);
-        $this->display('Post/index.php');
+        $this->display('Post/index');
     }
 
     public function add()
@@ -51,7 +51,7 @@ class Post extends Common
         else
         {
             $this->assign('title','ADD POST');
-            $this->display('Post/add.php');
+            $this->display('Post/add');
         }
     }
 
@@ -83,7 +83,7 @@ class Post extends Common
             $this->assign('title','UPDATE POST');
             $post = $post->find($id);
             $this->assign('post',$post);
-            $this->display('Post/update.php');
+            $this->display('Post/update');
         }
 
     }
