@@ -30,7 +30,11 @@ class Model extends AbstractModel
     /**
      * @var
      */
-    protected $order;
+    protected $orderBy;
+    /**
+     * @var
+     */
+    protected $limit;
 
     /**
      *初始化
@@ -50,17 +54,36 @@ class Model extends AbstractModel
      */
     public function where($where)
     {
-        $this->where = $where;
+        $this->where = " WHERE $where";
         return $this;
     }
 
     /**
-     * @param $order
+     * @param $by
+     * @param string $order
      * @return $this
      */
-    public function order($order)
+    public function orderBy($by,$order='desc')
     {
-        $this->order =$order;
+        $this->orderBy = " ORDER BY `$by` $order";
+        return $this;
+    }
+
+    /**
+     * @param $number
+     * @param null $number2
+     * @return $this
+     */
+    public function limit($number,$number2=null)
+    {
+        if(isset($number2))
+        {
+            $this->limit = " LIMIT $number,$number2";
+        }
+        else
+        {
+            $this->limit = " LIMIT $number";
+        }
         return $this;
     }
 
@@ -69,8 +92,11 @@ class Model extends AbstractModel
      */
     public function select()
     {
-        $sql = 'SELECT * FROM ';
-        $sql .= $this->table;
+        $sql = "SELECT * FROM $this->table";
+        $sql .= $this->where;
+        $sql .= $this->orderBy;
+        $sql .= $this->limit;
+
         $result = self::$db->select($sql);
         return $result;
     }
@@ -88,9 +114,11 @@ class Model extends AbstractModel
     /**
      *删除一条记录
      */
-    public function delete()
+    public function delete($id)
     {
-
+        $sql = "DELETE FROM $this->table WHERE $this->key = $id";
+        $result = self::$db->delete($sql);
+        return $result;
     }
 
     /**

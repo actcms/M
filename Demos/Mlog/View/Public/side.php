@@ -1,6 +1,6 @@
 <h4>recent post</h4>
 <ul>
-    <li><a href="">some time need</a></li>
-    <li><a href="">hello world</a></li>
-    <li><a href="">how about you</a></li>
+    <?php foreach($recentPost as $p){ ?>
+        <li><a href="<?php echo \M\App::urlBuild('Post','index',$p['id']) ?>"><?php echo $p['title'] ?></a></li>
+    <?php } ?>
 </ul>

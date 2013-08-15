@@ -7,9 +7,7 @@
 
 namespace Mlog\Controller;
 
-use M\Mvc\Controller\Controller;
-
-class Tag extends Controller
+class Tag extends Common
 {
     public function index()
     {

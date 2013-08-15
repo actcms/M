@@ -14,6 +14,5 @@ class Post extends Controller
     {
         $this->success("this is the post");
 
-
     }
 }

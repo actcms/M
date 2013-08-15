@@ -22,7 +22,6 @@ abstract class AbstractModel
      */
     public function __construct()
     {
-        //$this->table = $table;
         $this->init();
     }
 
@@ -33,20 +32,11 @@ abstract class AbstractModel
 
     /**
      * @param $name
-     * @return null
+     * @return mixed
      */
     public function __get($name)
     {
-        $method = 'get'.ucfirst($name);
-        if(method_exists($this,$method))
-        {
-            return $this->$method();
-        }
-        else
-        {
-            return null;
-        }
-
+        return $this->$name;
     }
 
     /**

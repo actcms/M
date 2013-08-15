@@ -6,20 +6,21 @@
  */
 namespace Mlog\Controller;
 
-use M\Mvc\Controller\Controller;
 use Mlog\Model\Post;
 
-class Index extends Controller
+class Index extends Common
 {
     public $data = array(
         'controller' => 'Index',
         'title' => '首页',
     );
+
     protected $layout = 'test';
 
     public function index()
     {
         $post = new Post();
+        $post->orderBy('id','desc')->limit(6,5);
         $post = $post->select();
 
         $this->assign('post',$post);

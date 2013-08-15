@@ -13,6 +13,8 @@ class Post extends Model
     protected $id;
     protected $title;
     protected $content;
+    protected $tags;
+    protected $authorId;
     protected $createTime;
 
     protected $table = 'post';
@@ -22,28 +24,15 @@ class Post extends Model
         'id' => 'id',
         'title' => 'title',
         'content' =>'content',
+        'tags' => 'tags',
+        'author_id' => 'authorId',
         'create_time' => 'createTime',
     );
-
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    public function getTitle()
-    {
-        return $this->id;
-    }
 
     public function setTitle($title)
     {
         $this->title = $title;
         return $this;
-    }
-
-    public function getContent()
-    {
-        return $this->content;
     }
 
     public function setContent($content)
@@ -52,9 +41,16 @@ class Post extends Model
         return $this;
     }
 
-    public function getCreateTime()
+    public function setTags($tags)
     {
-        return $this->createTime;
+        $this->tags = $tags;
+        return $this;
+    }
+
+    public function setAuthorId($authorId)
+    {
+        $this->authorId = $authorId;
+        return $this;
     }
 
     public function setCreateTime($createTime)

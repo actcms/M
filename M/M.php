@@ -113,7 +113,8 @@ class App extends M
         {
             $controller = $arguments[0];
             $action = $arguments[1];
-            $parameter = $arguments[2];
+
+            $parameter = empty($arguments[2])?'':$arguments[2];
 
             if(self::getConfig('urlRules')=='path')
             {

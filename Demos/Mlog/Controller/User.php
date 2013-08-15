@@ -6,17 +6,18 @@
  */
 namespace Mlog\Controller;
 
-
-use M\Mvc\Controller\Controller;
 use Mlog\Model\User as MUser;
 
-class User extends Controller
+class User extends Common
 {
+    public $data = array(
+        'title' => 'User',
+    );
     public function index()
     {
         $user = new MUser();
-        $u = $user->select();
-
-        print_r($u);
+        $user = $user->select();
+        $this->assign('user',$user);
+        $this->display('User/index.php');
     }
 }

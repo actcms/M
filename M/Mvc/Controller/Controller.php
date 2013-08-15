@@ -38,9 +38,9 @@ class Controller extends AbstractController
      */
     public function __construct()
     {
-        parent::__construct();
-
         $this->view = View::init();         //实例化 View
+
+        parent::__construct();
 
         $app = M::getConfig('app');
         $this->assign('app',$app);
