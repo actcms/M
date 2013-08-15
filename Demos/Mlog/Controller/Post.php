@@ -20,6 +20,8 @@ class Post extends Common
         $post = new MPost();
         $post = $post->find($id);
 
+        $this->data['title'] = $post['title'];
+
         $this->assign('post',$post);
         $this->display('Post/index.php');
     }
