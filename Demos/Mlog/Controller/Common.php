@@ -20,7 +20,7 @@ class Common extends Controller
     public function getSide()
     {
         $post = new Post();
-        $post = $post->select();
+        $post = $post->orderBy('id')->limit(10)->select();
 
         $this->assign('recentPost',$post);
     }

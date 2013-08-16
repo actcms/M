@@ -20,7 +20,7 @@ class Index extends Common
     public function index()
     {
         $post = new Post();
-        $post->orderBy('id','desc')->limit(6,5);
+        $post->orderBy('id','desc')->limit(0,5);
         $post = $post->select();
 
         $this->assign('post',$post);

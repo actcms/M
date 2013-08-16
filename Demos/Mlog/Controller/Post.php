@@ -37,7 +37,7 @@ class Post extends Common
             $post->authorId = 1;
             $post->createTime = time();
 
-            $result = $post->add();
+            $result = $post->save();
 
             if($result)
             {
@@ -76,6 +76,23 @@ class Post extends Common
 
         if(isset($_POST['update']))
         {
+            $post->id = $_POST['id'];
+            $post->title = $_POST['title'];
+            $post->content = $_POST['content'];
+            $post->tags = $_POST['tags'];
+            $post->authorId = 1;
+            $post->createTime = time();
+
+            $result = $post->save();
+
+            if($result)
+            {
+                $this->success('更新成功');
+            }
+            else
+            {
+                $this->error('更新失败');
+            }
 
         }
         else

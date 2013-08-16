@@ -154,11 +154,20 @@ class Model extends AbstractModel
     }
 
     /**
-     *保存记录
+     * 保存记录
+     *
+     * 根据是$key值是否为空选择插入或者更新
      */
     public function save()
     {
-
+        if(empty($this->id))
+        {
+            return $this->add();
+        }
+        else
+        {
+            return $this->update();
+        }
     }
 
     /**
@@ -166,8 +175,31 @@ class Model extends AbstractModel
      */
     public function update()
     {
+        $sql = "UPDATE `$this->table` SET ";
+        foreach($this->data as $key=>$value)
+        {
+            if(!empty($this->$value))
+            {
+                $sql .= "`$key` = '{$this->$value}',";
+            }
+        }
 
+        $sql = rtrim($sql,',');
+
+        echo $sql .= " WHERE $this->key = $this->id";
+
+        $result = self::$db->update($sql);
+        return $result;
     }
 
+    /**
+     * @param $sql
+     * @return mixed
+     */
+    public function query($sql)
+    {
+        $result = self::$db->exec($sql);
+        return $result;
+    }
 
 }

@@ -5,7 +5,6 @@
  * @author Ma Guowei <imaguowei@gmail.com>
  */
 namespace M;
-//define('MPATH',str_replace('\\','/',dirname(__FILE__).'/'));
 
 use M\Config\Config;
 use M\Dispatcher\Dispatcher;
@@ -55,6 +54,7 @@ class M
      */
     private static function init()
     {
+        define('MPATH',str_replace('\\','/',dirname(__FILE__).'/'));
         set_include_path(get_include_path().PATH_SEPARATOR.M.PATH_SEPARATOR.App);
 
         require_once 'Loader/Loader.php';

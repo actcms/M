@@ -29,6 +29,11 @@ class Post extends Model
         'create_time' => 'createTime',
     );
 
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
     public function setTitle($title)
     {
         $this->title = $title;

@@ -61,7 +61,16 @@ class Db
             echo '数据库连接错误！'.$e->getMessage();
             exit();
         }
+    }
 
+    /**
+     * @param $sql
+     * @return int
+     */
+    public function exec($sql)
+    {
+        $result = $this->db->exec($sql);
+        return $result;
     }
 
     /**
