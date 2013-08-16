@@ -31,9 +31,12 @@ class Post extends Common
         if(isset($_POST['post']))
         {
             $post = new MPost();
-            $post->title = $_POST['title'];
-            $post->content = $_POST['content'];
-            $post->tags = $_POST['tags'];
+
+//            $post->title = $_POST['title'];
+//            $post->content = $_POST['content'];
+//            $post->tags = $_POST['tags'];
+
+            $post->getPost();
             $post->authorId = 1;
             $post->createTime = time();
 
@@ -76,10 +79,13 @@ class Post extends Common
 
         if(isset($_POST['update']))
         {
-            $post->id = $_POST['id'];
-            $post->title = $_POST['title'];
-            $post->content = $_POST['content'];
-            $post->tags = $_POST['tags'];
+//            $post->id = $_POST['id'];
+//            $post->title = $_POST['title'];
+//            $post->content = $_POST['content'];
+//            $post->tags = $_POST['tags'];
+
+            $post->getPost();       //一次获取所有属性并赋值到模型属性
+
             $post->authorId = 1;
             $post->createTime = time();
 

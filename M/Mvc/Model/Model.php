@@ -7,6 +7,7 @@
 namespace M\Mvc\Model;
 
 use M\Db\Db;
+use M\Form\Form;
 use M\M;
 
 /**
@@ -186,7 +187,7 @@ class Model extends AbstractModel
 
         $sql = rtrim($sql,',');
 
-        echo $sql .= " WHERE $this->key = $this->id";
+        $sql .= " WHERE $this->key = $this->id";
 
         $result = self::$db->update($sql);
         return $result;
@@ -200,6 +201,16 @@ class Model extends AbstractModel
     {
         $result = self::$db->exec($sql);
         return $result;
+    }
+
+    /**
+     * 获取POST提交的数据
+     *
+     * 自动将POST方式提交的数据赋值到模型属性
+     */
+    public function getPost()
+    {
+        Form::postToModel($this);
     }
 
 }
