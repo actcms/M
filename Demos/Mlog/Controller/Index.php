@@ -7,6 +7,7 @@
 namespace Mlog\Controller;
 
 use Mlog\Model\Post;
+use Mlog\Model\User;
 
 class Index extends Common
 {
@@ -44,7 +45,9 @@ class Index extends Common
     {
         if(isset($_POST['reg']))
         {
+            $user = new User();
 
+            $user->getPost();
         }
         else
         {

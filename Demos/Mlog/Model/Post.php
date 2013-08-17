@@ -32,6 +32,7 @@ class Post extends Model
     public function setId($id)
     {
         $this->id = $id;
+        return $this;
     }
 
     public function setTitle($title)

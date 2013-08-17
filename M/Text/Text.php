@@ -14,9 +14,9 @@ namespace M\Text;
  */
 class Text
 {
-    public static function substr()
+    public static function substr($str,$start,$length,$encoding='utf8')
     {
-
+        return mb_substr($str,$start,$length,$encoding);
     }
 
     public static function equal()

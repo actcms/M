@@ -103,7 +103,8 @@ class Model extends AbstractModel
     }
 
     /**
-     *查出单条记录
+     * @param $id
+     * @return mixed
      */
     public function find($id)
     {
@@ -113,7 +114,8 @@ class Model extends AbstractModel
     }
 
     /**
-     *删除一条记录
+     * @param $id
+     * @return mixed
      */
     public function delete($id)
     {
@@ -172,7 +174,7 @@ class Model extends AbstractModel
     }
 
     /**
-     *更新一条记录
+     * @return mixed
      */
     public function update()
     {
@@ -194,6 +196,7 @@ class Model extends AbstractModel
     }
 
     /**
+     * 执行原始sql语句
      * @param $sql
      * @return mixed
      */
@@ -208,7 +211,7 @@ class Model extends AbstractModel
      *
      * 自动将POST方式提交的数据赋值到模型属性
      */
-    public function getPost()
+    public function get_Post()
     {
         Form::postToModel($this);
     }

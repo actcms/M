@@ -14,5 +14,8 @@ namespace M\Log;
  */
 class Log
 {
+    public function write()
+    {
 
+    }
 }

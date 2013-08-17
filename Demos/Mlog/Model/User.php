@@ -25,6 +25,12 @@ class User extends Model
         'email' => 'email',
     );
 
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
+
     public function setUsername($username)
     {
         $this->username = $username;

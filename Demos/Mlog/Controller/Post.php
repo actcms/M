@@ -36,7 +36,7 @@ class Post extends Common
 //            $post->content = $_POST['content'];
 //            $post->tags = $_POST['tags'];
 
-            $post->getPost();
+            $post->get_Post();
             $post->authorId = 1;
             $post->createTime = time();
 
@@ -84,7 +84,7 @@ class Post extends Common
 //            $post->content = $_POST['content'];
 //            $post->tags = $_POST['tags'];
 
-            $post->getPost();       //一次获取所有属性并赋值到模型属性
+            $post->get_Post();       //一次获取所有属性并赋值到模型属性
 
             $post->authorId = 1;
             $post->createTime = time();
