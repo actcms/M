@@ -7,6 +7,8 @@
 
 namespace M\Form;
 
+use M\Mvc\Model\Model;
+
 /**
  * Class Form
  * @package M\Form
@@ -39,7 +41,7 @@ class Form
      *
      * @param \M\Mvc\Model\Model $model
      */
-    public static function postToModel(\M\Mvc\Model\Model $model)
+    public static function postToModel(Model $model)
     {
         self::getPost();
 

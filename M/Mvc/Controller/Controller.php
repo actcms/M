@@ -44,8 +44,6 @@ class Controller extends AbstractController
 
         $app = M::getConfig('app');
         $this->assign('app',$app);
-
-        $this->setLayout($this->layout);        //设置布局模板
     }
 
     public function init()
@@ -90,6 +88,7 @@ class Controller extends AbstractController
      */
     public function display($tpl='')
     {
+        $this->setLayout($this->layout);    //设置布局模板
         $this->setData($this->data);        //在渲染视图之前赋值（延迟赋值)
 
         if(!empty($tpl))
@@ -121,6 +120,12 @@ class Controller extends AbstractController
     public function error($message)
     {
         echo $message;
+    }
+
+    public function error_404()
+    {
+        $this->layout = 'error';
+        $this->display('Error/404');
     }
 
 }

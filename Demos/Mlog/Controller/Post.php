@@ -28,6 +28,8 @@ class Post extends Common
 
     public function add()
     {
+        $this->checkPower();
+
         if(isset($_POST['post']))
         {
             $post = new MPost();
@@ -37,7 +39,7 @@ class Post extends Common
 //            $post->tags = $_POST['tags'];
 
             $post->get_Post();
-            $post->authorId = 1;
+            $post->authorId = $_SESSION['id'];
             $post->createTime = time();
 
             $result = $post->save();
@@ -61,6 +63,7 @@ class Post extends Common
     public function delete($id)
     {
         $this->checkPower();
+
         $post = new MPost();
         $result = $post->delete($id);
         if($result)
@@ -75,6 +78,7 @@ class Post extends Common
 
     public function update($id)
     {
+        $this->checkPower();
         $post = new MPost();
 
 

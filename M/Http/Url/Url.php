@@ -43,12 +43,22 @@ class Url
     }
 
     /**
-     *
+     * @param string $controller
+     * @param string $action
+     * @param string $parameter
+     * @return string
      */
-    public static function jump()
+    public static function jump($controller='',$action='',$parameter='')
     {
+        if(empty($controller))
+        {
+            echo "<script>history.back();</script>";
+        }
+        else
+        {
+            $url = self::jump($controller,$action,$parameter);
+        }
 
+        echo "<script>location.href=".$url.";</script>";
     }
-
-
 }

@@ -33,6 +33,7 @@ class Common extends Controller
         if(empty($_SESSION['username']))
         {
             $this->error('您没有访问权限，请登录后操作');
+            exit();
         }
     }
 }

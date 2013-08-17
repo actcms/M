@@ -30,10 +30,8 @@ abstract class AbstractController
     /**
      * 指定404错误页
      */
-    public function error_404()
-    {
-        $this->display('Error/404.php');
-    }
+    abstract function error_404();
+
 
     /**
      * @param $name

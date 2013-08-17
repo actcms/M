@@ -7,6 +7,8 @@
 namespace M\Dispatcher;
 
 use M\M;
+use M\Http\Request\AbstractRequest;
+use M\Mvc\Controller\Controller;
 
 /**
  * Class Dispatcher
@@ -37,7 +39,7 @@ class Dispatcher
     /**
      *构造方法
      */
-    public function __construct(\M\Http\Request\AbstractRequest $request)
+    public function __construct(AbstractRequest $request)
     {
         //获取传入的请求
         $this->request = $request->requests;
@@ -83,7 +85,7 @@ class Dispatcher
         }
         else
         {
-            $controller = new \M\Mvc\Controller\Controller();
+            $controller = new Controller();
             $controller->error_404();
 
         }
