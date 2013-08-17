@@ -1,6 +1,5 @@
 <div id="login">
-    <fieldset>
-        <legend>Login</legend>
+    <form action="<?php echo \M\App::urlBuild('Index','login'); ?>" method="post">
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" name="username" class="form-control" id="username" placeholder="Input username">
@@ -14,6 +13,6 @@
                 <input type="checkbox"> Remember me
             </label>
         </div>
-        <button type="submit" name="login" class="btn btn-default pull-right">Login</button>
-    </fieldset>
+        <input type="submit" name="login" class="btn btn-default pull-right">Login</button>
+    </form>
 </div>

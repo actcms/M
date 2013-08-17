@@ -24,4 +24,15 @@ class Common extends Controller
 
         $this->assign('recentPost',$post);
     }
+
+    /**
+     * 检查用户登录权限
+     */
+    public function checkPower()
+    {
+        if(empty($_SESSION['username']))
+        {
+            $this->error('您没有访问权限，请登录后操作');
+        }
+    }
 }

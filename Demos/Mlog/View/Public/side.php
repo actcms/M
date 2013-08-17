@@ -4,3 +4,4 @@
         <li><a href="<?php echo \M\App::urlBuild('Post','index',$p['id']) ?>"><?php echo $p['title'] ?></a></li>
     <?php } ?>
 </ul>
+

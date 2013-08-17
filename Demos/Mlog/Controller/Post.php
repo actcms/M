@@ -60,6 +60,7 @@ class Post extends Common
 
     public function delete($id)
     {
+        $this->checkPower();
         $post = new MPost();
         $result = $post->delete($id);
         if($result)

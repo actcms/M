@@ -54,6 +54,7 @@ class M
      */
     private static function init()
     {
+        session_start();
         define('MPATH',str_replace('\\','/',dirname(__FILE__).'/'));
         set_include_path(get_include_path().PATH_SEPARATOR.M.PATH_SEPARATOR.App);
 

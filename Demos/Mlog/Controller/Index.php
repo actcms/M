@@ -23,7 +23,6 @@ class Index extends Common
         $post = new Post();
         $post->orderBy('id','desc')->limit(0,5);
         $post = $post->select();
-
         $this->assign('post',$post);
         $this->display('Index/index');
     }
@@ -32,6 +31,21 @@ class Index extends Common
     {
         if(isset($_POST['login']))
         {
+            $user = new User();
+
+            $user->get_Post();
+
+            $result = $user->login();
+
+            if($result)
+            {
+                $this->success($_SESSION['username'].'登录成功');
+
+            }
+            else
+            {
+                $this->error('登录失败');
+            }
 
         }
         else
@@ -47,13 +61,32 @@ class Index extends Common
         {
             $user = new User();
 
-            $user->getPost();
+            $user->get_Post();
+            $result = $user->save();
+
+            if($result)
+            {
+                $this->success('注册成功');
+            }
+            else
+            {
+                $this->error('注册失败');
+            }
         }
         else
         {
+            $this->data['title'] = 'Reg';
             $this->display('Index/reg');
         }
-
     }
 
+    public function logout()
+    {
+        session_destroy();
+
+        if(empty($_SESSION['username']))
+        {
+            $this->success('退出成功');
+        }
+    }
 }

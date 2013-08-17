@@ -1,4 +1,3 @@
-<h3><?php echo $this->data['title'] ?></h3>
 <div id="post">
     <?php foreach($post as $p){ ?>
         <h1><a href="<?php echo \M\App::urlBuild('Post','index',$p['id']) ?>"><?php echo $p['title'];?></a></h1>

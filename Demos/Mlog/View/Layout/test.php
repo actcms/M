@@ -6,7 +6,8 @@
 <div class="container">
     <div class="row">
         <div id="main" class="col-lg-8">
-            <h1>this is the test layout</h1>
+            <h3><?php echo isset($this->data['title'])?$this->data['title']:'' ; ?></h3>
+            <hr>
             <?php include_once $tpl ?>
         </div>
         <div id="side" class="col-lg-4">

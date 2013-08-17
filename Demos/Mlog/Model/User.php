@@ -48,4 +48,29 @@ class User extends Model
         $this->email = $email;
         return $this;
     }
+
+    public function login()
+    {
+        $user = $this->find('username',$this->username);
+        if($user)
+        {
+            if($user['password']==$this->password)
+            {
+                $_SESSION['id'] = $user['id'];
+                $_SESSION['username'] = $user['username'];
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+
+
+    }
 }

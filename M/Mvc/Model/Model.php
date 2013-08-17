@@ -103,12 +103,31 @@ class Model extends AbstractModel
     }
 
     /**
+     * @param $key
+     * @param string $value
+     * @return mixed
+     */
+    public function find($key,$value='')
+    {
+        if(empty($value))
+        {
+            return $this->findById($key);
+        }
+        else
+        {
+            $sql = "SELECT * FROM $this->table WHERE $key = '$value'";
+            $result = self::$db->find($sql);
+            return $result;
+        }
+    }
+
+    /**
      * @param $id
      * @return mixed
      */
-    public function find($id)
+    public function findById($id)
     {
-        $sql = "SELECT * FROM $this->table WHERE $this->key = $id";
+        $sql = "SELECT * FROM $this->table WHERE $this->key = '$id'";
         $result = self::$db->find($sql);
         return $result;
     }
