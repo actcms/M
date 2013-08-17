@@ -8,6 +8,7 @@ namespace M\Mvc\Controller;
 
 use M\M;
 use M\Mvc\View\View;
+use M\Http\Url\UrlHelper;
 
 /**
  * Class Controller
@@ -106,22 +107,27 @@ class Controller extends AbstractController
     /**
      * 当操作成功时返回的内容
      * @param string $message 传递的字符消息
+     * @param array $url
      */
-    public function success($message)
+    public function success($message,Array $url=null)
     {
-        echo $message;
+        UrlHelper::success($message,$url);
     }
 
     /**
      * 操作失败时返回的内容
      *
      * @param string $message
+     * @param array $url
      */
-    public function error($message)
+    public function error($message,Array $url=null)
     {
-        echo $message;
+        UrlHelper::error($message,$url);
     }
 
+    /**
+     * 设置404错误页
+     */
     public function error_404()
     {
         $this->layout = 'error';

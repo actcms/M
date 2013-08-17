@@ -46,7 +46,7 @@ class Post extends Common
 
             if($result)
             {
-                $this->success('发布成功');
+                $this->success('发布成功',array('Post','update',$post->getPdo()->lastInsertId()));
             }
             else
             {

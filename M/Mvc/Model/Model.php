@@ -235,4 +235,9 @@ class Model extends AbstractModel
         Form::postToModel($this);
     }
 
+    public function getPdo()
+    {
+        return self::$db->getPdo();
+    }
+
 }

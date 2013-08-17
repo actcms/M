@@ -117,11 +117,24 @@ class Db
 
     }
 
+    /**
+     * @param $sql
+     * @return mixed
+     */
     public function find($sql)
     {
         $res = $this->db->query($sql);
         $result = $res->fetch();
         return $result;
 
+    }
+
+    /**
+     * 直接获取PDO对象
+     * @return \PDO
+     */
+    public function getPdo()
+    {
+        return $this->db;
     }
 }

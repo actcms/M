@@ -39,8 +39,7 @@ class Index extends Common
 
             if($result)
             {
-                $this->success($_SESSION['username'].'登录成功');
-
+                $this->success($_SESSION['username'].'登录成功',array('Index','index'));
             }
             else
             {
@@ -52,7 +51,6 @@ class Index extends Common
         {
             $this->display('Index/login');
         }
-
     }
 
     public function reg()
@@ -66,7 +64,7 @@ class Index extends Common
 
             if($result)
             {
-                $this->success('注册成功');
+                $this->success('注册成功',array('Index','index'));
             }
             else
             {
@@ -83,10 +81,6 @@ class Index extends Common
     public function logout()
     {
         session_destroy();
-
-        if(empty($_SESSION['username']))
-        {
-            $this->success('退出成功');
-        }
+        $this->success('退出成功',array('Index','index'));
     }
 }
