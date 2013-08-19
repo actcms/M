@@ -39,7 +39,7 @@ class View extends AbstractView
     public static function init()
     {
         $config = M::getConfig('app');
-        self::$viewPath = $config['basePath'].'/View/';
+        self::$viewPath =  APP.'/'.$config['basePath'].'/View/';
 
         return new View();
 
