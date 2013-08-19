@@ -17,7 +17,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
     {
         Url::$mode = '?';
 
-        $url = Url::urlBuild('Index','index','1');
+        $url = Url::buildUrl('Index','index','1');
 
         $assertUrl = Server::getHomeUrl().'?Index/index/1';
 

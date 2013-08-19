@@ -1,5 +1,5 @@
 <div id="login">
-    <form action="<?php echo \M\App::urlBuild('Index','login'); ?>" method="post">
+    <form action="<?php echo \M\App::buildUrl('Index','login'); ?>" method="post">
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" name="username" class="form-control" id="username" placeholder="Input username">

@@ -13,11 +13,20 @@ class User extends Common
     public $data = array(
         'title' => 'User',
     );
+
     public function index()
     {
         $user = new MUser();
         $user = $user->select();
         $this->assign('user',$user);
         $this->display('User/index');
+    }
+
+    public function admin()
+    {
+        $user = new Muser();
+        $user = $user->select();
+        $this->assign('user',$user);
+        $this->display('User/admin');
     }
 }

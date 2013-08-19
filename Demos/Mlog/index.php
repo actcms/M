@@ -5,7 +5,6 @@
  * @author Ma Guowei <imaguowei@gmail.com>
  */
 use M\M;
-
 $configs = require_once 'Config/config.php';
 
 define('M','E:/www/M');

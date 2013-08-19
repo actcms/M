@@ -41,4 +41,6 @@ class Tag extends Model
         $this->number = $number;
         return $this;
     }
+
+    
 }

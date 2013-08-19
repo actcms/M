@@ -100,8 +100,14 @@ class Controller extends AbstractController
         {
             //todo when $tpl is empty
         }
-
-        $this->view->display($tpl);
+        try
+        {
+            $this->view->display($tpl);
+        }
+        catch (\M\Mvc\View\Exception $e)
+        {
+            echo $e->getMessage();
+        }
     }
 
     /**

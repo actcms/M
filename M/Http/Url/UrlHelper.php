@@ -25,7 +25,7 @@ class UrlHelper
         }
         else
         {
-            $url = Url::urlBuild($controller,$action,$parameter);
+            $url = Url::buildUrl($controller,$action,$parameter);
         }
 
         echo "<script>location.href='$url';</script>";
@@ -36,7 +36,7 @@ class UrlHelper
      *
      * @param array $url    array($controller,$action,$parameter=null)
      */
-    public static function success($message,Array $url=null)
+    public static function success($message,Array $url = null)
     {
         self::message($message);
 

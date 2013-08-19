@@ -12,6 +12,8 @@ use Mlog\Model\Post;
 
 class Common extends Controller
 {
+    protected $layout = 'main';    //设置布局
+
     public function init()
     {
         $this->getSide();

@@ -83,6 +83,11 @@ class M
         return self::$config->getConfig($name);
     }
 
+    public static function getRequest()
+    {
+        return self::$request;
+    }
+
     /**
      * @param $class
      */
@@ -99,9 +104,11 @@ class M
 class App extends M
 {
     /**
+     * 方法委托
+     * 直接委托无参数方法，有参数的方法单独处理
      * @param $name
      * @param $arguments
-     * @return null
+     * @return null 方法不存在时返回空
      */
     public static function __callStatic($name,$arguments)
     {
@@ -111,26 +118,26 @@ class App extends M
         }
         else if(method_exists('\M\Http\Url\Url',$name))
         {
-            $controller = $arguments[0];
-            $action = $arguments[1];
-
-            $parameter = empty($arguments[2])?'':$arguments[2];
-
-            if(self::getConfig('urlRules')=='path')
-            {
-                $mode = '/';
-            }
-            else
-            {
-                $mode = '?';
-            }
-            Http\Url\Url::$mode = $mode;
-
-            return Http\Url\Url::$name($controller,$action,$parameter);
+            return Http\Url\Url::$name();
         }
         else
         {
             return null;
         }
+    }
+
+    public static function buildUrl($controller,$action,$parameter = '')
+    {
+        if(self::getConfig('urlRules')=='path')
+        {
+            $mode = '/';
+        }
+        else
+        {
+            $mode = '?';
+        }
+        Http\Url\Url::$mode = $mode;
+
+        return Http\Url\Url::buildUrl($controller,$action,$parameter);
     }
 }

@@ -13,7 +13,9 @@ class Index extends Controller
 {
     public function index()
     {
-        $this->success("it works");
+        echo \M\App::getUrl();
+        //$this->success("it works");
+        //echo \M\App::getUrl()urlBuild('Index','hello',1);
     }
 
     public function hello()

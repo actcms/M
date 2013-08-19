@@ -60,6 +60,7 @@ class View extends AbstractView
      * 选择要显示的视图模板
      *
      * @param string $tpl 模板文件路径
+     * @throws Exception
      */
     public function display($tpl)
     {
@@ -72,7 +73,15 @@ class View extends AbstractView
         $tpl = self::$viewPath.$tpl;
 
         $layout = self::$viewPath.'Layout/'.self::$layout.'.php';
-        include_once $layout;
+        if(file_exists($layout))
+        {
+            include_once $layout;
+        }
+        else
+        {
+            throw new Exception('file '.$layout.' not find');
+        }
+
     }
 
     /**

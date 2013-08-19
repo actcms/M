@@ -6,6 +6,7 @@
  */
 
 namespace M\Http\Url;
+use M\App;
 use M\Http\Server\Server;
 
 /**
@@ -27,7 +28,7 @@ class Url
      * @param $parameter
      * @return string
      */
-    public static function urlBuild($controller,$action,$parameter='')
+    public static function buildUrl($controller,$action,$parameter='')
     {
         if(empty($parameter))
         {
@@ -40,6 +41,11 @@ class Url
 
         return Server::getHomeUrl().$path;
 
+    }
+
+    public static function getUrl()
+    {
+        return Server::getHomeUrl().App::getRequest()->getRawRequests();
     }
 
 
