@@ -1,8 +1,8 @@
 <!doctype html>
 <html>
-<?php include_once 'View/Public/head.php' ?>
+<?php include_once APP.'/View/Public/head.php' ?>
 <body>
-<?php include_once 'View/Public/header.php' ?>
+<?php include_once APP.'/View/Public/header.php' ?>
 <div class="container">
     <div class="row">
         <div id="main" class="col-lg-12">
@@ -10,6 +10,6 @@
         </div>
     </div>
 </div>
-<?php include_once 'View/Public/footer.php' ?>
+<?php include_once APP.'/View/Public/footer.php' ?>
 </body>
 </html>

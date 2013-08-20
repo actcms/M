@@ -47,9 +47,9 @@ class Dispatcher
         $this->init();
 
         $config = M::getConfig('app');         //get the app configs
-        $appBasePath = $config['basePath'];         //get the app basePath
+        $appNamespace = $config['namespace'];         //get the app basePath
 
-        $this->controller = $appBasePath.'\Controller\\'.$this->controller;
+        $this->controller = $appNamespace.'\Controller\\'.$this->controller;
 
         $this->doRequest();
 

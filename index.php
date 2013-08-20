@@ -1,7 +1,18 @@
 <?php
 /**
- * User: Guowei
- * Date: 13-7-13
- * Time: 下午11:30
+ * @link https://github.com/MaGuowei/M
+ * @copyright 2013 maguowei.com
+ * @author Ma Guowei <imaguowei@gmail.com>
  */
-require 'M/M.php';
+use M\M;
+
+define('M','e:/www/M/M');
+define('APP','e:/www/M/Demos/Mlog');
+
+$configs = require_once APP.'/Config/config.php';
+$configs['app']['basePath'] = '/Demos/Mlog';
+require_once M.'/M.php';
+
+header('Content-type:text/html;charset=utf-8');
+
+M::run($configs);

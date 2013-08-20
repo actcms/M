@@ -6,6 +6,7 @@
  */
 
 namespace M\Http\Server;
+use M\M;
 
 /**
  * Class Server
@@ -42,7 +43,8 @@ class Server
      */
     public static function getBaseUrl()
     {
-        return dirname(self::getScriptName());
+        $basePath = M::getConfig('app')['basePath'];
+        return dirname(self::getScriptName()).$basePath;
     }
 
 }

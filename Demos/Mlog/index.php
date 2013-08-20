@@ -5,12 +5,15 @@
  * @author Ma Guowei <imaguowei@gmail.com>
  */
 use M\M;
-$configs = require_once 'Config/config.php';
 
-define('M','E:/www/M');
-define('APP',M.'/Demos');
+//定义框架所在路径
+define('M','e:/www/M/M');
+//定义应用所在目录
+define('APP','e:/www/M/Demos/Mlog');
 
-require_once '../../M/M.php';
+$configs = require_once APP.'/Config/config.php';
+
+require_once M.'/M.php';
 
 header('Content-type:text/html;charset=utf-8');
 

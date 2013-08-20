@@ -10,8 +10,9 @@ return array(
      */
     'app'   =>   array(
         'name'  =>  'Mlog',
-        'basePath' => 'Mlog',
         'info'  => 'a simple blog!',
+        'namespace' => 'Mlog',
+        'basePath' => '',       //app 相对主入口文件
     ),
 
     /**
