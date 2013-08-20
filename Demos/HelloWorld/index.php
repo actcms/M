@@ -8,10 +8,10 @@ use M\M;
 
 $config = require_once 'Config/config.php';
 
-define('M','E:/www/M');
-define('APP',M.'/Demos');
+define('M','E:/www/M/M');
+define('APP','E:/www/M/Demos/HelloWorld');
 
-require_once '../../M/M.php';
+require_once M.'/M.php';
 
 M::run($config);
 

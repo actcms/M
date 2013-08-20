@@ -9,7 +9,8 @@ return array(
 
     'app'   =>   array(
         'name'  =>  'Hello World',
-        'basePath' => 'HelloWorld',
+        'namespace' => 'HelloWorld',
+        'basePath' => '',
     ),
 
     /**
@@ -19,11 +20,14 @@ return array(
     'urlRules' => 'query',
     //'urlRules' => 'path',         //设置为PathInfo模式
 
+    /**
+     * 数据库配置
+     */
     'db'    =>   array(
-        'host'      =>  'localhost',
+        'dsn'       =>  'mysql:host=localhost;dbname=m',
         'user'      =>  'root',
-        'pwd'       =>  'root',
-        'database'  =>  'm',
+        'password'  =>  'root',
+
     ),
 
 
