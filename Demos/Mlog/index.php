@@ -6,10 +6,8 @@
  */
 use M\M;
 
-//定义框架所在路径
-define('M','e:/www/M/M');
-//定义应用所在目录
-define('APP','e:/www/M/Demos/Mlog');
+define('M','../../M');
+define('APP','../Mlog');
 
 $configs = require_once APP.'/Config/config.php';
 

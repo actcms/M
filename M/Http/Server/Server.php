@@ -37,14 +37,4 @@ class Server
     {
         return self::getScriptName();
     }
-
-    /**
-     * @return string
-     */
-    public static function getBaseUrl()
-    {
-        $basePath = M::getConfig('app')['basePath'];
-        return dirname(self::getScriptName()).$basePath;
-    }
-
 }

@@ -10,7 +10,6 @@ return array(
     'app'   =>   array(
         'name'  =>  'Hello World',
         'namespace' => 'HelloWorld',
-        'basePath' => '',
     ),
 
     /**
