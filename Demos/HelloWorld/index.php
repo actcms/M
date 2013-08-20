@@ -9,7 +9,7 @@ use M\M;
 $config = require_once 'Config/config.php';
 
 define('M','E:/www/M');
-define('App',M.'/Demos');
+define('APP',M.'/Demos');
 
 require_once '../../M/M.php';
 

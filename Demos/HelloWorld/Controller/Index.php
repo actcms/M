@@ -13,13 +13,14 @@ class Index extends Controller
 {
     public function index()
     {
+        echo 'it works';
         echo \M\App::getUrl();
-        //$this->success("it works");
-        //echo \M\App::getUrl()urlBuild('Index','hello',1);
     }
 
-    public function hello()
+    public function hello($id)
     {
-        $this->success("hello world");
+        //$this->display('Index/hello');    test when tpl  was not exists
     }
+
+
 }

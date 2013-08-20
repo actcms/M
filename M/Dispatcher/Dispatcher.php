@@ -66,7 +66,11 @@ class Dispatcher
     }
 
     /**
-     *处理请求
+     * 处理请求
+     *
+     * 调用相应的控制器与动作，显示用户请求
+     *
+     * 当用户请求的url没有相应处理程序时返回404页面
      */
     public function doRequest()
     {
@@ -76,17 +80,40 @@ class Dispatcher
 
             if(method_exists($this->controller,$this->action))
             {
-                $controller->{$this->action}($this->parameter);
+                try
+                {
+                    $controller->{$this->action}($this->parameter);
+                }
+                catch(\Exception $e)
+                {
+                    echo '<h1>Something was wrong,please try again</h1>';
+                }
             }
             else
             {
-                $controller->error_404();
+                try
+                {
+                    $controller->error_404();
+                }
+                catch(\M\Mvc\View\Exception $e)
+                {
+                    echo '<h1>404 NOT FOUND</h1>';          //default 404 page if 404 page not be set in app
+                }
+
             }
         }
         else
         {
             $controller = new Controller();
-            $controller->error_404();
+            try
+            {
+                $controller->error_404();
+            }
+            catch(\M\Mvc\View\Exception $e)
+            {
+                echo '<h1>404 NOT FOUND</h1>';
+            }
+
 
         }
     }

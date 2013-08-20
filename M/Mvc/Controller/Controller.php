@@ -9,6 +9,7 @@ namespace M\Mvc\Controller;
 use M\M;
 use M\Mvc\View\View;
 use M\Http\Url\UrlHelper;
+use M\Mvc\View\Exception;
 
 /**
  * Class Controller
@@ -86,6 +87,7 @@ class Controller extends AbstractController
      * 选择要显示的视图模板
      *
      * @param string $tpl 模板路径
+     * @throws \Exception|\M\Mvc\View\Exception
      */
     public function display($tpl='')
     {
@@ -104,9 +106,9 @@ class Controller extends AbstractController
         {
             $this->view->display($tpl);
         }
-        catch (\M\Mvc\View\Exception $e)
+        catch (Exception $e)
         {
-            echo $e->getMessage();
+            throw $e;
         }
     }
 
@@ -139,5 +141,4 @@ class Controller extends AbstractController
         $this->layout = 'error';
         $this->display('Error/404');
     }
-
 }
