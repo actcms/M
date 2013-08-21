@@ -7,8 +7,15 @@
 
 namespace Mlog\Controller;
 
+/**
+ * Class Tag
+ * @package Mlog\Controller
+ */
 class Tag extends Common
 {
+    /**
+     *
+     */
     public function index()
     {
         $this->assign('word','hello world');

@@ -9,15 +9,27 @@ namespace Mlog\Controller;
 use Mlog\Model\Post;
 use Mlog\Model\User;
 
+/**
+ * Class Index
+ * @package Mlog\Controller
+ */
 class Index extends Common
 {
+    /**
+     * @var array
+     */
     public $data = array(
         'controller' => 'Index',
         'title' => '首页',
     );
-
+    /**
+     * @var string
+     */
     protected $layout = 'test';
 
+    /**
+     *
+     */
     public function index()
     {
         $post = new Post();
@@ -27,6 +39,9 @@ class Index extends Common
         $this->display('Index/index');
     }
 
+    /**
+     * 登录
+     */
     public function login()
     {
         if(isset($_POST['login']))
@@ -53,6 +68,9 @@ class Index extends Common
         }
     }
 
+    /**
+     * 注册
+     */
     public function reg()
     {
         if(isset($_POST['reg']))
@@ -78,6 +96,9 @@ class Index extends Common
         }
     }
 
+    /**
+     * 退出登录
+     */
     public function logout()
     {
         session_destroy();

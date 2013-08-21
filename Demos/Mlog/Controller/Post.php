@@ -8,11 +8,22 @@ namespace Mlog\Controller;
 
 use Mlog\Model\Post as MPost;
 
+/**
+ * Class Post
+ * @package Mlog\Controller
+ */
 class Post extends Common
 {
+    /**
+     * @var array
+     */
     public $data = array(
         'title' => 'Post',
     );
+
+    /**
+     * @param $id
+     */
     public function index($id)
     {
         $id = empty($id)?1:$id;
@@ -26,6 +37,9 @@ class Post extends Common
         $this->display('Post/index');
     }
 
+    /**
+     *
+     */
     public function add()
     {
         $this->checkPower();
@@ -60,6 +74,9 @@ class Post extends Common
         }
     }
 
+    /**
+     * @param $id
+     */
     public function delete($id)
     {
         $this->checkPower();
@@ -76,6 +93,9 @@ class Post extends Common
         }
     }
 
+    /**
+     * @param $id
+     */
     public function update($id)
     {
         $this->checkPower();

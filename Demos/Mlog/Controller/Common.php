@@ -10,15 +10,29 @@ namespace Mlog\Controller;
 use M\Mvc\Controller\Controller;
 use Mlog\Model\Post;
 
+/**
+ * Class Common
+ * @package Mlog\Controller
+ */
 class Common extends Controller
 {
+    /**
+     * 设置布局
+     * @var string
+     */
     protected $layout = 'main';    //设置布局
 
+    /**
+     *初始化
+     */
     public function init()
     {
         $this->getSide();
     }
 
+    /**
+     *获取侧边栏内容
+     */
     public function getSide()
     {
         $post = new Post();
