@@ -23,12 +23,13 @@ class Index extends Common
         'title' => '首页',
     );
     /**
+     * 设置布局
      * @var string
      */
     protected $layout = 'test';
 
     /**
-     *
+     *首页
      */
     public function index()
     {
@@ -60,7 +61,6 @@ class Index extends Common
             {
                 $this->error('登录失败');
             }
-
         }
         else
         {

@@ -5,7 +5,7 @@
  * @author Ma Guowei <imaguowei@gmail.com>
  */
 
-namespace M\Mvc\View;
+namespace M\Mvc\Controller;
 
 
 class Exception extends \M\Exception

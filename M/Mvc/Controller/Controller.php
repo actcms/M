@@ -54,25 +54,6 @@ class Controller extends AbstractController
     }
 
     /**
-     * @param $layout
-     */
-    public function setLayout($layout)
-    {
-        $this->view->setLayout($layout);
-    }
-
-    /**
-     * 设置控制器全局变量
-     *
-     * 在控制器所有视图中都可以使用
-     * @param $data array
-     */
-    public function setData($data)
-    {
-        $this->view->setData($data);
-    }
-
-    /**
      * 向视图赋值
      *
      * @param $key 赋值变量
@@ -91,8 +72,8 @@ class Controller extends AbstractController
      */
     public function display($tpl='')
     {
-        $this->setLayout($this->layout);    //设置布局模板
-        $this->setData($this->data);        //在渲染视图之前赋值（延迟赋值)
+        $this->view->setLayout($this->layout);    //设置布局模板
+        $this->view->setData($this->data);        //在渲染视图之前赋值（延迟赋值)
 
         if(!empty($tpl))
         {

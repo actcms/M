@@ -19,34 +19,42 @@ class Post extends Model
      */
     protected $id;
     /**
+     * 标题
      * @var
      */
     protected $title;
     /**
+     * 内容
      * @var
      */
     protected $content;
     /**
+     * 标签
      * @var
      */
     protected $tags;
     /**
+     * 作者id
      * @var
      */
     protected $authorId;
     /**
+     * 文章生成时间
      * @var
      */
     protected $createTime;
     /**
+     * 数据库表名
      * @var string
      */
     protected $table = 'post';
     /**
+     * 数据库主键
      * @var string
      */
     protected $key = 'id';
     /**
+     * 数据库与表单对应关系映射
      * @var array
      */
     protected $data = array(

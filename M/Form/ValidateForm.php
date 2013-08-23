@@ -20,9 +20,16 @@ class ValidateForm
 
     }
 
-    public static function equal()
+    public static function equal($var1,$var2)
     {
+        if($var1==$var2)
+        {
+            return true;
+        }
+        else
+        {
 
+        }
     }
 
     public static function length($length)
@@ -36,6 +43,11 @@ class ValidateForm
     }
 
     public static function min($min)
+    {
+
+    }
+
+    public static function notNull()
     {
 
     }

@@ -16,22 +16,27 @@ use M\Mvc\Model\Model;
 class Tag extends Model
 {
     /**
+     * 标签id
      * @var
      */
     protected $id;
     /**
+     * tag name
      * @var
      */
     protected $tag;
     /**
+     * the number of the tag
      * @var
      */
     protected $number;
     /**
+     * database table
      * @var string
      */
     protected $table = 'tag';
     /**
+     * table key
      * @var string
      */
     protected $key = 'id';

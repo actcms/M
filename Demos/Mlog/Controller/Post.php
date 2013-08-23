@@ -38,7 +38,7 @@ class Post extends Common
     }
 
     /**
-     *
+     *添加文章
      */
     public function add()
     {
@@ -75,6 +75,7 @@ class Post extends Common
     }
 
     /**
+     * 删除文章
      * @param $id
      */
     public function delete($id)
@@ -94,6 +95,7 @@ class Post extends Common
     }
 
     /**
+     * 更新文章
      * @param $id
      */
     public function update($id)

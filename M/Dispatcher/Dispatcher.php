@@ -41,8 +41,7 @@ class Dispatcher
      */
     public function __construct(AbstractRequest $request)
     {
-        //获取传入的请求
-        $this->request = $request->requests;
+        $this->request = $request->requests;    //获取传入的用户请求
 
         $this->init();
 

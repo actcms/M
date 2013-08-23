@@ -43,6 +43,9 @@ class Common extends Controller
 
     /**
      * 检查用户登录权限
+     *
+     * 检查是否存在用户session，判断是否为登录用户
+     * 如果用户没有登录则跳转到登录页面
      */
     public function checkPower()
     {
