@@ -7,10 +7,11 @@
 namespace M\Http\Request;
 
 /**
- * Class Request
- *
  * 获取并保存请求
  *
+ * 查询字符串形式，形如www.example.com?Post/index/id
+ *
+ * Class Request
  * @package M\Http\Request
  */
 
@@ -19,7 +20,7 @@ class Request extends AbstractRequest
 
 
     /**
-     *初始化，获取并保存请求
+     *初始化，获取并保存原始请求
      */
     public function init()
     {
@@ -35,7 +36,7 @@ class Request extends AbstractRequest
     }
 
     /**
-     *
+     *提取请求
      */
     public function parseRequest()
     {

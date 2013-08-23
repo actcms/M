@@ -11,6 +11,7 @@ use M\Dispatcher\Dispatcher;
 use M\Http\Request\PathRequest;
 use M\Http\Request\Request;
 use M\Loader\Loader;
+use M\Log\Log;
 
 /**
  * Class M
@@ -28,7 +29,10 @@ class M
      * @var
      */
     private static $dispatcher;
+
     /**
+     * 应用运行程序
+     *
      * @param $configs
      */
     public static function run($configs)
@@ -47,6 +51,12 @@ class M
         }
 
         self::$dispatcher = new Dispatcher(self::$request);
+
+        if(empty($_SESSION['app']))
+        {
+            $_SESSION['app'] = APP;
+            Log::write(APP.' start');
+        }
     }
 
     /**

@@ -14,8 +14,14 @@ namespace M\Log;
  */
 class Log
 {
-    public function write()
+    public static function write($message)
     {
+        $message = date('Y-m-d h:i:s').','.$message.';';
+        $file = APP.'/Log/log.txt';
+        $handle = fopen($file,'a');
 
+        $result = fwrite($handle,$message);
+        fclose($handle);
+        return $result;
     }
 }

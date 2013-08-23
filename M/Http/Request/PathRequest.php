@@ -8,13 +8,18 @@
 namespace M\Http\Request;
 
 /**
- * 处理PATHINFO模式的请求
+ * 获取并保存请求
+ *
+ * PATHINFO模式的请求，形如：www.example.com/Post/index/id
+ *
  * Class PathRequest
  * @package M\Http\Request
  */
 class PathRequest extends AbstractRequest
 {
     /**
+     * 初始化，获取并保存原始请求
+     *
      * @return mixed|void
      */
     public function init()
@@ -30,6 +35,7 @@ class PathRequest extends AbstractRequest
     }
 
     /**
+     * 提取请求
      * @return mixed|void
      */
     public function parseRequest()

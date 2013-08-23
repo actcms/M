@@ -6,9 +6,9 @@
  */
 namespace M\Mvc\Model;
 
+use M\M;
 use M\Db\Db;
 use M\Form\Form;
-use M\M;
 
 /**
  * Class Model
@@ -46,6 +46,11 @@ class Model extends AbstractModel
         {
             $db = M::getConfig('db');
             self::$db = new Db($db['dsn'],$db['user'],$db['password']);
+
+        }
+        else
+        {
+            return self::$db;
         }
     }
 

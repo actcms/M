@@ -15,3 +15,4 @@ require_once M.'/M.php';
 header('Content-type:text/html;charset=utf-8');
 
 M::run($configs);
+

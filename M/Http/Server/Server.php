@@ -15,6 +15,8 @@ use M\M;
 class Server
 {
     /**
+     * 获取主机名
+     *
      * @return mixed
      */
     public static function getServerName()
@@ -23,6 +25,8 @@ class Server
     }
 
     /**
+     * 获取执行脚本名
+     *
      * @return mixed
      */
     public static function getScriptName()
@@ -31,6 +35,10 @@ class Server
     }
 
     /**
+     * 获取首页url
+     *
+     * 例：www.example.com/index.php
+     *
      * @return mixed
      */
     public static function getHomeUrl()

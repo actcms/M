@@ -9,9 +9,19 @@ namespace M\Http\Url;
 
 use M\Http\Url\Url;
 
+/**
+ * Url助手
+ *
+ * Class UrlHelper
+ * @package M\Http\Url
+ */
 class UrlHelper
 {
     /**
+     * url跳转
+     *
+     * 根据设定参数自动生成符合当前url模式的url跳转方法
+     *
      * @param string $controller
      * @param string $action
      * @param string $parameter
@@ -32,6 +42,8 @@ class UrlHelper
     }
 
     /**
+     * 操作成功返回内容
+     *
      * @param $message
      *
      * @param array $url    array($controller,$action,$parameter=null)
@@ -70,6 +82,11 @@ class UrlHelper
         }
     }
 
+    /**
+     * 弹出消息
+     *
+     * @param $message
+     */
     private static function message($message)
     {
         echo "<script>alert('$message');</script>";

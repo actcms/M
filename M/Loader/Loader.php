@@ -7,6 +7,8 @@
 namespace M\Loader;
 
 /**
+ * 自动加载类
+ *
  * Class Loader
  * @package M\Loader
  */
@@ -15,6 +17,7 @@ class Loader
 {
     /**
      * 建立自动加载函数，加载规则
+     *
      * @param $class
      * @return bool
      */
