@@ -14,6 +14,15 @@ namespace M\Log;
  */
 class Log
 {
+    /**
+     * 将信息写入文件
+     *
+     * 只需指定记录信息，自动添加当前日期；
+     * 日志格式，例：2013-08-23 20:57:45,message text;
+     *
+     * @param $message
+     * @return int
+     */
     public static function write($message)
     {
         $message = date('Y-m-d h:i:s').','.$message.';';

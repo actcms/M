@@ -7,7 +7,10 @@
 
 namespace M\Extend;
 
-
+/**
+ * Class Upload
+ * @package M\Extend
+ */
 class Upload
 {
 

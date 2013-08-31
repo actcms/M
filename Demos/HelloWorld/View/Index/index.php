@@ -6,5 +6,6 @@
 </head>
 <body>
     <h1>Hello world</h1>
+<p><a href="<?php echo \M\App::getUrl();?>"</a>this page url</p>
 </body>
 </html>

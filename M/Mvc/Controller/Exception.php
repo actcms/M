@@ -8,7 +8,7 @@
 namespace M\Mvc\Controller;
 
 
-class Exception extends \M\Exception
+class Exception extends \M\Exception\Exception
 {
 
 }

@@ -7,13 +7,14 @@
 
 namespace M\Extend;
 
-
+/**
+ * Class Page
+ * @package M\Extend
+ */
 class Page
 {
     public function __construct()
     {
 
     }
-
-
 }
