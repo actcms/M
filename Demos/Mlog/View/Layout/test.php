@@ -6,8 +6,7 @@
 <div class="container">
     <div class="row">
         <div id="main" class="col-md-8">
-            <h3><?php echo isset($this->data['title'])?$this->data['title']:'' ; ?></h3>
-            <hr>
+            <?php include_once APP.'/View/Public/breadcrumb.php' ?>
             <?php include_once $tpl ?>
         </div>
         <div id="side" class="col-md-4">

@@ -21,6 +21,7 @@ class Index extends Common
     public $data = array(
         'controller' => 'Index',
         'title' => '首页',
+        'nav' => array('Index'),
     );
     /**
      * 设置布局
@@ -33,6 +34,7 @@ class Index extends Common
      */
     public function index()
     {
+        $this->data['nav'] = array('Index','index');
         $post = new Post();
         $post->orderBy('id','desc')->limit(0,5);
         $post = $post->select();
@@ -64,6 +66,7 @@ class Index extends Common
         }
         else
         {
+            $this->data['nav'] = array('Index','login');
             $this->display('Index/login');
         }
     }
@@ -92,6 +95,7 @@ class Index extends Common
         else
         {
             $this->data['title'] = 'Reg';
+            $this->data['nav'] = array('Index','reg');
             $this->display('Index/reg');
         }
     }

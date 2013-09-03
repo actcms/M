@@ -19,6 +19,7 @@ class Post extends Common
      */
     public $data = array(
         'title' => 'Post',
+        'nav' => array('Post'),
     );
 
     /**
@@ -32,7 +33,7 @@ class Post extends Common
         $post = $post->find($id);
 
         $this->data['title'] = $post['title'];
-
+        $this->data['nav'] = array('Post','index');
         $this->assign('post',$post);
         $this->display('Post/index');
     }
@@ -47,10 +48,6 @@ class Post extends Common
         if(isset($_POST['post']))
         {
             $post = new MPost();
-
-//            $post->title = $_POST['title'];
-//            $post->content = $_POST['content'];
-//            $post->tags = $_POST['tags'];
 
             $post->get_Post();
             $post->authorId = $_SESSION['id'];
@@ -69,6 +66,7 @@ class Post extends Common
         }
         else
         {
+            $this->data['nav'] = array('Post','add');
             $this->assign('title','ADD POST');
             $this->display('Post/add');
         }
@@ -106,11 +104,6 @@ class Post extends Common
 
         if(isset($_POST['update']))
         {
-//            $post->id = $_POST['id'];
-//            $post->title = $_POST['title'];
-//            $post->content = $_POST['content'];
-//            $post->tags = $_POST['tags'];
-
             $post->get_Post();       //一次获取所有属性并赋值到模型属性
 
             $post->authorId = 1;
@@ -130,6 +123,7 @@ class Post extends Common
         }
         else
         {
+            $this->data['nav'] = array('Post','update');
             $this->assign('title','UPDATE POST');
             $post = $post->find($id);
             $this->assign('post',$post);

@@ -1,6 +1,9 @@
-<?php
-/**
- * @link https://github.com/MaGuowei
- * @copyright 2013 maguowei.com
- * @author Ma Guowei <imaguowei@gmail.com>
- */
+<ul class="pagination">
+    <li class="disabled"><a href="#">&laquo;</a></li>
+    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">&raquo;</a></li>
+</ul>
