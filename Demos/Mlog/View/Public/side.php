@@ -1,7 +1,7 @@
-<h4>recent post</h4>
-<ul>
+<div class="list-group">
+    <a class="list-group-item active">最新发布</a>
     <?php foreach($recentPost as $p){ ?>
-        <li><a href="<?php echo \M\App::buildUrl('Post','index',$p['id']) ?>"><?php echo $p['title'] ?></a></li>
+        <a  class="list-group-item" href="<?php echo \M\App::buildUrl('Post','index',$p['id']) ?>"><?php echo $p['title'] ?></a>
     <?php } ?>
-</ul>
+</div>
 

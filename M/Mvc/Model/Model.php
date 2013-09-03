@@ -240,6 +240,9 @@ class Model extends AbstractModel
         Form::postToModel($this);
     }
 
+    /**
+     * @return mixed
+     */
     public function getPdo()
     {
         return self::$db->getPdo();

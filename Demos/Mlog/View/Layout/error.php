@@ -5,7 +5,7 @@
 <?php include_once APP.'/View/Public/header.php' ?>
 <div class="container">
     <div class="row">
-        <div id="main" class="col-lg-12">
+        <div id="main" class="col-md-12">
             <?php include_once $tpl ?>
         </div>
     </div>
