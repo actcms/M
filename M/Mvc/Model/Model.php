@@ -71,7 +71,7 @@ class Model extends AbstractModel
      */
     public function orderBy($by,$order='desc')
     {
-        $this->orderBy = " ORDER BY `$by` $order";
+        $this->orderBy = " ORDER BY $by $order";
         return $this;
     }
 

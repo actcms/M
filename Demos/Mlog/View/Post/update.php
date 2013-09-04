@@ -4,7 +4,16 @@
         <input type="hidden" name="id" value="<?php echo $post['id'] ?>">
         <input type="text" class="form-control" name="title" value="<?php echo $post['title'] ?>" placeholder="Input title"><br>
         <textarea name="content" class="form-control" rows="10"><?php echo $post['content'] ?></textarea>
-        <input type="text" name="tags" class="form-control" value="<?php echo $post['tags'] ?>" placeholder="标签之间请用英文','隔开">
-        <input type="submit" class="btn btn-default pull-right" name="update" value="发布">
+        <div class="row">
+            <div class="col-md-8">
+                <input type="text" name="tags" class="form-control" value="<?php echo $post['tags'] ?>" placeholder="标签之间请用英文','隔开">
+            </div>
+            <div class="col-md-4">
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="top" value="1" <?php echo $post['top']?'checked':''?>> 置顶
+                </label>
+            </div>
+        </div>
+        <input type="submit" class="btn btn-default pull-right" name="update" value="更新">
     </form>
 </div>

@@ -27,7 +27,7 @@ class Index extends Common
      * 设置布局
      * @var string
      */
-    protected $layout = 'test';
+    protected $layout = 'main';
 
     /**
      *首页
@@ -35,8 +35,10 @@ class Index extends Common
     public function index()
     {
         $this->data['nav'] = array('Index','index');
+
         $post = new Post();
-        $post->orderBy('id','desc')->limit(0,5);
+
+        $post->orderBy('top desc,id','desc')->limit(0,10);
         $post = $post->select();
         $this->assign('post',$post);
         $this->display('Index/index');
@@ -52,9 +54,7 @@ class Index extends Common
             $user = new User();
 
             $user->get_Post();
-
             $result = $user->login();
-
             if($result)
             {
                 $this->success($_SESSION['username'].'登录成功',array('Index','index'));

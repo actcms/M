@@ -44,6 +44,12 @@ class Post extends Model
      */
     protected $createTime;
     /**
+     * 是否置顶
+     * 默认不置顶，值为0，可以修改为1则置顶
+     * @var
+     */
+    protected $top;
+    /**
      * 数据库表名
      * @var string
      */
@@ -64,6 +70,7 @@ class Post extends Model
         'tags' => 'tags',
         'author_id' => 'authorId',
         'create_time' => 'createTime',
+        'top' => 'top',
     );
 
     /**
@@ -123,6 +130,12 @@ class Post extends Model
     public function setCreateTime($createTime)
     {
         $this->createTime = $createTime;
+        return $this;
+    }
+
+    public function setTop($value)
+    {
+        $this->top = $value;
         return $this;
     }
 

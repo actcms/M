@@ -119,7 +119,6 @@ class Post extends Common
             {
                 $this->error('更新失败');
             }
-
         }
         else
         {
