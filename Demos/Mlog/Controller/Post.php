@@ -34,6 +34,7 @@ class Post extends Common
 
         $this->data['title'] = $post['title'];
         $this->data['nav'] = array('Post','index');
+        $this->assign('page',$id);
         $this->assign('post',$post);
         $this->display('Post/index');
     }

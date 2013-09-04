@@ -1,4 +1,4 @@
-<div id="login">
+<div id="login" class="col-md-5 col-md-offset-4">
     <form action="<?php echo \M\App::buildUrl('Index','login'); ?>" method="post">
         <div class="form-group">
             <label for="username">Username</label>
@@ -13,6 +13,6 @@
                 <input type="checkbox"> Remember me
             </label>
         </div>
-        <input type="submit" name="login" class="btn btn-default pull-right">Login</button>
+        <input type="submit" name="login" class="btn btn-default pull-right">
     </form>
 </div>

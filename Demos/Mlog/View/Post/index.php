@@ -7,13 +7,15 @@
     <div class="panel-body">
         <p><?php echo $post['content'] ?></p>
     </div>
-    <div class="panel-footer">
-        <span class="glyphicon glyphicon-tags"> <?php echo $post['tags']?></span>
+    <div class="panel-footer row">
+        <a href="" class="col-md-10"><span class="glyphicon glyphicon-tags"> <?php echo $post['tags']?></span></a>
+        <a href="" class="col-md-1"><span class="glyphicon glyphicon-thumbs-down"></span></a>
+        <a href="" class="col-md-1"><span class="glyphicon glyphicon-thumbs-up"></span></a>
     </div>
 </div>
 <div id="pageNav">
     <ul class="pager">
-        <li class="previous"><a href="#">&larr; Older</a></li>
-        <li class="next"><a href="#">Newer &rarr;</a></li>
+        <li class="previous"><a href="<?php echo \M\App::buildUrl('Post','index',$page-1)?>">&larr; Older</a></li>
+        <li class="next"><a href="<?php echo \M\App::buildUrl('Post','index',$page+1)?>">Newer &rarr;</a></li>
     </ul>
 </div>
