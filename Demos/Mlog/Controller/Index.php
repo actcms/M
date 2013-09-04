@@ -6,6 +6,7 @@
  */
 namespace Mlog\Controller;
 
+use M\Extend\Page;
 use Mlog\Model\Post;
 use Mlog\Model\User;
 
@@ -32,14 +33,15 @@ class Index extends Common
     /**
      *首页
      */
-    public function index()
+    public function index($id)
     {
         $this->data['nav'] = array('Index','index');
 
         $post = new Post();
+//        $page = new Page($post);
+//        echo $page->countPage();
+        $post = $post->orderBy('top desc,id','desc')->limit($id?$id*5:0,5)->select();
 
-        $post->orderBy('top desc,id','desc')->limit(0,10);
-        $post = $post->select();
         $this->assign('post',$post);
         $this->display('Index/index');
     }

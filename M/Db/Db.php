@@ -114,7 +114,15 @@ class Db
         $res = $this->db->query($sql);
         $result = $res->fetchAll();
         return $result;
+    }
 
+    /**
+     * @param $sql
+     * @return \PDOStatement
+     */
+    public function query($sql)
+    {
+        return $res = $this->db->query($sql);
     }
 
     /**

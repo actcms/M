@@ -1,4 +1,5 @@
-<div id="footer">
+<div id="footer" class="container">
+    <hr>
     <p class="text-center">&copy <a href="http://www.github.com/MaGuowei/M">M</a></p>
 <div>
 <!-- include js -->

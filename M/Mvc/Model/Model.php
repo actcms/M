@@ -98,11 +98,12 @@ class Model extends AbstractModel
      */
     public function select()
     {
-        $sql = "SELECT * FROM $this->table";
-        $sql .= $this->where;
-        $sql .= $this->orderBy;
-        $sql .= $this->limit;
-
+//        $sql = "SELECT * FROM $this->table";
+//        $sql .= $this->where;
+//        $sql .= $this->orderBy;
+//        $sql .= $this->limit;
+        $sql = SqlBuilder::selectSqlBuild($this);
+        $this->selectSql = $sql;
         $result = self::$db->select($sql);
         return $result;
     }
@@ -176,6 +177,7 @@ class Model extends AbstractModel
         $sql = rtrim($sql,',');		//去除末尾逗号
 
         $sql .= ")";
+
         $result = self::$db->insert($sql);
         return $result;
     }
@@ -224,9 +226,19 @@ class Model extends AbstractModel
      * @param $sql
      * @return mixed
      */
-    public function query($sql)
+    public function exec($sql)
     {
         $result = self::$db->exec($sql);
+        return $result;
+    }
+
+    /**
+     * @param $sql
+     * @return mixed
+     */
+    public function query($sql)
+    {
+        $result = self::$db->query($sql);
         return $result;
     }
 

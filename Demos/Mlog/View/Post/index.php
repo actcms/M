@@ -7,6 +7,9 @@
     <div class="panel-body">
         <p><?php echo $post['content'] ?></p>
     </div>
+    <div class="panel-footer">
+        <span class="glyphicon glyphicon-tags"> <?php echo $post['tags']?></span>
+    </div>
 </div>
 <div id="pageNav">
     <ul class="pager">

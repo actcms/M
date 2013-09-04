@@ -6,6 +6,7 @@
  */
 
 namespace M\Extend;
+use M\Mvc\Model\Model;
 
 /**
  * Class Page
@@ -13,8 +14,17 @@ namespace M\Extend;
  */
 class Page
 {
-    public function __construct()
-    {
+    private $model;
 
+    public function __construct(Model $model)
+    {
+        $this->model = $model;
+    }
+
+    public function countPage()
+    {
+        $this->model->select();
+        $res = $this->model->query($this->model->selectSql);
+        return $colNumber = $res->columnCount();
     }
 }

@@ -1,9 +1,8 @@
 <ul class="pagination">
     <li class="disabled"><a href="#">&laquo;</a></li>
     <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
+    <?php for($i=2;$i<10;$i++){ ?>
+        <li><a href="<?php echo \M\App::buildUrl('Index','index',$i) ?>"><?php echo $i ?></a></li>
+    <?php } ?>
     <li><a href="#">&raquo;</a></li>
 </ul>
