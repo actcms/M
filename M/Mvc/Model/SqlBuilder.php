@@ -16,8 +16,14 @@ namespace M\Mvc\Model;
  */
 class SqlBuilder
 {
+    /**
+     * @var
+     */
     public static $model;
 
+    /**
+     * @param $model
+     */
     public static function init($model)
     {
         self::$model = $model;
@@ -28,7 +34,6 @@ class SqlBuilder
      */
     public static function selectSqlBuild()
     {
-
         $sql = "SELECT * FROM ".self::$model->table;
         $sql .= self::$model->where;
         $sql .= self::$model->orderBy;
