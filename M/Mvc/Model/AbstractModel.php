@@ -68,7 +68,8 @@ abstract class AbstractModel
         }
         else
         {
-            return null;
+            $this->$name = $value;
+            return $this;
         }
     }
 }

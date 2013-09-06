@@ -37,7 +37,9 @@ class SqlBuilder
         return $sql;
     }
 
-
+    /**
+     * @return string
+     */
     public static function addSqlBuild()
     {
         $sql = 'INSERT INTO '. self::$model->table .'(';
@@ -66,6 +68,9 @@ class SqlBuilder
         return $sql;
     }
 
+    /**
+     * @return string
+     */
     public static function updateSqlBuild()
     {
         $sql = 'UPDATE '. self::$model->table.' SET ';
@@ -78,14 +83,18 @@ class SqlBuilder
         }
 
         $sql = rtrim($sql,',');
-        echo $sql .= ' WHERE '.self::$model->key = self::$model->id;
+        echo $sql .= ' WHERE '.self::$model->key. ' = '.self::$model->id;
 
         return $sql;
     }
 
+    /**
+     * @param $id
+     * @return string
+     */
     public static function deleteSqlBuild($id)
     {
-        $sql = 'DELETE FROM '.self::$model->table.' WHERE '.self::$model->key = $id;
+        $sql = 'DELETE FROM '.self::$model->table.' WHERE '.self::$model->key.' = '.$id;
 
         return $sql;
     }
