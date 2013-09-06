@@ -26,8 +26,8 @@ class User extends Common
      */
     public function index()
     {
-        $user = new MUser();
-        $user = $user->select();
+        $User = new MUser();
+        $user = $User->select();
         $this->assign('user',$user);
         $this->display('User/index');
     }
@@ -38,8 +38,8 @@ class User extends Common
      */
     public function admin()
     {
-        $user = new Muser();
-        $user = $user->select();
+        $User = new Muser();
+        $user = $User->select();
         $this->assign('user',$user);
         $this->display('User/admin');
     }

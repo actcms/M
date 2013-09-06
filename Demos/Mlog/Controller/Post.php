@@ -29,8 +29,8 @@ class Post extends Common
     {
         $id = empty($id)?1:$id;
 
-        $post = new MPost();
-        $post = $post->find($id);
+        $Post = new MPost();
+        $post = $Post->find($id);
 
         $this->data['title'] = $post['title'];
         $this->data['nav'] = array('Post','index');
@@ -48,17 +48,17 @@ class Post extends Common
 
         if(isset($_POST['post']))
         {
-            $post = new MPost();
+            $Post = new MPost();
 
-            $post->get_Post();
-            $post->authorId = $_SESSION['id'];
-            $post->createTime = time();
+            $Post->get_Post();
+            $Post->authorId = $_SESSION['id'];
+            $Post->createTime = time();
 
-            $result = $post->save();
+            $result = $Post->save();
 
             if($result)
             {
-                $this->success('发布成功',array('Post','update',$post->getPdo()->lastInsertId()));
+                $this->success('发布成功',array('Post','update',$Post->getPdo()->lastInsertId()));
             }
             else
             {
@@ -81,11 +81,11 @@ class Post extends Common
     {
         $this->checkPower();
 
-        $post = new MPost();
-        $result = $post->delete($id);
+        $Post = new MPost();
+        $result = $Post->delete($id);
         if($result)
         {
-            $this->success('删除成功');
+            $this->success('删除成功',array('Index','index'));
         }
         else
         {
@@ -100,17 +100,16 @@ class Post extends Common
     public function update($id)
     {
         $this->checkPower();
-        $post = new MPost();
-
+        $Post = new MPost();
 
         if(isset($_POST['update']))
         {
-            $post->get_Post();       //一次获取所有属性并赋值到模型属性
+            $Post->get_Post();       //一次获取所有属性并赋值到模型属性
 
-            $post->authorId = 1;
-            $post->createTime = time();
+            $Post->authorId = 1;
+            $Post->createTime = time();
 
-            $result = $post->save();
+            $result = $Post->save();
 
             if($result)
             {
@@ -125,7 +124,7 @@ class Post extends Common
         {
             $this->data['nav'] = array('Post','update');
             $this->assign('title','UPDATE POST');
-            $post = $post->find($id);
+            $post = $Post->find($id);
             $this->assign('post',$post);
             $this->display('Post/update');
         }

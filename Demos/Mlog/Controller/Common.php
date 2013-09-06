@@ -35,8 +35,8 @@ class Common extends Controller
      */
     public function getSide()
     {
-        $post = new Post();
-        $post = $post->orderBy('id')->limit(10)->select();
+        $Post = new Post();
+        $post = $Post->orderBy('id')->limit(10)->select();
 
         $this->assign('recentPost',$post);
     }

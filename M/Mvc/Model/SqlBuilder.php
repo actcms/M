@@ -19,7 +19,7 @@ class SqlBuilder
     /**
      * @var
      */
-    public static $model;
+    private static $model;
 
     /**
      * @param $model
@@ -27,6 +27,34 @@ class SqlBuilder
     public static function init($model)
     {
         self::$model = $model;
+    }
+
+    /**
+     * @param $id
+     * @return string
+     */
+    public static function findByIdSqlBuild($id)
+    {
+        $sql = 'SELECT * FROM '.self::$model->table.' WHERE '.self::$model->key.' = '.$id;
+        return $sql;
+    }
+
+    /**
+     * @param $key
+     * @param $value
+     * @return string
+     */
+    public static function findSqlBuild($key,$value)
+    {
+        if(empty($value))
+        {
+            return self::findByIdSqlBuild($key);
+        }
+        else
+        {
+            $sql = 'SELECT * FROM '.self::$model->table.' WHERE '.$key.' = '."'".$value."'";
+            return $sql;
+        }
     }
 
     /**
@@ -88,7 +116,7 @@ class SqlBuilder
         }
 
         $sql = rtrim($sql,',');
-        echo $sql .= ' WHERE '.self::$model->key. ' = '.self::$model->id;
+        $sql .= ' WHERE '.self::$model->key. ' = '.self::$model->id;
 
         return $sql;
     }
@@ -103,4 +131,5 @@ class SqlBuilder
 
         return $sql;
     }
+
 }

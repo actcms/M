@@ -37,11 +37,11 @@ class Index extends Common
     {
         $this->data['nav'] = array('Index','index');
 
-        $post = new Post();
-//        $page = new Page($post);
+        $Post = new Post();
+//        $count = $Post->select();
+//        $page = new Page($Post);
 //        echo $page->countPage();
-        $post = $post->orderBy('top desc,id','desc')->limit($id?$id*5:0,5)->select();
-
+        $post = $Post->orderBy('top desc,id','desc')->limit($id?$id*5:0,5)->select();
         $this->assign('post',$post);
         $this->display('Index/index');
     }
@@ -53,10 +53,10 @@ class Index extends Common
     {
         if(isset($_POST['login']))
         {
-            $user = new User();
+            $User = new User();
 
-            $user->get_Post();
-            $result = $user->login();
+            $User->get_Post();
+            $result = $User->login();
             if($result)
             {
                 $this->success($_SESSION['username'].'登录成功',array('Index','index'));
@@ -80,10 +80,10 @@ class Index extends Common
     {
         if(isset($_POST['reg']))
         {
-            $user = new User();
+            $User = new User();
 
-            $user->get_Post();
-            $result = $user->save();
+            $User->get_Post();
+            $result = $User->save();
 
             if($result)
             {

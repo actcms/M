@@ -24,7 +24,7 @@ class Page
     public function countPage()
     {
         $this->model->select();
-        $res = $this->model->query($this->model->selectSql);
+        $res = $this->model->query($this->model->getSql());
         return $colNumber = $res->columnCount();
     }
 }

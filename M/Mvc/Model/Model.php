@@ -23,6 +23,10 @@ class Model extends AbstractModel
     /**
      * @var
      */
+    protected $sql;
+    /**
+     * @var
+     */
     protected $key;
     /**
      * @var
@@ -103,8 +107,8 @@ class Model extends AbstractModel
      */
     public function select()
     {
-        $sql = SqlBuilder::selectSqlBuild($this);
-        $result = self::$db->select($sql);
+        $this->sql = SqlBuilder::selectSqlBuild($this);
+        $result = self::$db->select($this->sql);
         return $result;
     }
 
@@ -115,16 +119,9 @@ class Model extends AbstractModel
      */
     public function find($key,$value='')
     {
-        if(empty($value))
-        {
-            return $this->findById($key);
-        }
-        else
-        {
-            $sql = "SELECT * FROM $this->table WHERE $key = '$value'";
-            $result = self::$db->find($sql);
-            return $result;
-        }
+        $this->sql = SqlBuilder::findSqlBuild($key,$value);
+        $result = self::$db->find($this->sql);
+        return $result;
     }
 
     /**
@@ -133,8 +130,8 @@ class Model extends AbstractModel
      */
     public function findById($id)
     {
-        $sql = "SELECT * FROM $this->table WHERE $this->key = '$id'";
-        $result = self::$db->find($sql);
+        $this->sql = SqlBuilder::findByIdSqlBuild($id);
+        $result = self::$db->find($this->sql);
         return $result;
     }
 
@@ -144,8 +141,8 @@ class Model extends AbstractModel
      */
     public function delete($id)
     {
-        $sql = SqlBuilder::deleteSqlBuild($id);
-        $result = self::$db->delete($sql);
+        $this->sql = SqlBuilder::deleteSqlBuild($id);
+        $result = self::$db->delete($this->sql);
         return $result;
     }
 
@@ -154,8 +151,8 @@ class Model extends AbstractModel
      */
     public function add()
     {
-        $sql = SqlBuilder::addSqlBuild();
-        $result = self::$db->insert($sql);
+        $this->sql = SqlBuilder::addSqlBuild();
+        $result = self::$db->insert($this->sql);
         return $result;
     }
 
@@ -181,8 +178,8 @@ class Model extends AbstractModel
      */
     public function update()
     {
-        $sql = SqlBuilder::updateSqlBuild();
-        $result = self::$db->update($sql);
+        $this->sql = SqlBuilder::updateSqlBuild();
+        $result = self::$db->update($this->sql);
         return $result;
     }
 
@@ -225,4 +222,21 @@ class Model extends AbstractModel
         return self::$db->getPdo();
     }
 
+    /**
+     * 返回最近执行的sql语句
+     *
+     * @param bool $show
+     * @return mixed
+     */
+    public function getSql($show=false)
+    {
+        if($show)
+        {
+            echo $this->sql;
+        }
+        else
+        {
+            return $this->sql;
+        }
+    }
 }
