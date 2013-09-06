@@ -10,6 +10,7 @@ namespace M\Mvc\Model;
 /**
  * sql合成器
  *
+ * 根据传入模型的属性产生对应的sql语句，并返回
  *
  * Class SqlBuilder
  * @package M\Mvc\Model
@@ -17,19 +18,24 @@ namespace M\Mvc\Model;
 class SqlBuilder
 {
     /**
+     * 传入的模型
      * @var
      */
     private static $model;
 
     /**
-     * @param $model
+     * 初始化
+     *
+     * @param Model $model
      */
-    public static function init($model)
+    public static function init(Model $model)
     {
         self::$model = $model;
     }
 
     /**
+     * 根据查找的id返回查询语句
+     *
      * @param $id
      * @return string
      */
@@ -40,8 +46,10 @@ class SqlBuilder
     }
 
     /**
-     * @param $key
-     * @param $value
+     * 根据查询条件返回产讯语句
+     *
+     * @param $key  键名
+     * @param $value 键值
      * @return string
      */
     public static function findSqlBuild($key,$value)
@@ -58,6 +66,8 @@ class SqlBuilder
     }
 
     /**
+     * 生成并返回查询语句
+     *
      * @return string
      */
     public static function selectSqlBuild()
@@ -71,6 +81,8 @@ class SqlBuilder
     }
 
     /**
+     * 生成并返回插入语句
+     *
      * @return string
      */
     public static function addSqlBuild()
@@ -102,6 +114,8 @@ class SqlBuilder
     }
 
     /**
+     * 生成并返回更新语句
+     *
      * @return string
      */
     public static function updateSqlBuild()
@@ -122,6 +136,8 @@ class SqlBuilder
     }
 
     /**
+     * 生成并返回删除语句
+     *
      * @param $id
      * @return string
      */
