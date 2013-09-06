@@ -7,10 +7,12 @@
     <div class="panel-body">
         <p><?php echo $post['content'] ?></p>
     </div>
-    <div class="panel-footer row">
-        <a href="" class="col-md-10"><span class="glyphicon glyphicon-tags"> <?php echo $post['tags']?></span></a>
-        <a href="" class="col-md-1"><span class="glyphicon glyphicon-thumbs-down"></span></a>
-        <a href="" class="col-md-1"><span class="glyphicon glyphicon-thumbs-up"></span></a>
+    <div class="panel-footer">
+        <div class="row">
+            <a href="" class="col-md-10"><span class="glyphicon glyphicon-tags"> <?php echo $post['tags']?></span></a>
+            <a href="" class="col-md-1"><span class="glyphicon glyphicon-thumbs-down"></span></a>
+            <a href="" class="col-md-1"><span class="glyphicon glyphicon-thumbs-up"></span></a>
+        </div>
     </div>
 </div>
 <div id="pageNav">

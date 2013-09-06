@@ -14,6 +14,7 @@ namespace M\Mvc\Model;
 abstract class AbstractModel
 {
     /**
+     * 数据库表名
      * @var
      */
     protected $table;
@@ -31,15 +32,29 @@ abstract class AbstractModel
     abstract public function init();
 
     /**
+     * 属性魔术访问方法
+     *
+     * 如果存在单独的访问方法则返回访问方法的返回值，否则，直接返回受访问限制的属性
+     *
      * @param $name
      * @return mixed
      */
     public function __get($name)
     {
-        return $this->$name;
+        $method = 'get'.ucfirst($name);
+        if(method_exists($this,$method))
+        {
+            return $this->$method();
+        }
+        else
+        {
+            return $this->$name;
+        }
     }
 
     /**
+     * 属性魔术设置方法
+     *
      * @param $name
      * @param $value
      * @return null
@@ -55,7 +70,5 @@ abstract class AbstractModel
         {
             return null;
         }
-
     }
-
 }

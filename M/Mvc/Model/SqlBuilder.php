@@ -8,35 +8,42 @@
 namespace M\Mvc\Model;
 
 /**
+ * sql合成器
+ *
+ *
  * Class SqlBuilder
  * @package M\Mvc\Model
  */
-class SqlBuilder extends Model
+class SqlBuilder
 {
+    public static $model;
+
+    public static function init($model)
+    {
+        self::$model = $model;
+    }
+
     /**
-     * @param Model $model
      * @return string
      */
-    public static function selectSqlBuild(Model $model)
+    public static function selectSqlBuild()
     {
-        $sql = "SELECT * FROM $model->table";
-        $sql .= $model->where;
-        $sql .= $model->orderBy;
-        $sql .= $model->limit;
+
+        $sql = "SELECT * FROM ".self::$model->table;
+        $sql .= self::$model->where;
+        $sql .= self::$model->orderBy;
+        $sql .= self::$model->limit;
 
         return $sql;
     }
 
-    /**
-     * @param Model $model
-     * @return string
-     */
-    public static function addSqlBuild(Model $model)
+
+    public static function addSqlBuild()
     {
-        $sql ="INSERT INTO `$model->table` (";
-        foreach ($model->data as $key=>$value)
+        $sql = 'INSERT INTO '. self::$model->table .'(';
+        foreach (self::$model->data as $key=>$value)
         {
-            if(!empty($model->$value))
+            if(self::$model->$value != '')
             {
                 $sql .= "`$key`,";
             }
@@ -44,18 +51,41 @@ class SqlBuilder extends Model
 
         $sql = rtrim($sql,',');		//去掉产生的sql语句末尾逗号
 
-        $sql .= ") VALUES (";
-        foreach ($model->data as $key=>$value)
+        $sql .= ') VALUES (';
+        foreach (self::$model->data as $key=>$value)
         {
-            if(!empty($model->$value))
+            if(self::$model->$value != '')
             {
-                $sql .= "'".$model->$value."'".',';
+                $sql .= "'".self::$model->$value."'".',';
             }
         }
 
         $sql = rtrim($sql,',');		//去除末尾逗号
+        $sql .= ')';
 
-        $sql .= ")";
+        return $sql;
+    }
+
+    public static function updateSqlBuild()
+    {
+        $sql = 'UPDATE '. self::$model->table.' SET ';
+        foreach(self::$model->data as $key=>$value)
+        {
+            if(self::$model->$value != '')
+            {
+                $sql .= $key. ' = '."'".self::$model->$value."'".',';
+            }
+        }
+
+        $sql = rtrim($sql,',');
+        echo $sql .= ' WHERE '.self::$model->key = self::$model->id;
+
+        return $sql;
+    }
+
+    public static function deleteSqlBuild($id)
+    {
+        $sql = 'DELETE FROM '.self::$model->table.' WHERE '.self::$model->key = $id;
 
         return $sql;
     }

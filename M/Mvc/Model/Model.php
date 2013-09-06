@@ -20,9 +20,13 @@ class Model extends AbstractModel
      * @var
      */
     private static $db;
-
-    protected $table;
+    /**
+     * @var
+     */
     protected $key;
+    /**
+     * @var
+     */
     protected $data;
     /**
      * @var
@@ -42,6 +46,7 @@ class Model extends AbstractModel
      */
     public function init()
     {
+        SqlBuilder::init($this);
         if(empty(self::$db))
         {
             $db = M::getConfig('db');
@@ -98,12 +103,7 @@ class Model extends AbstractModel
      */
     public function select()
     {
-//        $sql = "SELECT * FROM $this->table";
-//        $sql .= $this->where;
-//        $sql .= $this->orderBy;
-//        $sql .= $this->limit;
         $sql = SqlBuilder::selectSqlBuild($this);
-        $this->selectSql = $sql;
         $result = self::$db->select($sql);
         return $result;
     }
@@ -144,7 +144,7 @@ class Model extends AbstractModel
      */
     public function delete($id)
     {
-        $sql = "DELETE FROM $this->table WHERE $this->key = $id";
+        $sql = SqlBuilder::deleteSqlBuild($id);
         $result = self::$db->delete($sql);
         return $result;
     }
@@ -154,30 +154,7 @@ class Model extends AbstractModel
      */
     public function add()
     {
-        $sql ="INSERT INTO `$this->table` (";
-        foreach ($this->data as $key=>$value)
-        {
-            if(!empty($this->$value))
-            {
-                $sql .= "`$key`,";
-            }
-        }
-
-        $sql = rtrim($sql,',');		//去掉产生的sql语句末尾逗号
-
-        $sql .= ") VALUES (";
-        foreach ($this->data as $key=>$value)
-        {
-            if(!empty($this->$value))
-            {
-                $sql .= "'".$this->$value."'".',';
-            }
-        }
-
-        $sql = rtrim($sql,',');		//去除末尾逗号
-
-        $sql .= ")";
-
+        $sql = SqlBuilder::addSqlBuild();
         $result = self::$db->insert($sql);
         return $result;
     }
@@ -204,19 +181,7 @@ class Model extends AbstractModel
      */
     public function update()
     {
-        $sql = "UPDATE `$this->table` SET ";
-        foreach($this->data as $key=>$value)
-        {
-            if(!empty($this->$value))
-            {
-                $sql .= "`$key` = '{$this->$value}',";
-            }
-        }
-
-        $sql = rtrim($sql,',');
-
-        $sql .= " WHERE $this->key = $this->id";
-
+        $sql = SqlBuilder::updateSqlBuild();
         $result = self::$db->update($sql);
         return $result;
     }
