@@ -38,9 +38,10 @@ class Index extends Common
         $this->data['nav'] = array('Index','index');
 
         $Post = new Post();
-//        $count = $Post->select();
-//        $page = new Page($Post);
-//        echo $page->countPage();
+
+        $page = new Page($Post);
+        echo $page->getPage();
+
         $post = $Post->orderBy('top desc,id','desc')->limit($id?$id*5:0,5)->select();
         $this->assign('post',$post);
         $this->display('Index/index');

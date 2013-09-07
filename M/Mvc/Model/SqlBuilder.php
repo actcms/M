@@ -41,7 +41,7 @@ class SqlBuilder
      */
     public static function findByIdSqlBuild($id)
     {
-        $sql = 'SELECT * FROM '.self::$model->table.' WHERE '.self::$model->key.' = '.$id;
+        $sql = 'SELECT '.self::$model->cols.' FROM '.self::$model->table.' WHERE '.self::$model->key.' = '.$id;
         return $sql;
     }
 
@@ -60,7 +60,7 @@ class SqlBuilder
         }
         else
         {
-            $sql = 'SELECT * FROM '.self::$model->table.' WHERE '.$key.' = '."'".$value."'";
+            $sql = 'SELECT '.self::$model->cols.' FROM '.self::$model->table.' WHERE '.$key.' = '."'".$value."'";
             return $sql;
         }
     }
@@ -72,7 +72,7 @@ class SqlBuilder
      */
     public static function selectSqlBuild()
     {
-        $sql = "SELECT * FROM ".self::$model->table;
+        $sql = 'SELECT '.self::$model->cols.' FROM '.self::$model->table;
         $sql .= self::$model->where;
         $sql .= self::$model->orderBy;
         $sql .= self::$model->limit;

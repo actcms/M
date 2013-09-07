@@ -106,7 +106,7 @@ class Post extends Common
         {
             $Post->get_Post();       //一次获取所有属性并赋值到模型属性
 
-            $Post->authorId = 1;
+            $Post->authorId = $_SESSION['id'];
             $Post->createTime = time();
 
             $result = $Post->save();

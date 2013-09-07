@@ -11,42 +11,60 @@ use M\Db\Db;
 use M\Form\Form;
 
 /**
+ * 模型类
+ *
  * Class Model
  * @package M\Mvc\Model
  */
 class Model extends AbstractModel
 {
     /**
+     * 数据库连接实例
      * @var
      */
     private static $db;
     /**
+     * 最近执行的的sql语句
      * @var
      */
     protected $sql;
     /**
+     * 数据库表的主键
      * @var
      */
     protected $key;
     /**
+     * 数据映射数组
+     *
+     * 负责映射模型属性名到数据库表的字段名
      * @var
      */
     protected $data;
     /**
+     * 置顶要查询的字段范围，默认是所有列: ‘*’
+     * @var
+     */
+    protected $cols = '*';
+    /**
+     * sql查询条件 WHERE 子句
      * @var
      */
     protected $where;
     /**
+     * sql查询条件 ORDER BY 子句
      * @var
      */
     protected $orderBy;
     /**
+     * sql查询条件 LIMIT 子句
      * @var
      */
     protected $limit;
 
     /**
      *初始化
+     *
+     * 建立数据库连接（单例模型）
      */
     public function init()
     {
@@ -55,12 +73,21 @@ class Model extends AbstractModel
         {
             $db = M::getConfig('db');
             self::$db = new Db($db['dsn'],$db['user'],$db['password']);
-
         }
         else
         {
             return self::$db;
         }
+    }
+
+    /**
+     * 置顶查询的范围，选定需要查询的数据库表的字段
+     *
+     * @param $cols
+     */
+    public function cols($cols)
+    {
+        $this->cols = $cols;
     }
 
     /**
@@ -74,6 +101,10 @@ class Model extends AbstractModel
     }
 
     /**
+     * 指定查询返回结果的顺序
+     *
+     * ORDER BY
+     *
      * @param $by
      * @param string $order
      * @return $this
@@ -103,11 +134,13 @@ class Model extends AbstractModel
     }
 
     /**
+     * @param string $cols 要查询的列，默认为所有列
      * @return mixed
      */
-    public function select()
+    public function select($cols = '*')
     {
-        $this->sql = SqlBuilder::selectSqlBuild($this);
+        $this->cols = $cols;
+        $this->sql = SqlBuilder::selectSqlBuild();
         $result = self::$db->select($this->sql);
         return $result;
     }
@@ -174,6 +207,8 @@ class Model extends AbstractModel
     }
 
     /**
+     * 更新记录
+     *
      * @return mixed
      */
     public function update()
@@ -215,6 +250,8 @@ class Model extends AbstractModel
     }
 
     /**
+     * 获取PDO对象
+     *
      * @return mixed
      */
     public function getPdo()
