@@ -39,8 +39,8 @@ class Index extends Common
 
         $Post = new Post();
 
-        $page = new Page($Post);
-        echo $page->getPage();
+//        $page = new Page($Post);
+//        echo $page->getPage();
 
         $post = $Post->orderBy('top desc,id','desc')->limit($id?$id*5:0,5)->select();
         $this->assign('post',$post);
