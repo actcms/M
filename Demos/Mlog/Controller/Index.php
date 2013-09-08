@@ -39,10 +39,10 @@ class Index extends Common
 
         $Post = new Post();
 
-//        $page = new Page($Post);
-//        echo $page->getPage();
+        $page = new Page($Post);
+        $this->assign('page', $page->getPage());
 
-        $post = $Post->orderBy('top desc,id','desc')->limit($id?$id*5:0,5)->select();
+        $post = $Post->orderBy('top desc,id','desc')->limit($id?($id-1)*5:0,5)->select();
         $this->assign('post',$post);
         $this->display('Index/index');
     }

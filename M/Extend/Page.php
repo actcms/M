@@ -57,6 +57,7 @@ class Page
     public function countRows()
     {
         $rows = $this->model->select("count(*)");
+        $this->model->cols('*');
         $this->countRows = $rows[0][0];
     }
 
