@@ -12,6 +12,10 @@ use Mlog\Model\Post;
 use Mlog\Model\Tag;
 
 /**
+ * 共用控制器
+ *
+ * 所有控制器都可直接继承Common
+ *
  * Class Common
  * @package Mlog\Controller
  */
@@ -41,7 +45,7 @@ class Common extends Controller
     }
 
     /**
-     *
+     *获取最近的文章列表，默认显示10篇
      */
     public function getRecentPost()
     {
@@ -51,11 +55,14 @@ class Common extends Controller
         $this->assign('recentPost',$recentPost);
     }
 
+    /**
+     *获取标签云，默认显示100条
+     */
     public function getTag()
     {
         $Tag = new Tag();
-        $tag = $Tag->limit(100)->select();
-        print_r($tag);
+        $tags = $Tag->limit(100)->select();
+        $this->assign('tags',$tags);
     }
 
     /**

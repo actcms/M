@@ -1,7 +1,25 @@
-<div class="list-group">
-    <a class="list-group-item active"><span class="glyphicon glyphicon-list"> 最新发布</span></a>
-    <?php foreach($recentPost as $p){ ?>
-        <a  class="list-group-item" href="<?php echo \M\App::buildUrl('Post','index',$p['id']) ?>"><?php echo $p['title'] ?></a>
-    <?php } ?>
+<div class="recent-post panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"><span class="glyphicon glyphicon-list"> Recent Post</span></h3>
+    </div>
+    <div class="panel-body">
+        <p>...</p>
+    </div>
+    <ul class="list-group">
+        <?php foreach($recentPost as $p){ ?>
+            <li class="list-group-item"><a href="<?php echo \M\App::buildUrl('Post','index',$p['id']) ?>"><?php echo $p['title'] ?></a></li>
+        <?php } ?>
+
+    </ul>
+</div>
+<div class="tag panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"><span class="glyphicon glyphicon-tags"> Tag</span></h3>
+    </div>
+    <div class="panel-body">
+        <?php foreach($tags as $t){ ?>
+            <a href="<?php echo \M\App::buildUrl('Post','index',$t['id']) ?>"><?php echo $t['tag'] ?> <span class="badge"><?php echo $t['number'] ?></span></a>
+        <?php } ?>
+    </div>
 </div>
 

@@ -65,7 +65,7 @@ class Tag extends Model
      */
     public function setTag($tag)
     {
-        $this->tag = explode(',',$tag);
+        $this->tag = $tag;
         return $this;
     }
 
