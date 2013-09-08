@@ -22,4 +22,8 @@ class Tag extends Common
         $this->display('Tag/index');
     }
 
+    public function add()
+    {
+        
+    }
 }

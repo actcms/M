@@ -9,6 +9,7 @@ namespace Mlog\Controller;
 
 use M\Mvc\Controller\Controller;
 use Mlog\Model\Post;
+use Mlog\Model\Tag;
 
 /**
  * Class Common
@@ -35,10 +36,26 @@ class Common extends Controller
      */
     public function getSide()
     {
-        $Post = new Post();
-        $post = $Post->orderBy('id')->limit(10)->select();
+        $this->getRecentPost();
+        $this->getTag();
+    }
 
-        $this->assign('recentPost',$post);
+    /**
+     *
+     */
+    public function getRecentPost()
+    {
+        $Post = new Post();
+        $recentPost = $Post->orderBy('id')->limit(10)->select();
+
+        $this->assign('recentPost',$recentPost);
+    }
+
+    public function getTag()
+    {
+        $Tag = new Tag();
+        $tag = $Tag->limit(100)->select();
+        print_r($tag);
     }
 
     /**

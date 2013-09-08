@@ -7,6 +7,7 @@
 namespace Mlog\Controller;
 
 use Mlog\Model\Post as MPost;
+use Mlog\Model\Tag;
 
 /**
  * Class Post
@@ -55,6 +56,10 @@ class Post extends Common
             $Post->createTime = time();
 
             $result = $Post->save();
+
+            $Tag = new Tag();
+            $Tag->tag = $Post->tags;
+            $Tag->add();
 
             if($result)
             {

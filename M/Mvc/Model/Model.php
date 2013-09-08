@@ -84,10 +84,12 @@ class Model extends AbstractModel
      * 置顶查询的范围，选定需要查询的数据库表的字段
      *
      * @param $cols
+     * @return $this
      */
-    public function cols($cols)
+    public function cols($cols = '*')
     {
         $this->cols = $cols;
+        return $this;
     }
 
     /**
@@ -137,9 +139,12 @@ class Model extends AbstractModel
      * @param string $cols 要查询的列，默认为所有列
      * @return mixed
      */
-    public function select($cols = '*')
+    public function select($cols = '')
     {
-        $this->cols = $cols;
+        if(!empty($cols))
+        {
+            $this->cols = $cols;
+        }
         $this->sql = SqlBuilder::selectSqlBuild();
         $result = self::$db->select($this->sql);
         return $result;
