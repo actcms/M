@@ -34,6 +34,17 @@ class SqlBuilder
     }
 
     /**
+     *字符转义
+     */
+    public static function dataFilter()
+    {
+        foreach(self::$model->data as $value)
+        {
+            self::$model->$value = addslashes(self::$model->$value);
+        }
+    }
+
+    /**
      * 根据查找的id返回查询语句
      *
      * @param $id
@@ -87,6 +98,7 @@ class SqlBuilder
      */
     public static function addSqlBuild()
     {
+        self::dataFilter();
         $sql = 'INSERT INTO '. self::$model->table .'(';
         foreach (self::$model->data as $key=>$value)
         {
@@ -120,6 +132,7 @@ class SqlBuilder
      */
     public static function updateSqlBuild()
     {
+        self::dataFilter();
         $sql = 'UPDATE '. self::$model->table.' SET ';
         foreach(self::$model->data as $key=>$value)
         {

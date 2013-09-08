@@ -56,7 +56,7 @@ class Post extends Common
             $Post->createTime = time();
 
             $result = $Post->save();
-
+            $Post->getSql(true);
             $Tag = new Tag();
             $Tag->addAll($Post->tags);
 
