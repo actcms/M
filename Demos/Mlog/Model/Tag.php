@@ -65,6 +65,18 @@ class Tag extends Model
      */
     public function setTag($tag)
     {
+        $re = $this->find('tag', $tag);
+        //print_r($re);
+        if($re)
+        {
+            $this->setId($re['id']);
+            $this->setNumber($re['number'] + 1);
+        }
+        else
+        {
+            $this->setNumber(1);
+        }
+
         $this->tag = $tag;
         return $this;
     }

@@ -68,16 +68,12 @@ class Model extends AbstractModel
      */
     public function init()
     {
-        SqlBuilder::init($this);
         if(empty(self::$db))
         {
             $db = M::getConfig('db');
             self::$db = new Db($db['dsn'],$db['user'],$db['password']);
         }
-        else
-        {
-            return self::$db;
-        }
+        SqlBuilder::init($this);
     }
 
     /**

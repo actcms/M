@@ -40,7 +40,7 @@ class SqlBuilder
     {
         foreach(self::$model->data as $value)
         {
-            self::$model->$value = addslashes(self::$model->$value);
+            self::$model->$value = htmlspecialchars(self::$model->$value,ENT_QUOTES);
         }
     }
 
@@ -53,6 +53,7 @@ class SqlBuilder
     public static function findByIdSqlBuild($id)
     {
         $sql = 'SELECT '.self::$model->cols.' FROM '.self::$model->table.' WHERE '.self::$model->key.' = '.$id;
+
         return $sql;
     }
 

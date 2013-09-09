@@ -22,7 +22,7 @@ class Search extends Common
 
     public function index()
     {
-        print_r($_POST);
+        echo $_POST['search'];
 
         $this->display('Search/index');
     }

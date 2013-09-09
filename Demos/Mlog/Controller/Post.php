@@ -55,11 +55,11 @@ class Post extends Common
             $Post->authorId = $_SESSION['id'];
             $Post->createTime = time();
 
-            $result = $Post->save();
-            $Post->getSql(true);
             $Tag = new Tag();
             $Tag->addAll($Post->tags);
 
+            $result = $Post->save();
+            $Post->getSql(true);
             if($result)
             {
                 $this->success('发布成功',array('Post','update',$Post->getPdo()->lastInsertId()));
@@ -132,7 +132,5 @@ class Post extends Common
             $this->assign('post',$post);
             $this->display('Post/update');
         }
-
     }
-
 }

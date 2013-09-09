@@ -47,7 +47,7 @@ class Form
 
         foreach(self::$post as $key=>$value)
         {
-            $model->$key = $value;
+            $model->$key = trim($value);    //去除前后空格
         }
     }
 

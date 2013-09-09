@@ -6,6 +6,7 @@
                     <h1 class="list-group-item-heading"><?php echo $p['title'];?></h1>
                     <h5><?php echo date('y-m-d h:m:s',$p['create_time']);?></h5>
                 </hgroup>
+                <hr>
                 <p class="list-group-item-text"><?php echo $p['content'];?>...</p>
             </a>
         </div>

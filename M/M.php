@@ -37,6 +37,7 @@ class M
      */
     public static function run($configs)
     {
+        define('M_START',microtime());
         self::init();
 
         self::$config = Config::init($configs);
@@ -57,6 +58,7 @@ class M
             $_SESSION['app'] = APP;
             Log::write(APP.' start');
         }
+        define('M_END',microtime());
     }
 
     /**
@@ -106,6 +108,15 @@ class M
     public static function import($class)
     {
 
+    }
+
+    /**
+     * 获取运行时间
+     * @return mixed
+     */
+    public static function getRuntime()
+    {
+        return M_END-M_START;
     }
 }
 

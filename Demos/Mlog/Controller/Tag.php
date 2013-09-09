@@ -32,7 +32,6 @@ class Tag extends Common
         foreach($tags as $tag)
         {
             $Tag->tag = $tag;
-            $Tag->number = 1;
             $Tag->save();
         }
     }

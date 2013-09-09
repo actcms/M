@@ -134,7 +134,6 @@ class Db
         $res = $this->db->query($sql);
         $result = $res->fetch();
         return $result;
-
     }
 
     /**
