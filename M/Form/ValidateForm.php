@@ -10,16 +10,41 @@ namespace M\Form;
 
 class ValidateForm
 {
-    public static function email()
+    /**
+     * email 格式验证
+     * @param $email
+     * @return bool
+     */
+    public static function email($email)
     {
-
+        $email = filter_var($email, FILTER_VALIDATE_EMAIL);
+        if($email)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
-    public static function number()
+    /**
+     * 验证是否为数字或者字符串数字
+     * @param $number
+     * @return bool
+     */
+    public static function number($number)
     {
-
+        return is_numeric($number);
     }
 
+    /**
+     * 验证两个值是否相等
+     *
+     * @param $var1
+     * @param $var2
+     * @return bool
+     */
     public static function equal($var1,$var2)
     {
         if($var1==$var2)
@@ -28,7 +53,7 @@ class ValidateForm
         }
         else
         {
-
+            return false;
         }
     }
 
