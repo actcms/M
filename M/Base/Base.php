@@ -5,33 +5,15 @@
  * @author Ma Guowei <imaguowei@gmail.com>
  */
 
-namespace M\Mvc\Model;
-use M\Base\Base;
+namespace M\Base;
 
 /**
- * Class AbstractModel
- * @package M\Mvc\Model
+ * 基础类
+ * Class Base
+ * @package M\Base
  */
-abstract class AbstractModel extends Base
+class Base
 {
-    /**
-     * 数据库表名
-     * @var
-     */
-    protected $table;
-    /**
-     * 构造方法
-     */
-    public function __construct()
-    {
-        $this->init();
-    }
-
-    /**
-     *子类覆盖用于配置初始化
-     */
-    abstract public function init();
-
     /**
      * 属性魔术访问方法
      *

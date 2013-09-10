@@ -277,4 +277,9 @@ class Model extends AbstractModel
             return $this->sql;
         }
     }
+
+    public function validate()
+    {
+
+    }
 }

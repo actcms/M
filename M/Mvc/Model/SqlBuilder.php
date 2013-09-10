@@ -109,7 +109,7 @@ class SqlBuilder
             }
         }
 
-        $sql = rtrim($sql,',');		//去掉产生的sql语句末尾逗号
+        $sql = rtrim($sql,',');		//去掉末尾逗号
 
         $sql .= ') VALUES (';
         foreach (self::$model->data as $key=>$value)
