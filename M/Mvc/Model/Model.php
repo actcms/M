@@ -6,6 +6,7 @@
  */
 namespace M\Mvc\Model;
 
+use M\Db\SqlBuilder as Sql;
 use M\M;
 use M\Db\Db;
 use M\Form\Form;
@@ -27,19 +28,7 @@ class Model extends AbstractModel
      * 最近执行的的sql语句
      * @var
      */
-    protected $sql;
-    /**
-     * 数据库表的主键
-     * @var
-     */
-    protected $key;
-    /**
-     * 数据映射数组
-     *
-     * 负责映射模型属性名到数据库表的字段名
-     * @var
-     */
-    protected $data;
+    private $sql;
     /**
      * 置顶要查询的字段范围，默认是所有列: ‘*’
      * @var
@@ -54,12 +43,25 @@ class Model extends AbstractModel
      * sql查询条件 ORDER BY 子句
      * @var
      */
-    protected $orderBy;
+    protected $order;
     /**
      * sql查询条件 LIMIT 子句
      * @var
      */
     protected $limit;
+    /**
+    * 数据库表的主键
+    * @var
+    */
+    private $sqlBuilder;
+    protected $primary_key;
+    /**
+     * 数据映射数组
+     *
+     * 负责映射模型属性名到数据库表的字段名
+     * @var
+     */
+    protected $data;
 
     /**
      *初始化
@@ -73,7 +75,9 @@ class Model extends AbstractModel
             $db = M::getConfig('db');
             self::$db = new Db($db['dsn'],$db['user'],$db['password']);
         }
-        SqlBuilder::init($this);
+
+        $this->sqlBuilder = new Sql($this);
+
     }
 
     /**
@@ -109,7 +113,7 @@ class Model extends AbstractModel
      */
     public function orderBy($by,$order='desc')
     {
-        $this->orderBy = " ORDER BY $by $order";
+        $this->order = " ORDER BY $by $order";
         return $this;
     }
 
@@ -132,65 +136,6 @@ class Model extends AbstractModel
     }
 
     /**
-     * @param string $cols 要查询的列，默认为所有列
-     * @return mixed
-     */
-    public function select($cols = '')
-    {
-        if(!empty($cols))
-        {
-            $this->cols = $cols;
-        }
-        $this->sql = SqlBuilder::selectSqlBuild();
-        $result = self::$db->select($this->sql);
-        return $result;
-    }
-
-    /**
-     * @param $key
-     * @param string $value
-     * @return mixed
-     */
-    public function find($key,$value='')
-    {
-        $this->sql = SqlBuilder::findSqlBuild($key,$value);
-        $result = self::$db->find($this->sql);
-        return $result;
-    }
-
-    /**
-     * @param $id
-     * @return mixed
-     */
-    public function findById($id)
-    {
-        $this->sql = SqlBuilder::findByIdSqlBuild($id);
-        $result = self::$db->find($this->sql);
-        return $result;
-    }
-
-    /**
-     * @param $id
-     * @return mixed
-     */
-    public function delete($id)
-    {
-        $this->sql = SqlBuilder::deleteSqlBuild($id);
-        $result = self::$db->delete($this->sql);
-        return $result;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function add()
-    {
-        $this->sql = SqlBuilder::addSqlBuild();
-        $result = self::$db->insert($this->sql);
-        return $result;
-    }
-
-    /**
      * 保存记录
      *
      * 根据是$key值是否为空选择插入或者更新
@@ -208,14 +153,73 @@ class Model extends AbstractModel
     }
 
     /**
+     * @return mixed
+     */
+    public function add()
+    {
+        $this->sql = $this->sqlBuilder->insertSqlBuild();
+        $result = self::$db->insert($this->sql);
+        return $result;
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function delete($id)
+    {
+        $this->sql = $this->sqlBuilder->deleteSqlBuild($id);
+        $result = self::$db->delete($this->sql);
+        return $result;
+    }
+
+    /**
      * 更新记录
      *
      * @return mixed
      */
     public function update()
     {
-        $this->sql = SqlBuilder::updateSqlBuild();
+        $this->sql = $this->sqlBuilder->updateSqlBuild();
         $result = self::$db->update($this->sql);
+        return $result;
+    }
+
+    /**
+     * @param string $cols 要查询的列，默认为所有列
+     * @return mixed
+     */
+    public function select($cols = '')
+    {
+        if(!empty($cols))
+        {
+            $this->cols = $cols;
+        }
+        $this->sql = $this->sqlBuilder->selectSqlBuild();
+        $result = self::$db->select($this->sql);
+        return $result;
+    }
+
+    /**
+     * @param $key
+     * @param string $value
+     * @return mixed
+     */
+    public function find($key,$value)
+    {
+        $this->sql = $this->sqlBuilder->findSqlBuild($key,$value);
+        $result = self::$db->find($this->sql);
+        return $result;
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function findById($id)
+    {
+        $this->sql = $this->sqlBuilder->findByIdSqlBuild($id);
+        $result = self::$db->find($this->sql);
         return $result;
     }
 

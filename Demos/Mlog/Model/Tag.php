@@ -39,7 +39,7 @@ class Tag extends Model
      * table key
      * @var string
      */
-    protected $key = 'id';
+    protected $primary_key = 'id';
     /**
      * @var array
      */

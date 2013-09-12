@@ -31,7 +31,7 @@ class Post extends Common
         $id = empty($id)?1:$id;
 
         $Post = new MPost();
-        $post = $Post->find($id);
+        $post = $Post->findById($id);
 
         $this->data['title'] = $post['title'];
         $this->data['nav'] = array('Post','index');
@@ -128,7 +128,7 @@ class Post extends Common
         {
             $this->data['nav'] = array('Post','update');
             $this->assign('title','UPDATE POST');
-            $post = $Post->find($id);
+            $post = $Post->findById($id);
             $this->assign('post',$post);
             $this->display('Post/update');
         }

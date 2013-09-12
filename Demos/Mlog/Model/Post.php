@@ -58,7 +58,7 @@ class Post extends Model
      * 数据库主键
      * @var string
      */
-    protected $key = 'id';
+    protected $primary_key = 'id';
     /**
      * 数据库与表单对应关系映射
      * @var array

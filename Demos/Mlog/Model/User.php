@@ -37,7 +37,7 @@ class User extends Model
     /**
      * @var string
      */
-    protected $key = 'id';
+    protected $primary_key = 'id';
     /**
      * @var array
      */
