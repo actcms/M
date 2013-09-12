@@ -6,7 +6,7 @@
  */
 namespace M\Mvc\Model;
 
-use M\Db\SqlBuilder as Sql;
+use M\Db\SqlBuilder;
 use M\M;
 use M\Db\Db;
 use M\Form\Form;
@@ -76,8 +76,7 @@ class Model extends AbstractModel
             self::$db = new Db($db['dsn'],$db['user'],$db['password']);
         }
 
-        $this->sqlBuilder = new Sql($this);
-
+        $this->sqlBuilder = new SqlBuilder($this);
     }
 
     /**
@@ -111,12 +110,11 @@ class Model extends AbstractModel
      * @param string $order
      * @return $this
      */
-    public function orderBy($by,$order='desc')
+    public function order($by,$order='desc')
     {
         $this->order = " ORDER BY $by $order";
         return $this;
     }
-
     /**
      * @param $number
      * @param null $number2
@@ -280,10 +278,5 @@ class Model extends AbstractModel
         {
             return $this->sql;
         }
-    }
-
-    public function validate()
-    {
-
     }
 }

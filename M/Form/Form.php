@@ -50,6 +50,4 @@ class Form
             $model->$key = trim($value);    //去除前后空格
         }
     }
-
-
 }

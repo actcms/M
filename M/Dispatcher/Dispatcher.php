@@ -171,5 +171,4 @@ class Dispatcher
 
         return $this->parameter;
     }
-
 }

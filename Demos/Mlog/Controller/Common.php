@@ -50,7 +50,7 @@ class Common extends Controller
     public function getRecentPost()
     {
         $Post = new Post();
-        $recentPost = $Post->orderBy('id')->limit(10)->select();
+        $recentPost = $Post->order('id')->limit(10)->select();
 
         $this->assign('recentPost',$recentPost);
     }

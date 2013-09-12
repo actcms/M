@@ -10,5 +10,5 @@ namespace M\Db;
 
 class Exception extends \M\Exception\Exception
 {
-
+    
 }
