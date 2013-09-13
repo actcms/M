@@ -67,6 +67,7 @@ class ValidateCode
         $this->addDisturbElement();
         header('Content-Type: image/png');
         imagepng($this->image);
+        imagedestroy($this->image);
     }
 
     /**
