@@ -149,6 +149,15 @@ class App extends M
         }
     }
 
+    /**
+     * 自动生成url
+     *
+     * 依据配置文件的设置自动生成url,避免
+     * @param $controller
+     * @param $action
+     * @param string $parameter
+     * @return string
+     */
     public static function buildUrl($controller,$action,$parameter = '')
     {
         if(self::getConfig('urlRules')=='path')

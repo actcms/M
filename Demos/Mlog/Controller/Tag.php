@@ -35,4 +35,9 @@ class Tag extends Common
             $Tag->save();
         }
     }
+
+    public function update()
+    {
+
+    }
 }

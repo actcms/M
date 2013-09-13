@@ -59,6 +59,4 @@ class Url
     {
         return Server::getHomeUrl().App::getRequest()->getRawRequests();
     }
-
-
 }

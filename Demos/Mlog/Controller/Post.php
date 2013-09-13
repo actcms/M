@@ -59,7 +59,7 @@ class Post extends Common
             $Tag->addAll($Post->tags);
 
             $result = $Post->save();
-            $Post->getSql(true);
+            //$Post->getSql(true);
             if($result)
             {
                 $this->success('发布成功',array('Post','update',$Post->getPdo()->lastInsertId()));
