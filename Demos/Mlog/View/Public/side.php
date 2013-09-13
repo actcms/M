@@ -17,8 +17,8 @@
         <h3 class="panel-title"><span class="glyphicon glyphicon-tags"> Tag</span></h3>
     </div>
     <div class="panel-body">
-        <?php foreach($tags as $t){ ?>
-            <a href="<?php echo \M\App::buildUrl('Post','index',$t['id']) ?>"><?php echo $t['tag'] ?> <span class="badge"><?php echo $t['number'] ?></span></a>
+        <?php foreach($tags as $tag => $number){ ?>
+            <a href="<?php echo \M\App::buildUrl('Post','index',$tag) ?>"><?php echo $tag ?> <span class="badge"><?php echo $number ?></span></a>
         <?php } ?>
     </div>
 </div>

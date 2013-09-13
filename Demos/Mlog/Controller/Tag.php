@@ -7,37 +7,11 @@
 
 namespace Mlog\Controller;
 
-use Mlog\Model\Tag as MTag;
-/**
- * Class Tag
- * @package Mlog\Controller
- */
-class Tag extends Common
+
+class Tag
 {
     public function index()
     {
-        $this->assign('word','hello world');
-        $this->display('Tag/index');
-    }
-
-    public function add()
-    {
-
-    }
-
-    public function addAll($tags)
-    {
-        $tags = explode(',',$tags);
-        $Tag = new MTag();
-        foreach($tags as $tag)
-        {
-            $Tag->tag = $tag;
-            $Tag->save();
-        }
-    }
-
-    public function update()
-    {
-
+        
     }
 }

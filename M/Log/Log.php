@@ -26,6 +26,11 @@ class Log
     {
         $message = date('Y-m-d h:i:s').','.$message.';';
         $file = APP.'/Log/log.txt';
+        if(!file_exists($file))
+        {
+            mkdir(APP.'/log');
+            touch($file);
+        }
         $handle = fopen($file,'a');
 
         $result = fwrite($handle,$message);

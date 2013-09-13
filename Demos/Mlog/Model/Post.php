@@ -139,4 +139,18 @@ class Post extends Model
         return $this;
     }
 
+    public function getAllTag()
+    {
+        $tags = '';
+        $post = $this->select('tags');
+
+        foreach($post as $p)
+        {
+            $tags .= $p['tags'].',';
+        }
+
+        $tags = rtrim($tags, ',');
+        $tags = explode(',',$tags);
+        return $tags;
+    }
 }

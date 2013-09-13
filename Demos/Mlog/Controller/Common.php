@@ -60,8 +60,9 @@ class Common extends Controller
      */
     public function getTag()
     {
-        $Tag = new Tag();
-        $tags = $Tag->limit(100)->select();
+        $post = new Post();
+        $tags = $post->getAllTag();
+        $tags = array_count_values($tags);
         $this->assign('tags',$tags);
     }
 
