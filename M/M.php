@@ -12,6 +12,7 @@ use M\Http\Request\PathRequest;
 use M\Http\Request\Request;
 use M\Loader\Loader;
 use M\Log\Log;
+use M\Text\Text;
 
 /**
  * Class M
@@ -171,5 +172,10 @@ class App extends M
         Http\Url\Url::$mode = $mode;
 
         return Http\Url\Url::buildUrl($controller,$action,$parameter);
+    }
+
+    public static function Text()
+    {
+        return Text;
     }
 }

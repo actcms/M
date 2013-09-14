@@ -12,7 +12,7 @@ use M\Base\Base;
  * Class AbstractModel
  * @package M\Mvc\Model
  */
-abstract class AbstractModel extends Base
+abstract class AbstractModel
 {
     /**
      * 数据库表名

@@ -117,9 +117,16 @@ class Post extends Model
      * @param $authorId
      * @return $this
      */
-    public function setAuthorId($authorId)
+    public function setAuthorId($authorId = '')
     {
-        $this->authorId = $authorId;
+        if(empty($authorId))
+        {
+            $this->authorId = $_SESSION['id'];
+        }
+        else
+        {
+            $this->authorId = $authorId;
+        }
         return $this;
     }
 
@@ -127,15 +134,29 @@ class Post extends Model
      * @param $createTime
      * @return $this
      */
-    public function setCreateTime($createTime)
+    public function setCreateTime($createTime = '')
     {
-        $this->createTime = $createTime;
+        if(empty($createTime))
+        {
+            $this->createTime = time();
+        }
+        else
+        {
+            $this->createTime = $createTime;
+        }
         return $this;
     }
 
     public function setTop($value)
     {
-        $this->top = $value;
+        if(empty($value))
+        {
+            $this->top = '0';
+        }
+        {
+            $this->top = $value;
+        }
+
         return $this;
     }
 

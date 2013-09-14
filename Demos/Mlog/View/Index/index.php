@@ -7,7 +7,7 @@
                     <h5><?php echo date('y-m-d h:m:s',$p['create_time']);?></h5>
                 </hgroup>
                 <hr>
-                <p class="list-group-item-text"><?php echo $p['content'];?>...</p>
+                <p class="list-group-item-text"><?php echo \M\Base\Text::substr($p['content'],0,200);?>……</p>
             </a>
         </div>
     <?php } ?>

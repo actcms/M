@@ -5,7 +5,7 @@
  * @author Ma Guowei <imaguowei@gmail.com>
  */
 
-namespace M\Text;
+namespace M\Base;
 
 /**
  * 字符处理
