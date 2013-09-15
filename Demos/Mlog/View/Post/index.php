@@ -9,7 +9,9 @@
     </div>
     <div class="panel-footer">
         <div class="row">
-            <a href="" class="col-md-10"><span class="glyphicon glyphicon-tags"> <?php echo $post['tags']?></span></a>
+            <?php foreach(explode(',',$post['tags']) as $tag) {?>
+                <a href="<?php echo \M\App::buildUrl('Tag','index',$tag) ?>" class="col-md-10"><span class="glyphicon glyphicon-tags"> <?php echo $tag ?></span></a>
+            <?php } ?>
             <a href="" class="col-md-1"><span class="glyphicon glyphicon-thumbs-down"></span></a>
             <a href="" class="col-md-1"><span class="glyphicon glyphicon-thumbs-up"></span></a>
         </div>
