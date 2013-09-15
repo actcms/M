@@ -8,10 +8,29 @@
 namespace Mlog\Controller;
 
 
-class Tag
+use M\Extend\Page;
+use Mlog\Model\Post;
+
+class Tag extends Common
 {
-    public function index()
+    /**
+     * @var array
+     */
+    public $data = array(
+        'title' => 'Tag',
+        'nav' => array('Tag'),
+    );
+
+    public function index($tag)
     {
-        
+        $tag = urldecode($tag);
+
+        $Post = new Post();
+        $Page = new Page($Post);
+        $this->assign('page',$Page->getPage());
+
+        $post = $Post->where("`tags` LIKE '%$tag%'")->order('id', 'desc')->limit(5)->select();
+        $this->assign('post', $post);
+        $this->display('Tag/index');
     }
 }
