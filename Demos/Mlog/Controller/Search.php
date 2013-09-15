@@ -8,7 +8,9 @@
 namespace Mlog\Controller;
 
 
+use M\Extend\Page;
 use M\Mvc\Model\Model;
+use Mlog\Model\Post;
 
 class Search extends Common
 {
@@ -22,8 +24,21 @@ class Search extends Common
 
     public function index()
     {
-        echo $_POST['search'];
+        if (!empty($_POST['search']))
+        {
+            $key = $_POST['search'];
 
-        $this->display('Search/index');
+            $Post = new Post();
+            $Page = new Page($Post);
+            $this->assign('page',$Page->getPage());
+            $post = $Post->where("`title` LIKE '%$key%' OR `content` LIKE '%$key%' OR `tags` LIKE '%$key%'")->order('id','desc')->limit(5)->select();
+            $this->assign('post', $post);
+            $this->display('Search/index');
+        }
+        else
+        {
+            $this->display('Search/search');
+        }
+
     }
 }

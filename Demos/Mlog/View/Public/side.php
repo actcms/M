@@ -18,7 +18,7 @@
     </div>
     <div class="panel-body">
         <?php foreach($tags as $tag => $number){ ?>
-            <a href="<?php echo \M\App::buildUrl('Post','index',$tag) ?>"><?php echo $tag ?> <span class="badge"><?php echo $number ?></span></a>
+            <a href="<?php echo \M\App::buildUrl('Post','index',$tag) ?>"><?php echo $tag ?> <span class="badge"><?php echo $number ?></span></a>&nbsp
         <?php } ?>
     </div>
 </div>
