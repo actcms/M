@@ -37,11 +37,10 @@ class Index extends Common
      */
     public function index($id)
     {
-        //$this->data['nav'] = array('首页');
-
         $Post = new Post();
 
         $page = new Page($Post);
+        $this->data['title'] = '';
         $this->assign('page', $page->getPage());
 
         $Post->join('LEFT JOIN user ON post.author_id=user.id');
@@ -72,7 +71,8 @@ class Index extends Common
         }
         else
         {
-            $this->data['nav'] = array('首页','登录');
+            $this->data['title'] = '请填写登陆信息';
+            $this->data['nav'] = array('登录'=> 'Index/login');
             $this->display('Index/login');
         }
     }
@@ -100,8 +100,8 @@ class Index extends Common
         }
         else
         {
-            $this->data['title'] = 'Reg';
-            $this->data['nav'] = array('首页','注册');
+            $this->data['title'] = '请认真填写注册信息';
+            $this->data['nav'] = array('注册'=>'Index/reg');
             $this->display('Index/reg');
         }
     }

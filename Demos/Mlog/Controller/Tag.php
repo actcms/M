@@ -17,13 +17,15 @@ class Tag extends Common
      * @var array
      */
     public $data = array(
-        'title' => 'Tag',
-        'nav' => array('Tag'),
+        'title' => '',
+        'nav' => array('标签'=>'Tag/index'),
     );
 
     public function index($tag)
     {
         $tag = urldecode($tag);
+        $this->data['title'] = $tag;
+        $this->data['nav'] = array('标签'=>'Tag/index',$tag=>"Tag/index/$tag");
 
         $Post = new Post();
         $Page = new Page($Post);

@@ -1,5 +1,5 @@
 <div id="post">
-    <h3><?php echo $title ?></h3>
+    <h3><?php echo $this->data['title'] ?></h3>
     <form action="<?php echo \M\App::buildUrl('Post','add');?>" method="post" id="add-post">
         <input type="text" class="form-control" name="title" placeholder="Input title"><br>
         <textarea name="content" class="form-control" rows="10"></textarea>

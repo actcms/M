@@ -18,16 +18,17 @@ class Search extends Common
      * @var array
      */
     public $data = array(
-        'title' => 'Search',
-        'nav' => array('Search'),
+        'title' => '搜索',
+        'nav' => array('搜索'=>'Search/index'),
     );
 
     public function index()
     {
         if (!empty($_POST['search']))
         {
-            $key = $_POST['search'];
-
+            $_SESSION['search'] = $_POST['search'];
+            $key = $_SESSION['search'];
+            $this->data['title'] = '搜索-- '.$key;
             $Post = new Post();
             $Page = new Page($Post);
             $this->assign('page',$Page->getPage());

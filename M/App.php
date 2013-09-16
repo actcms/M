@@ -59,9 +59,4 @@ class App extends M
 
         return Http\Url\Url::buildUrl($controller,$action,$parameter);
     }
-
-    public static function Text()
-    {
-        return Text;
-    }
 }

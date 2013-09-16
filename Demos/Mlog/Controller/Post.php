@@ -20,7 +20,7 @@ class Post extends Common
      */
     public $data = array(
         'title' => 'Post',
-        'nav' => array('Post'),
+        'nav' => array('文章'=>''),
     );
 
     /**
@@ -33,7 +33,7 @@ class Post extends Common
         $Post = new MPost();
         $post = $Post->join('LEFT JOIN user ON post.author_id=user.id')->findById($id);
         $this->data['title'] = $post['title'];
-        $this->data['nav'] = array('Post','index');
+        $this->data['nav'] = array('文章'=>'Post/index');
         $this->assign('page',$id);
         $this->assign('post',$post);
         $this->display('Post/index');
@@ -66,8 +66,8 @@ class Post extends Common
         }
         else
         {
-            $this->data['nav'] = array('Post','add');
-            $this->assign('title','ADD POST');
+            $this->data['nav'] = array('文章'=>'Post/index','撰写'=>'Post/add');
+            $this->data['title'] = '撰写新文章';
             $this->display('Post/add');
         }
     }
@@ -123,8 +123,8 @@ class Post extends Common
         }
         else
         {
-            $this->data['nav'] = array('Post','update');
-            $this->assign('title','UPDATE POST');
+            $this->data['nav'] = array('文章'=>'Post/index','更新'=>"Post/update/$id");
+            $this->data['title'] = '更新文章';
             $post = $Post->findById($id);
             $this->assign('post',$post);
             $this->display('Post/update');
