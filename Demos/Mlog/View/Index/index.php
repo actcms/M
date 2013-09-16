@@ -9,7 +9,7 @@
                             <span class="glyphicon glyphicon-user" title="作者"> <?php echo $p['username'];?></span>
                         </small>
                     </h1>
-                    <h5><span class="glyphicon glyphicon-time" title="发布时间"> <?php echo date('y-m-d h:m:s',$p['create_time']);?></span></h5>
+                    <h5><span class="glyphicon glyphicon-calendar" title="发布时间"> <?php echo date('y-m-d h:m:s',$p['create_time']);?></span></h5>
                 </hgroup>
                 <hr>
                 <p class="list-group-item-text"><?php echo \M\Base\Text::substr($p['content'],0,200);?>……</p>

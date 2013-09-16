@@ -27,6 +27,10 @@ class Common extends Controller
      */
     protected $layout = 'main';    //设置布局
 
+    public $data = array(
+        'nav' => '',
+    );
+
     /**
      *初始化
      */

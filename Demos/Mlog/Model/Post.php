@@ -99,7 +99,7 @@ class Post extends Model
      */
     public function setContent($content)
     {
-        $this->content = $content;
+        $this->content = htmlspecialchars($content);
         return $this;
     }
 

@@ -30,14 +30,20 @@ class Url
      *
      * 根据参数自动生成相应的url形式，在切换url模式时可避免手动修改的麻烦
      *
+     * @example 如果只传入一个参数，那么可以是  "Controller/action/parameter" 形式
+     *
      * @param $controller
      * @param $action
      * @param $parameter
      * @return string
      */
-    public static function buildUrl($controller,$action,$parameter='')
+    public static function buildUrl($controller,$action='',$parameter='')
     {
-        if(empty($parameter))
+        if(empty($action))
+        {
+            $path = self::$mode.$controller;
+        }
+        else if(empty($parameter))
         {
             $path = self::$mode."$controller/$action";
         }
@@ -47,8 +53,8 @@ class Url
         }
 
         return Server::getHomeUrl().$path;
-
     }
+
 
     /**
      * 获取当前页面url

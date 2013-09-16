@@ -3,6 +3,8 @@
         <h1 class="panel-title">
             <a href="<?php \M\App::buildUrl('Post','index',$post['id']) ?>"><?php echo $post['title'] ?></a>
             <a class="pull-right">
+                <?php ?>
+                <span class="glyphicon glyphicon-calendar" title="发布时间"><?php echo date('y-m-d',$post['create_time']);?></span>
                 <span class="glyphicon glyphicon-user" title="作者"> <?php echo $post['username'];?></span>
             </a>
         </h1>

@@ -25,10 +25,12 @@ class User extends Common
     /**
      *用户公开显示主页
      */
-    public function index()
+    public function index($username)
     {
+        $this->data['nav'] = array('User',$username);
+
         $User = new MUser();
-        $user = $User->select();
+        $user = $User->find('username',$username);
         $this->assign('user',$user);
         $this->display('User/index');
     }
