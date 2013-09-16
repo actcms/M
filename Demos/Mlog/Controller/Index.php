@@ -39,9 +39,8 @@ class Index extends Common
     {
         $Post = new Post();
 
-        $page = new Page($Post);
-        $this->data['title'] = '';
-        $this->assign('page', $page->getPage());
+        $Page = new Page($Post);
+        $this->assign('page', array($Page->getPage(),'Index/index'));
 
         $Post->join('LEFT JOIN user ON post.author_id=user.id');
         $post = $Post->order('post.top desc,post.id','desc')->limit($id?($id-1)*5:0,5)->select();

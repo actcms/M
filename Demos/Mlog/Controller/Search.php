@@ -22,17 +22,24 @@ class Search extends Common
         'nav' => array('搜索'=>'Search/index'),
     );
 
-    public function index()
+    public function index($id)
     {
-        if (!empty($_POST['search']))
+        if (!empty($_POST['search'])||isset($_SESSION['search']))
         {
-            $_SESSION['search'] = $_POST['search'];
+            if(!empty($_POST['search']))
+            {
+                $_SESSION['search'] = $_POST['search'];
+            }
+
             $key = $_SESSION['search'];
             $this->data['title'] = '搜索-- '.$key;
             $Post = new Post();
             $Page = new Page($Post);
-            $this->assign('page',$Page->getPage());
-            $post = $Post->join('LEFT JOIN user ON post.author_id=user.id')->where("`title` LIKE '%$key%' OR `content` LIKE '%$key%' OR `tags` LIKE '%$key%'")->order('post.id','desc')->limit(5)->select();
+            $this->assign('page', array($Page->getPage(),'Search/index'));
+
+            $Post->join('LEFT JOIN user ON post.author_id=user.id');
+            $Post->where("`title` LIKE '%$key%' OR `content` LIKE '%$key%' OR `tags` LIKE '%$key%'");
+            $post = $Post->order('post.id','desc')->limit($id?($id-1)*5:0,5)->select();
             $this->assign('post', $post);
             $this->display('Search/index');
         }
