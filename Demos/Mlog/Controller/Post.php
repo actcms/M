@@ -31,8 +31,7 @@ class Post extends Common
         $id = empty($id)?1:$id;
 
         $Post = new MPost();
-        $post = $Post->findById($id);
-
+        $post = $Post->join('LEFT JOIN user ON post.author_id=user.id')->findById($id);
         $this->data['title'] = $post['title'];
         $this->data['nav'] = array('Post','index');
         $this->assign('page',$id);

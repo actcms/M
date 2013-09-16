@@ -97,9 +97,9 @@ class SqlBuilder
      */
     public function selectSqlBuild()
     {
-        $sql = "SELECT %s FROM %s %s %s %s";
+        $sql = "SELECT %s FROM %s %s %s %s %s";
         $model = $this->model;
-        return sprintf($sql,$model->cols,$model->table,$model->where,$model->order,$model->limit);
+        return sprintf($sql,$model->cols,$model->table,$model->join,$model->where,$model->order,$model->limit);
     }
 
     /**
@@ -110,7 +110,17 @@ class SqlBuilder
      */
     public function findByIdSqlBuild($id)
     {
-        return $this->findSqlBuild($this->model->primary_key,$id);
+        if(($this->model->join) != '')
+        {
+            $table = $this->model->table;
+            $key = $this->model->primary_key;
+            $key = $table.'.'.$key;
+        }
+        else
+        {
+            $key = $this->model->primary_key;
+        }
+        return $this->findSqlBuild($key,$id);
     }
 
     /**
@@ -122,8 +132,8 @@ class SqlBuilder
      */
     public function findSqlBuild($key,$value)
     {
-        $sql = "SELECT %s FROM %s WHERE $key = '$value'";
-        return sprintf($sql,$this->model->cols,$this->model->table);
+        $sql = "SELECT %s FROM %s %s WHERE $key = '$value'";
+        return sprintf($sql,$this->model->cols,$this->model->table,$this->model->join);
     }
 
     /**

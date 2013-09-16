@@ -42,7 +42,8 @@ class Index extends Common
         $page = new Page($Post);
         $this->assign('page', $page->getPage());
 
-        $post = $Post->order('top desc,id','desc')->limit($id?($id-1)*5:0,5)->select();
+        $Post->join('LEFT JOIN user ON post.author_id=user.id');
+        $post = $Post->order('post.top desc,post.id','desc')->limit($id?($id-1)*5:0,5)->select();
         $this->assign('post',$post);
         $this->display('Index/index');
     }

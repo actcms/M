@@ -35,9 +35,14 @@ class Model extends AbstractModel
      */
     protected $cols = '*';
     /**
-     * sql查询条件 WHERE 子句
+     * 表连接
      * @var
      */
+    protected $join;
+    /**
+    * sql查询条件 WHERE 子句
+    * @var
+    */
     protected $where;
     /**
      * sql查询条件 ORDER BY 子句
@@ -54,6 +59,10 @@ class Model extends AbstractModel
     * @var
     */
     private $sqlBuilder;
+    /**
+     * 主键
+     * @var
+     */
     protected $primary_key;
     /**
      * 数据映射数组
@@ -88,6 +97,16 @@ class Model extends AbstractModel
     public function cols($cols = '*')
     {
         $this->cols = $cols;
+        return $this;
+    }
+
+    /**
+     * @param $join
+     * @return $this
+     */
+    public function join($join)
+    {
+        $this->join = $join;
         return $this;
     }
 

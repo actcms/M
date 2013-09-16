@@ -31,7 +31,7 @@ class Search extends Common
             $Post = new Post();
             $Page = new Page($Post);
             $this->assign('page',$Page->getPage());
-            $post = $Post->where("`title` LIKE '%$key%' OR `content` LIKE '%$key%' OR `tags` LIKE '%$key%'")->order('id','desc')->limit(5)->select();
+            $post = $Post->join('LEFT JOIN user ON post.author_id=user.id')->where("`title` LIKE '%$key%' OR `content` LIKE '%$key%' OR `tags` LIKE '%$key%'")->order('post.id','desc')->limit(5)->select();
             $this->assign('post', $post);
             $this->display('Search/index');
         }
@@ -39,6 +39,5 @@ class Search extends Common
         {
             $this->display('Search/search');
         }
-
     }
 }

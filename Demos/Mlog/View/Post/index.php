@@ -2,6 +2,9 @@
     <div class="panel-heading">
         <h1 class="panel-title">
             <a href="<?php \M\App::buildUrl('Post','index',$post['id']) ?>"><?php echo $post['title'] ?></a>
+            <a class="pull-right">
+                <span class="glyphicon glyphicon-user" title="作者"> <?php echo $post['username'];?></span>
+            </a>
         </h1>
     </div>
     <div class="panel-body">
