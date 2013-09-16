@@ -43,5 +43,4 @@ class Request extends AbstractRequest
         $requests = explode('/',$this->rawRequests);
         $this->setRequests($requests);
     }
-
 }

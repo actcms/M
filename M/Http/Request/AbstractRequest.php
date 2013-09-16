@@ -50,6 +50,7 @@ abstract class AbstractRequest
     {
         return new static();
     }
+
     /**
      * @return string
      */
@@ -57,6 +58,7 @@ abstract class AbstractRequest
     {
         return $this->requests;
     }
+
     /**
      * @param $value array
      */
@@ -79,6 +81,23 @@ abstract class AbstractRequest
     public function setRawRequests($value)
     {
         $this->rawRequests = $value;
+    }
+
+    /**
+     * 获取指定位置的 Request 参数
+     * @param $id
+     * @return mixed
+     */
+    public function getParameter($id)
+    {
+        if(!empty($this->requests[$id]))
+        {
+            return $this->requests[$id];
+        }
+        else
+        {
+            return '';
+        }
     }
 
     /**

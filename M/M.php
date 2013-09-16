@@ -97,12 +97,17 @@ class M
         return self::$config->getConfig($name);
     }
 
+    /**
+     * 获取 Request
+     * @return mixed
+     */
     public static function getRequest()
     {
         return self::$request;
     }
 
     /**
+     * 第三方类库导入
      * @param $class
      */
     public static function import($class)
