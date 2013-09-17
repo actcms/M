@@ -43,6 +43,8 @@ class User extends Common
             $Page = new Page($Post);
             $this->assign('page', array($Page->getPage(),"User/index/$username"));
             $uid = $user['id'];
+
+            $Post->cols('post.id,post.title,post.content,post.tags,post.author_id,post.create_time,post.top,user.username');
             $Post->join('LEFT JOIN user ON post.author_id=user.id')->where("post.author_id=$uid");
             $post = $Post->order('post.top desc,post.id','desc')->limit($id?($id-1)*5:0,5)->select();
 

@@ -73,15 +73,32 @@ class Common extends Controller
     /**
      * 检查用户登录权限
      *
-     * 检查是否存在用户session，判断是否为登录用户
-     * 如果用户没有登录则跳转到登录页面
+     * 检查是否存在用户session，判断是否为登录用户，如果用户没有登录则跳转到登录页面
+     * 检查用户要操作的数据是否是自己创建的，如果不是，则不具备操作权限，返回失败提醒
      */
-    public function checkPower()
+    public function checkPower($id='')
     {
         if(empty($_SESSION['username']))
         {
             $this->error('您没有访问权限，请登录后操作',array('Index','login'));
             exit();
         }
+        else if($_SESSION[username] == 'admin')
+        {
+            //pass
+        }
+        else
+        {
+            if(!empty($id))
+            {
+                $Post = new Post();
+                $post = $Post->findById($id);
+                if($post['author_id'] != $_SESSION['id'])
+                {
+                    $this->error('您不具备操作权限');
+                }
+            }
+        }
+
     }
 }

@@ -32,8 +32,9 @@ class Tag extends Common
         $Page = new Page($Post);
         $this->assign('page', array($Page->getPage(),"Tag/index/$tag"));
 
+        $Post->cols('post.id,post.title,post.content,post.tags,post.author_id,post.create_time,post.top,user.username');
         $Post->join('LEFT JOIN user ON post.author_id=user.id');
-        $post = $Post->where("`tags` LIKE '%$tag%'")->order('post.id', 'desc')->limit($id?($id-1)*1:0,1)->select();
+        $post = $Post->where("`tags` LIKE '%$tag%'")->order('post.id', 'desc')->limit($id?($id-1)*5:0,5)->select();
         $this->assign('post', $post);
         $this->display('Tag/index');
     }

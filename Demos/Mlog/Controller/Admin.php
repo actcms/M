@@ -13,6 +13,7 @@ namespace Mlog\Controller;
  */
 class Admin
 {
+
     public function index()
     {
 
