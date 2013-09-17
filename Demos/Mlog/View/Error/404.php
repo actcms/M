@@ -1,2 +1,2 @@
 <h1><?php echo '404 NOT FIND' ?></h1>
-<p>some thing was wrong,you can try again or back to the <a href="<?php echo \M\App::getBaseUrl() ?>">home page</a></p>
+<p>您访问的页面不存在！您可以返回主页 <a href="<?php echo \M\App::getHomeUrl() ?>">home page</a></p>

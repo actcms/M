@@ -6,7 +6,9 @@
  */
 namespace Mlog\Controller;
 
+use Mlog\Model\Post;
 use Mlog\Model\User as MUser;
+use M\Extend\Page;
 use M\Extend\Upload;
 /**
  * Class User
@@ -18,8 +20,8 @@ class User extends Common
      * @var array
      */
     public $data = array(
-        'title' => 'User',
-        'nav' => array('User'),
+        'title' => '用户',
+        'nav' => array('用户'=>'User/index'),
     );
 
     /**
@@ -27,12 +29,30 @@ class User extends Common
      */
     public function index($username)
     {
-        $this->data['nav'] = array('User',$username);
+        $username = urldecode($username);
+        $id = \M\App::getRequest()->getParameter(3)?\M\App::getRequest()->getParameter(3):1;
 
         $User = new MUser();
         $user = $User->find('username',$username);
-        $this->assign('user',$user);
-        $this->display('User/index');
+        if($user)
+        {
+            $this->data['nav'] = array('用户'=>'User/index',$username=>"User/index/$username");
+            $this->data['title'] = $username.' 的主页';
+
+            $Post = new Post();
+            $Page = new Page($Post);
+            $this->assign('page', array($Page->getPage(),"User/index/$username"));
+            $uid = $user['id'];
+            $Post->join('LEFT JOIN user ON post.author_id=user.id')->where("post.author_id=$uid");
+            $post = $Post->order('post.top desc,post.id','desc')->limit($id?($id-1)*5:0,5)->select();
+
+            $this->assign('post',$post);
+            $this->display('Index/index');
+        }
+        else
+        {
+            $this->error_404();
+        }
     }
 
     /**

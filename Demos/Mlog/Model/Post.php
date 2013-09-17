@@ -147,6 +147,13 @@ class Post extends Model
         return $this;
     }
 
+    /**
+     * 文章置顶
+     * 默认为0,不置顶
+     *
+     * @param $value
+     * @return $this
+     */
     public function setTop($value)
     {
         if(empty($value))
@@ -160,6 +167,10 @@ class Post extends Model
         return $this;
     }
 
+    /**
+     * 返回所有标签
+     * @return array
+     */
     public function getAllTag()
     {
         $tags = '';
