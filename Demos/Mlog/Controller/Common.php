@@ -83,7 +83,7 @@ class Common extends Controller
             $this->error('您没有访问权限，请登录后操作',array('Index','login'));
             exit();
         }
-        else if($_SESSION[username] == 'admin')
+        else if($_SESSION['username'] == 'admin')
         {
             //pass
         }

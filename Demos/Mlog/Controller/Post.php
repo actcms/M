@@ -78,7 +78,7 @@ class Post extends Common
      */
     public function delete($id)
     {
-        $this->checkPower();
+        $this->checkPower($id);
 
         $Post = new MPost();
         $Tag = new Tag();
@@ -100,7 +100,7 @@ class Post extends Common
      */
     public function update($id)
     {
-        $this->checkPower();
+        $this->checkPower($id);
         $Post = new MPost();
 
         if(isset($_POST['update']))
