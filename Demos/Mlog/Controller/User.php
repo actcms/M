@@ -16,6 +16,7 @@ use M\Extend\Upload;
  */
 class User extends Common
 {
+    //protected $layout = 'user';
     /**
      * @var array
      */

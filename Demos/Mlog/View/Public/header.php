@@ -13,7 +13,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo \M\App::getHomeUrl()?>">Home</a>
+                <a class="navbar-brand" href="<?php echo \M\App::getHomeUrl()?>">Mlog</a>
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
@@ -46,9 +46,22 @@
                             <span class="glyphicon glyphicon-user"> <?php echo isset($_SESSION['username'])?'hello '.$_SESSION['username']:''?></span> <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="<?php echo \M\App::buildUrl('Index','Login')?>">Login</a></li>
-                            <li><a href="<?php echo \M\App::buildUrl('Index','logout')?>">Logout</a></li>
-                            <li><a href="#">Setting</a></li>
+                            <?php if(empty($_SESSION['username'])){ ?>
+                                <li><a href="<?php echo \M\App::buildUrl('Index','Login')?>"> 登录</a></li>
+                            <?php } ?>
+                            <?php if(isset($_SESSION['username'])){ ?>
+                                <li>
+                                    <a href="<?php echo \M\App::buildUrl('User','index',$_SESSION['username']) ?>">
+                                        <span class="glyphicon glyphicon-home"> 我的主页</span>
+                                    </a>
+                                </li>
+                                <li><a href="#"><span class="glyphicon glyphicon-cog"> 设置</span></a></li>
+                                <li>
+                                    <a href="<?php echo \M\App::buildUrl('Index','logout')?>">
+                                        <span class="glyphicon glyphicon-off"> 退出登录</span>
+                                    </a
+                                </li>
+                            <?php } ?>
                         </ul>
                     </li>
                 </ul>
