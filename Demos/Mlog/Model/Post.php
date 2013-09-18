@@ -183,6 +183,14 @@ class Post extends Model
 
         $tags = rtrim($tags, ',');
         $tags = explode(',',$tags);
+        $tags = array_count_values($tags);
         return $tags;
+    }
+
+    public function getTagPosts($tag)
+    {
+        $Post = new Post();
+        $post = $Post->where("`tags` LIKE '%$tag%'")->select();
+        return $post;
     }
 }

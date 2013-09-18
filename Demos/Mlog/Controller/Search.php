@@ -41,6 +41,7 @@ class Search extends Common
             $Post->join('LEFT JOIN user ON post.author_id=user.id');
             $Post->where("`title` LIKE '%$key%' OR `content` LIKE '%$key%' OR `tags` LIKE '%$key%'");
             $post = $Post->order('post.id','desc')->limit($id?($id-1)*5:0,5)->select();
+
             $this->assign('post', $post);
             $this->display('Search/index');
         }

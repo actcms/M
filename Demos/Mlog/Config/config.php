@@ -21,7 +21,6 @@ return array(
     'urlRules' => 'query',
     //'urlRules' => 'path',         //设置为PathInfo模式
 
-
     /**
      * 数据库配置
      */

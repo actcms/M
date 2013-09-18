@@ -38,4 +38,11 @@ class Tag extends Common
         $this->assign('post', $post);
         $this->display('Tag/index');
     }
+
+    public function tags()
+    {
+        $Post = new Post();
+        $this->assign('Post',$Post);
+        $this->display('Tag/tags');
+    }
 }

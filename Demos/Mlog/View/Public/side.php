@@ -1,6 +1,6 @@
 <div class="recent-post panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title"><span class="glyphicon glyphicon-list"> Recent Post</span></h3>
+        <h3 class="panel-title"><span class="glyphicon glyphicon-list"> 近期发布</span></h3>
     </div>
     <div class="panel-body">
         <p>...</p>
@@ -14,7 +14,7 @@
 </div>
 <div class="tag panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title"><span class="glyphicon glyphicon-tags"> Tag</span></h3>
+        <h3 class="panel-title"><span class="glyphicon glyphicon-tags"> 标签</span></h3>
     </div>
     <div class="panel-body">
         <?php foreach($tags as $tag => $number){ ?>

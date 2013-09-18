@@ -28,7 +28,7 @@ class Common extends Controller
     protected $layout = 'main';    //设置布局
 
     public $data = array(
-        'nav' => '',
+        'nav' => array(),
     );
 
     /**
@@ -66,7 +66,6 @@ class Common extends Controller
     {
         $post = new Post();
         $tags = $post->getAllTag();
-        $tags = array_count_values($tags);
         $this->assign('tags',$tags);
     }
 
@@ -85,7 +84,7 @@ class Common extends Controller
         }
         else if($_SESSION['username'] == 'admin')
         {
-            //pass
+            return $_SESSION['username'];
         }
         else
         {
@@ -99,6 +98,5 @@ class Common extends Controller
                 }
             }
         }
-
     }
 }
