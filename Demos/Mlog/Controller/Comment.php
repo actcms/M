@@ -15,10 +15,18 @@ class Comment extends Common
         'nav' => array('评论'=>''),
     );
 
-    public function index()
+    /**
+     * 根据传入的文章id,返回该id的所有评论
+     * 返回评论格式为 json
+     * @param int $id
+     */
+    public function index($id=1)
     {
-        $Commnet = new MComment();
-        $comment = $Commnet->select();
+        $this->layout = '';
+        $Comment = new MComment();
+        $comment = $Comment->where("post_id = $id")->select();
+        $json =  json_encode($comment);
+        echo $json;
     }
 
     public function add($id)

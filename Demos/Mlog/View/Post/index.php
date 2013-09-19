@@ -4,8 +4,9 @@
             <a href="<?php \M\App::buildUrl('Post','index',$post['id']) ?>"><?php echo $post['title'] ?></a>
             <a class="pull-right">
                 <?php ?>
-                <span class="glyphicon glyphicon-calendar" title="发布时间"><?php echo date('y-m-d',$post['create_time']);?></span>
-                <span class="glyphicon glyphicon-user" title="作者"> <?php echo $post['username'];?></span>
+                <span class="glyphicon glyphicon-calendar" title="发布时间"><?php echo date('y-m-d',$post['create_time']);?></span>&nbsp
+                <span class="glyphicon glyphicon-user" title="作者"><?php echo $post['username'];?></span>&nbsp
+                <span class="glyphicon glyphicon-comment"></span>
             </a>
         </h1>
     </div>
@@ -21,6 +22,9 @@
             <a href="" class="col-md-1"><span class="glyphicon glyphicon-thumbs-up"></span></a>
         </div>
     </div>
+</div>
+<div class="comment">
+    <span class="show-comment glyphicon glyphicon-comment"></span>
 </div>
 <div id="pageNav">
     <ul class="pager">
