@@ -66,10 +66,28 @@ class User extends Common
     {
         $this->checkPower();
 
+        $username = $_SESSION['username'];
+        $this->data['title'] = $username.' 的管理主页';
+
         $User = new Muser();
-        $user = $User->select();
+        $user = $User->find('username',$username);
+
+
         $this->assign('user',$user);
         $this->display('User/admin');
+    }
+
+    public function user()
+    {
+        $this->checkPower();
+
+        $this->display('User/user');
+    }
+
+    public function setting()
+    {
+        $this->checkPower();
+        $this->display('User/setting');
     }
 
     public function upload()
@@ -91,5 +109,26 @@ class User extends Common
                 $this->error('上传失败');
             }
         }
+    }
+
+    /**
+     *获取最近的文章列表，默认显示10篇
+     */
+    public function getRecentPost()
+    {
+        $userID = $_SESSION['id'];
+        $Post = new Post();
+        $recentPost = $Post->where("`author_id`=$userID")->order('id')->limit(10)->select();
+        $this->assign('recentPost',$recentPost);
+    }
+
+    /**
+     *获取标签云，默认显示100条
+     */
+    public function getTag()
+    {
+        $post = new Post();
+        $tags = $post->getAllTag($_SESSION['id']);
+        $this->assign('tags',$tags);
     }
 }

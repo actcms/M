@@ -17,7 +17,7 @@ class Tag extends Common
      * @var array
      */
     public $data = array(
-        'title' => '',
+        'title' => 'Tag',
         'nav' => array('标签'=>'Tag/index'),
     );
 
@@ -41,6 +41,9 @@ class Tag extends Common
 
     public function tags()
     {
+        $this->layout = 'tag';
+        $this->data['title'] = '全部标签';
+
         $Post = new Post();
         $this->assign('Post',$Post);
         $this->display('Tag/tags');

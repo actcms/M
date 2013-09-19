@@ -169,13 +169,24 @@ class Post extends Model
 
     /**
      * 返回所有标签
+     *
+     * 如果传入用户id则返回该用户所有标签
+     *
+     * @param string $userID
      * @return array
      */
-    public function getAllTag()
+    public function getAllTag($userID='')
     {
         $tags = '';
-        $post = $this->select('tags');
+        if($userID != '')
+        {
+            $post = $this->where("`author_id` = $userID")->select('tags');
 
+        }
+        else
+        {
+            $post = $this->select('tags');
+        }
         foreach($post as $p)
         {
             $tags .= $p['tags'].',';
@@ -187,6 +198,11 @@ class Post extends Model
         return $tags;
     }
 
+    /**
+     * 获取某一标签下的所有文章
+     * @param $tag
+     * @return mixed
+     */
     public function getTagPosts($tag)
     {
         $Post = new Post();
