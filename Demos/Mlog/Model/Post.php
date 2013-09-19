@@ -15,6 +15,16 @@ use M\Mvc\Model\Model;
 class Post extends Model
 {
     /**
+     * 数据库表名
+     * @var string
+     */
+    protected $table = 'post';
+    /**
+     * 数据库主键
+     * @var string
+     */
+    protected $primary_key = 'id';
+    /**
      * @var
      */
     protected $id;
@@ -49,16 +59,6 @@ class Post extends Model
      * @var
      */
     protected $top;
-    /**
-     * 数据库表名
-     * @var string
-     */
-    protected $table = 'post';
-    /**
-     * 数据库主键
-     * @var string
-     */
-    protected $primary_key = 'id';
     /**
      * 数据库与表单对应关系映射
      * @var array
