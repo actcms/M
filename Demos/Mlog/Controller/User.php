@@ -50,7 +50,7 @@ class User extends Common
             $post = $Post->order('post.top desc,post.id','desc')->limit($id?($id-1)*5:0,5)->select();
 
             $this->assign('post',$post);
-            $this->display('Index/index');
+            $this->display('User/index');
         }
         else
         {
@@ -58,35 +58,46 @@ class User extends Common
         }
     }
 
-    /**
-     *用户主页
-     * 用户需登录后操作
-     */
-    public function admin()
-    {
-        $this->checkPower();
-
-        $username = $_SESSION['username'];
-        $this->data['title'] = $username.' 的管理主页';
-
-        $User = new Muser();
-        $user = $User->find('username',$username);
-
-
-        $this->assign('user',$user);
-        $this->display('User/admin');
-    }
-
     public function user()
     {
         $this->checkPower();
+        $user = $this->getUserInfo();
 
+        $this->data['title'] = $user['username'].' 的账户信息';
+
+        $this->assign('user', $user);
         $this->display('User/user');
     }
 
+    public function post($id)
+    {
+        $this->checkPower();
+        $user = $this->getUserInfo();
+        $this->data['nav'] = array('用户'=>'User/user',$user['username']=>"User/index/".$user['username']);
+        $this->data['title'] = '文章管理';
+
+        $Post = new Post();
+        $Page = new Page($Post);
+        $this->assign('page', array($Page->getPage(),"User/post"));
+
+        $uid = $user['id'];
+
+        $Post->where("author_id=$uid");
+        $post = $Post->order('top desc,id','desc')->limit($id?($id-1)*5:0,5)->select();
+        $this->assign('post',$post);
+        $this->display('User/post');
+    }
+
+    /**
+     * 用户资料设置
+     */
     public function setting()
     {
         $this->checkPower();
+        $user = $this->getUserInfo();
+        $this->data['nav'] = array('用户'=>'User/user');
+        $this->data['title'] = '设置';
+        $this->assign('user', $user);
         $this->display('User/setting');
     }
 
@@ -109,6 +120,19 @@ class User extends Common
                 $this->error('上传失败');
             }
         }
+    }
+
+    /**
+     * 获取登录用户信息
+     *
+     * @return mixed
+     */
+    private function getUserInfo()
+    {
+        $username = $_SESSION['username'];
+        $User = new Muser();
+        $user = $User->find('username',$username);
+        return $user;
     }
 
     /**
