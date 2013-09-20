@@ -39,7 +39,6 @@ class Comment extends Common
             $Comment->createTime = time();
 
             $result = $Comment->save();
-            $Comment->getSql(true);
             if($result)
             {
                 echo 1;

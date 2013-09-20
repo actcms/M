@@ -19,7 +19,6 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="<?php echo \M\App::getHomeUrl();?>">文章</a></li>
                     <li><a href="<?php echo \M\App::buildUrl('Tag','tags')?>">标签</a></li>
-                    <li><a href="#">关于</a></li>
                 </ul>
                 <form class="navbar-form navbar-left" role="search" action="<?php echo \M\App::buildUrl('Search','index')?>" method="post">
                     <div class="form-group">

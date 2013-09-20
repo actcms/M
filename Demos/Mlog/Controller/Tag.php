@@ -29,12 +29,15 @@ class Tag extends Common
         $this->data['nav'] = array('标签'=>'Tag/index',$tag=>"Tag/index/$tag");
 
         $Post = new Post();
-        $Page = new Page($Post);
-        $this->assign('page', array($Page->getPage(),"Tag/index/$tag"));
 
         $Post->cols('post.id,post.title,post.content,post.tags,post.author_id,post.create_time,post.top,user.username');
         $Post->join('LEFT JOIN user ON post.author_id=user.id');
-        $post = $Post->where("`tags` LIKE '%$tag%'")->order('post.id', 'desc')->limit($id?($id-1)*5:0,5)->select();
+        $Post->where("`tags` LIKE '%$tag%'");
+
+        $Page = new Page($Post);
+        $this->assign('page', array($Page->getPage(),"Tag/index/$tag"));
+
+        $post = $Post->order('post.id', 'desc')->limit($id?($id-1)*5:0,5)->select();
         $this->assign('post', $post);
         $this->display('Tag/index');
     }

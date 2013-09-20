@@ -89,6 +89,6 @@ class Page
      */
     public function getPage()
     {
-        return $this->page+1;
+        return $this->page;
     }
 }
