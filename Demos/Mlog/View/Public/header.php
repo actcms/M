@@ -17,8 +17,7 @@
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">日志</a></li>
-                    <li><a href="#">笔记</a></li>
+                    <li class="active"><a href="<?php echo \M\App::getHomeUrl();?>">文章</a></li>
                     <li><a href="<?php echo \M\App::buildUrl('Tag','tags')?>">标签</a></li>
                     <li><a href="#">关于</a></li>
                 </ul>
@@ -53,6 +52,11 @@
                                 <li>
                                     <a href="<?php echo \M\App::buildUrl('User','index',$_SESSION['username']) ?>">
                                         <span class="glyphicon glyphicon-home"> 我的主页</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo \M\App::buildUrl('User','user') ?>">
+                                        <span class="glyphicon glyphicon-th-large"> 后台管理</span>
                                     </a>
                                 </li>
                                 <li><a href="#"><span class="glyphicon glyphicon-cog"> 设置</span></a></li>

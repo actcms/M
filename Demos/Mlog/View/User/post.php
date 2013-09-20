@@ -1,3 +1,8 @@
+<ul class="nav nav-pills nav-justified">
+    <li class="active"><a href="<?php echo \M\App::buildUrl('User','post') ?>">文章管理</a></li>
+    <li><a href="<?php echo \M\App::buildUrl('User','user') ?>">账户信息</a></li>
+    <li><a href="<?php echo \M\App::buildUrl('User','setting') ?>">账户设置</a></li>
+</ul>
 <div class="post">
     <table class="table">
         <thead>
@@ -10,7 +15,7 @@
             <td><?php echo date('Y-m-d h:m:s',$p['create_time'])?></td>
             <td>
                 <a href="<?php echo \M\App::buildUrl('Post','update',$p['id'])?>"><span class="glyphicon glyphicon-edit" title="编辑"></span></a>&nbsp|
-                <a href="<?php echo \M\App::buildUrl('Post','delete',$p['id'])?>)"><span class="glyphicon glyphicon-trash" title="删除"></a></span>
+                <a href="<?php echo \M\App::buildUrl('Post','delete',$p['id'])?>"><span class="glyphicon glyphicon-trash" title="删除"></a></span>
             </td>
         </tr>
         <?php } ?>

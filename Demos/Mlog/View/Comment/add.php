@@ -1,4 +1,4 @@
-<div id="post">
+<div id="comment">
     <h3><?php echo $this->data['title'] ?></h3>
     <form action="<?php echo \M\App::buildUrl('Comment','add');?>" method="post" id="add-post">
         <input type="hidden" name="postId" value="<?php echo $postId ?>">

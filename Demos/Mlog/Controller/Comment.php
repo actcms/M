@@ -10,6 +10,7 @@ use Mlog\Model\Comment as MComment;
 
 class Comment extends Common
 {
+    protected $layout = '';
     public $data = array(
         'title' => 'Post',
         'nav' => array('评论'=>''),
@@ -22,11 +23,10 @@ class Comment extends Common
      */
     public function index($id=1)
     {
-        $this->layout = '';
         $Comment = new MComment();
         $comment = $Comment->where("post_id = $id")->select();
-        $json =  json_encode($comment);
-        echo $json;
+        $this->assign('comment', $comment);
+        $this->display('Comment/index');
     }
 
     public function add($id)
@@ -42,11 +42,11 @@ class Comment extends Common
             $Comment->getSql(true);
             if($result)
             {
-                $this->success('发布成功');
+                echo 1;
             }
             else
             {
-                $this->error('发布失败');
+                echo 2;
             }
         }
         else
