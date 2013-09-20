@@ -25,6 +25,11 @@ class User extends Common
         'nav' => array('用户'=>'User/index'),
     );
 
+    public function init()
+    {
+        //屏蔽父类默认操作
+    }
+
     /**
      *用户公开显示主页
      */
@@ -41,15 +46,18 @@ class User extends Common
             $this->data['title'] = $username.' 的主页';
 
             $Post = new Post();
-            $Page = new Page($Post);
-            $this->assign('page', array($Page->getPage(),"User/index/$username"));
             $uid = $user['id'];
 
             $Post->cols('post.id,post.title,post.content,post.tags,post.author_id,post.create_time,post.top,user.username');
             $Post->join('LEFT JOIN user ON post.author_id=user.id')->where("post.author_id=$uid");
+
+            $Page = new Page($Post);
+            $this->assign('page', array($Page->getPage(),"User/index/$username"));
+
             $post = $Post->order('post.top desc,post.id','desc')->limit($id?($id-1)*5:0,5)->select();
 
             $this->assign('post',$post);
+            $this->getSide($uid);
             $this->display('User/index');
         }
         else
@@ -66,9 +74,14 @@ class User extends Common
         $this->data['title'] = $user['username'].' 的账户信息';
 
         $this->assign('user', $user);
+        $this->getSide($user['id']);
         $this->display('User/user');
     }
 
+    /**
+     * 用户文章管理页面
+     * @param $id
+     */
     public function post($id)
     {
         $this->checkPower();
@@ -77,13 +90,15 @@ class User extends Common
         $this->data['title'] = '文章管理';
 
         $Post = new Post();
-        $Page = new Page($Post);
-        $this->assign('page', array($Page->getPage(),"User/post"));
-
         $uid = $user['id'];
 
         $Post->where("author_id=$uid");
+
+        $Page = new Page($Post);
+        $this->assign('page', array($Page->getPage(),"User/post"));
+
         $post = $Post->order('top desc,id','desc')->limit($id?($id-1)*5:0,5)->select();
+        $this->getSide($uid);
         $this->assign('post',$post);
         $this->display('User/post');
     }
@@ -95,10 +110,31 @@ class User extends Common
     {
         $this->checkPower();
         $user = $this->getUserInfo();
-        $this->data['nav'] = array('用户'=>'User/user');
-        $this->data['title'] = '设置';
-        $this->assign('user', $user);
-        $this->display('User/setting');
+
+        if(!empty($_POST['setting']))
+        {
+            $User = new MUser();
+            $User->get_Post();
+            $User->id = $user['id'];
+
+            $result = $User->save();
+            if($result)
+            {
+                $this->success('修改成功');
+            }
+            else
+            {
+                $this->error('修改失败');
+            }
+        }
+        else
+        {
+            $this->data['nav'] = array('用户'=>'User/user');
+            $this->data['title'] = '设置';
+            $this->getSide($user['id']);
+            $this->assign('user', $user);
+            $this->display('User/setting');
+        }
     }
 
     public function upload()
@@ -133,26 +169,5 @@ class User extends Common
         $User = new Muser();
         $user = $User->find('username',$username);
         return $user;
-    }
-
-    /**
-     *获取最近的文章列表，默认显示10篇
-     */
-    public function getRecentPost()
-    {
-        $userID = $_SESSION['id'];
-        $Post = new Post();
-        $recentPost = $Post->where("`author_id`=$userID")->order('id')->limit(10)->select();
-        $this->assign('recentPost',$recentPost);
-    }
-
-    /**
-     *获取标签云，默认显示100条
-     */
-    public function getTag()
-    {
-        $post = new Post();
-        $tags = $post->getAllTag($_SESSION['id']);
-        $this->assign('tags',$tags);
     }
 }

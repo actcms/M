@@ -9,6 +9,8 @@ namespace M\Extend;
 use M\Mvc\Model\Model;
 
 /**
+ * 分页扩展
+ *
  * Class Page
  * @package M\Extend
  */
@@ -40,8 +42,8 @@ class Page
      *
      * 传入模型并设定每页显示的记录数
      *
-     * @param Model $model
-     * @param $rows
+     * @param Model $model 模型
+     * @param $rows 每页显示条数
      */
     public function __construct(Model $model,$rows = 5)
     {
@@ -77,6 +79,8 @@ class Page
     }
 
     /**
+     * 获取中的查询结果条数
+     *
      * @return mixed
      */
     public function getCountCols()
@@ -85,6 +89,7 @@ class Page
     }
 
     /**
+     * 获取分页页数
      * @return mixed
      */
     public function getPage()

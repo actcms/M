@@ -42,18 +42,22 @@ class Common extends Controller
     /**
      *获取侧边栏内容
      */
-    public function getSide()
+    protected function getSide($userID='')
     {
-        $this->getRecentPost();
-        $this->getTag();
+        $this->getRecentPost($userID);
+        $this->getTag($userID);
     }
 
     /**
      *获取最近的文章列表，默认显示10篇
      */
-    public function getRecentPost()
+    protected function getRecentPost($userID='')
     {
         $Post = new Post();
+        if($userID != '')
+        {
+            $Post->where("`author_id`=$userID");
+        }
         $recentPost = $Post->order('id')->limit(10)->select();
 
         $this->assign('recentPost',$recentPost);
@@ -62,10 +66,10 @@ class Common extends Controller
     /**
      *获取标签云，默认显示100条
      */
-    public function getTag()
+    protected function getTag($userID='')
     {
         $post = new Post();
-        $tags = $post->getAllTag();
+        $tags = $post->getAllTag($userID);
         $this->assign('tags',$tags);
     }
 
@@ -75,7 +79,7 @@ class Common extends Controller
      * 检查是否存在用户session，判断是否为登录用户，如果用户没有登录则跳转到登录页面
      * 检查用户要操作的数据是否是自己创建的，如果不是，则不具备操作权限，返回失败提醒
      */
-    public function checkPower($id='')
+    protected function checkPower($id='')
     {
         if(empty($_SESSION['username']))
         {
