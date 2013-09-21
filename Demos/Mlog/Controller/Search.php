@@ -28,7 +28,16 @@ class Search extends Common
         {
             if(!empty($_POST['search']))
             {
-                $_SESSION['search'] = $_POST['search'];
+                $pattern = '/[a-zA-Z0-9\x{4e00}-\x{9fa5}]{1,10}/u';
+                $result = preg_match($pattern,$_POST['search'],$matches);
+                if($result)
+                {
+                    $_SESSION['search'] = $matches[0];
+                }
+                else
+                {
+                    $_SESSION['search'] = '';
+                }
             }
 
             $key = $_SESSION['search'];

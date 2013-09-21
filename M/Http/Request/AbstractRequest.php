@@ -64,7 +64,7 @@ abstract class AbstractRequest
     /**
      * 设置请求
      *
-     * 过滤掉除字母与数字之外的请求
+     * 过滤掉除字母数字与汉字之外的请求
      * 控制器首字母大写
      *
      * @param $value array
@@ -76,10 +76,10 @@ abstract class AbstractRequest
 
         foreach($value as $parameter)
         {
-            $parameter = urldecode($parameter);
+            $parameter = urldecode($parameter);                 //url解码
             $parameter = strtolower($parameter);                //所有英字母转换为小写，便于统一控制
             $pattern = '/[a-zA-Z0-9\x{4e00}-\x{9fa5}]{1,10}/u';
-            $result = preg_match($pattern,$parameter,$matches);         //过滤掉除字母与数字之外的内容
+            $result = preg_match($pattern,$parameter,$matches);         //过滤掉除字母数字与汉字之外的内容
             if(!$result)
             {
                 $values[] = '';         //如果没有匹配，则触发默认控制器或动作
@@ -90,7 +90,6 @@ abstract class AbstractRequest
             }
         }
 
-        var_dump($values);
         $values[0] = ucfirst($values[0]);     //控制器首字母大写
         $this->requests = $values;
     }
