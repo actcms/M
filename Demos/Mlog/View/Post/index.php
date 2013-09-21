@@ -29,7 +29,7 @@
     </div>
 </div>
 <div class="add-comment" id="<?php echo $post[0]?>">
-
+    <?php include_once APP.'/View/Comment/add.php'?>
 </div>
 <hr>
 <div class="comment">

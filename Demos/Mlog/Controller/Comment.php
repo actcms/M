@@ -37,7 +37,6 @@ class Comment extends Common
 
             $Comment->get_Post();
             $Comment->createTime = time();
-
             $result = $Comment->save();
             if($result)
             {
@@ -45,16 +44,8 @@ class Comment extends Common
             }
             else
             {
-                echo 2;
+                echo 0;
             }
-        }
-        else
-        {
-            $this->data['nav'] = array('文章'=>'Comment/index','撰写'=>'Comment/add');
-            $this->data['title'] = '添加评论';
-            $postId = isset($id)?$id:1;
-            $this->assign('postId', $postId);
-            $this->display('Comment/add');
         }
     }
 }
