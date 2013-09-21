@@ -6,6 +6,7 @@
  */
 
 namespace Mlog\Controller;
+
 use Mlog\Model\Comment as MComment;
 
 class Comment extends Common

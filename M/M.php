@@ -82,7 +82,7 @@ class M
      */
     public static function getVersion()
     {
-        return 0.001;
+        return 0.1;
     }
 
     /**

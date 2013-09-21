@@ -16,6 +16,6 @@
             <label for="rePassword">再次输入密码</label>
             <input type="password" name="rePassword" id="rePassword" class="form-control" placeholder="rePassword">
         </div>
-        <input type="submit" name="reg" class="btn btn-default pull-right" value="注册">
+        <input type="submit" name="reg" class="btn btn-primary btn-lg btn-block" value="注册">
     </form>
 </div>

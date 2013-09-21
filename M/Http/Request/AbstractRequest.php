@@ -64,6 +64,7 @@ abstract class AbstractRequest
      */
     public function setRequests($value)
     {
+        $value[0] = ucfirst($value[0]);     //控制器首字母大写
         $this->requests = $value;
     }
 

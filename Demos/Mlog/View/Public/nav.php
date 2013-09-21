@@ -31,14 +31,15 @@
 
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-envelope"></span></a></li>
+            <li><a href="mailto:imaguowei@gmail.com" title="意见反馈"><span class="glyphicon glyphicon-envelope"></span></a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <span class="glyphicon glyphicon-user"> <?php echo isset($_SESSION['username'])?'hello '.$_SESSION['username']:''?></span> <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
                     <?php if(empty($_SESSION['username'])){ ?>
-                        <li><a href="<?php echo \M\App::buildUrl('Index','Login')?>"> 登录</a></li>
+                        <li><a href="<?php echo \M\App::buildUrl('Index','login')?>"> 登录</a></li>
+                        <li><a href="<?php echo \M\App::buildUrl('Index','reg')?>"> 注册</a></li>
                     <?php } ?>
                     <?php if(isset($_SESSION['username'])){ ?>
                         <li>
