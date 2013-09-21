@@ -80,10 +80,13 @@ class Dispatcher
             if(method_exists($this->controller,$this->action))
             {
                 $action = new \ReflectionMethod($this->controller,$this->action);
+
+                //如果调用的方法不是公开的则返回404错误
                 if(!$action->isPublic())
                 {
                     $controller->error_404();
                 }
+
                 try
                 {
                     $controller->{$this->action}($this->parameter);

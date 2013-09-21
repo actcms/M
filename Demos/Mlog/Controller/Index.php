@@ -62,13 +62,13 @@ class Index extends Common
 
             $User->get_Post();
             $result = $User->login();
-            if($result)
+            if($result[0])
             {
                 $this->success($_SESSION['username'].'登录成功',array('Index','index'));
             }
             else
             {
-                $this->error('登录失败');
+                $this->error($result[1]);
             }
         }
         else

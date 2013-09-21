@@ -15,22 +15,27 @@ use M\Mvc\Model\Model;
 class User extends Model
 {
     /**
+     * 用户id
      * @var
      */
     protected $id;
     /**
+     * 用户名
      * @var
      */
     protected $username;
     /**
+     * 密码
      * @var
      */
     protected $password;
     /**
+     * 邮箱
      * @var
      */
     protected $email;
     /**
+     *
      * @var string
      */
     protected $table = 'user';
@@ -39,6 +44,10 @@ class User extends Model
      */
     protected $primary_key = 'id';
     /**
+     * 数据库字段与模型属性之间的映射关系
+     *
+     * $db=>$model
+     *
      * @var array
      */
     protected $data = array(
@@ -89,6 +98,8 @@ class User extends Model
     }
 
     /**
+     * 用户登录处理
+     *
      * @return bool
      */
     public function login()
@@ -101,16 +112,21 @@ class User extends Model
                 $_SESSION['id'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
 
-                return true;
+                return array(true,'登录成功');
             }
             else
             {
-                return false;
+                return array(false,'用户名或密码错误');
             }
         }
         else
         {
-            return false;
+            return array(false,'用户名不存在');
         }
+    }
+
+    public function reg()
+    {
+
     }
 }
