@@ -117,14 +117,21 @@ class User extends Common
             $User->get_Post();
             $User->id = $user['id'];
 
-            $result = $User->save();
-            if($result)
+            if($User->isUserNameExist())
             {
-                $this->success('修改成功');
+                $this->error('用户名已经存在');
             }
             else
             {
-                $this->error('修改失败');
+                $result = $User->save();
+                if($result)
+                {
+                    $this->success('修改成功');
+                }
+                else
+                {
+                    $this->error('修改失败');
+                }
             }
         }
         else

@@ -125,8 +125,20 @@ class User extends Model
         }
     }
 
-    public function reg()
+    /**
+     * 检测用户名是否已经注册
+     * @return bool
+     */
+    public function isUserNameExist()
     {
-
+        $user = $this->find('username',$this->username);
+        if($user)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

@@ -60,6 +60,7 @@ class UrlHelper
         {
             self::jump($url[0],$url[1],$url[2]);
         }
+        exit();
     }
 
     /**
@@ -80,6 +81,7 @@ class UrlHelper
         {
             self::jump($url[0],$url[1],$url[2]);
         }
+        exit();
     }
 
     /**

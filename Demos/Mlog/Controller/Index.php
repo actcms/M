@@ -89,15 +89,23 @@ class Index extends Common
             $User = new User();
 
             $User->get_Post();
-            $result = $User->save();
 
-            if($result)
+            if($User->isUserNameExist())
             {
-                $this->success('注册成功',array('Index','index'));
+                $this->error('用户名已经存在');
             }
             else
             {
-                $this->error('注册失败');
+                $result = $User->save();
+
+                if($result)
+                {
+                    $this->success('注册成功',array('Index','index'));
+                }
+                else
+                {
+                    $this->error('注册失败');
+                }
             }
         }
         else
