@@ -79,6 +79,18 @@ class Dispatcher
 
             if(method_exists($this->controller,$this->action))
             {
+                $action = new \ReflectionMethod($this->controller,$this->action);
+                if(!$action->isPublic())
+                {
+                    try
+                    {
+                        $controller->error_404();
+                    }
+                    catch(\M\Mvc\View\Exception $e)
+                    {
+                        echo '<h1>404 NOT FOUND</h1>';          //default 404 page if 404 page not be set in app
+                    }
+                }
                 try
                 {
                     $controller->{$this->action}($this->parameter);

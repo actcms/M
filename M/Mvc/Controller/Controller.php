@@ -121,5 +121,6 @@ class Controller extends AbstractController
     {
         $this->layout = 'error';
         $this->display('Error/404');
+        exit();
     }
 }
