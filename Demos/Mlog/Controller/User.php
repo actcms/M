@@ -70,9 +70,17 @@ class User extends Common
     {
         $this->checkPower();
         $user = $this->getUserInfo();
+        $uid = $user['id'];
 
         $this->data['title'] = $user['username'].' 的账户信息';
 
+        $Post = new Post();
+
+        $postNumber = $Post->where("`author_id`=$uid")->select("count(*)");
+        $this->assign('postNumber', $postNumber[0][0]);
+        $tag = $Post->getAllTag($uid);
+        $tagNumber = count($tag);
+        $this->assign('tagNumber', $tagNumber);
         $this->assign('user', $user);
         $this->getSide($user['id']);
         $this->display('User/user');

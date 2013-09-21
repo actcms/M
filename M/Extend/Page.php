@@ -59,6 +59,7 @@ class Page
     public function countRows()
     {
         $rows = $this->model->select("count(*)");
+        //重新设置搜索字段
         $this->model->cols('*');
         $this->countRows = $rows[0][0];
     }
