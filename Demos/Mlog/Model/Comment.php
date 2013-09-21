@@ -72,4 +72,10 @@ class Comment extends Model
         $this->postId = $postId;
         return $this;
     }
+
+    public function getComment($pid)
+    {
+        $comment = $this->where("`post_id`=$pid")->select();
+        return $comment;
+    }
 }

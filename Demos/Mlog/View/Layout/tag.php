@@ -3,6 +3,7 @@
 <?php include_once APP.'/View/Public/head.php' ?>
 <body>
 <?php include_once APP.'/View/Public/header.php' ?>
+<?php include_once APP.'/View/Public/nav.php' ?>
 <div class="container">
     <div class="row">
         <div id="main" class="col-md-12">

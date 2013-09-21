@@ -8,6 +8,7 @@
 namespace Mlog\Controller;
 
 use M\Mvc\Controller\Controller;
+use Mlog\Model\Comment;
 use Mlog\Model\Post;
 use Mlog\Model\Tag;
 
@@ -60,6 +61,12 @@ class Common extends Controller
         }
         $recentPost = $Post->order('id')->limit(10)->select();
 
+        $Comment = new Comment();
+        foreach($recentPost as &$post)
+        {
+            $comm = $Comment->getComment($post['id']);
+            $post['commentNumber'] = count($comm);
+        }
         $this->assign('recentPost',$recentPost);
     }
 

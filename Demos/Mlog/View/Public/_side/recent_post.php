@@ -7,8 +7,9 @@
     </div>
     <ul class="list-group">
         <?php foreach($recentPost as $p){ ?>
-            <li class="list-group-item"><a href="<?php echo \M\App::buildUrl('Post','index',$p['id']) ?>"><?php echo $p['title'] ?></a></li>
+            <li class="list-group-item">
+                <a href="<?php echo \M\App::buildUrl('Post','index',$p['id']) ?>"><?php echo $p['title'] ?> <span class="badge" title="评论数目"><?php echo $p['commentNumber']?></span></a>
+            </li>
         <?php } ?>
-
     </ul>
 </div>

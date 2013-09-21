@@ -2,25 +2,17 @@ $(document).ready(function(){
     $('.show-comment').click(
         function(){
             var id = $(this).attr('id');
-            var html = $.ajax({
-                url: "index.php?Comment/index/"+id,
-                async: false
-            }).responseText;
             $(this).toggle('slow');
-            $('.comment').append(html);
+
+            $('.comment').load("index.php?Comment/index/"+id);
             return false;
         }
     );
     $('.add-comment').show(
         function(){
             var id = $(this).attr('id');
-            var html = $.ajax({
-                url: "index.php?Comment/add/"+id,
-                async: false
-            }).responseText;
-            $(this).append(html);
+            $(this).load("index.php?Comment/add/"+id);
             return false;
         }
     );
-
 });
