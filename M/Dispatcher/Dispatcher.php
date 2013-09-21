@@ -82,14 +82,7 @@ class Dispatcher
                 $action = new \ReflectionMethod($this->controller,$this->action);
                 if(!$action->isPublic())
                 {
-                    try
-                    {
-                        $controller->error_404();
-                    }
-                    catch(\M\Mvc\View\Exception $e)
-                    {
-                        echo '<h1>404 NOT FOUND</h1>';          //default 404 page if 404 page not be set in app
-                    }
+                    $controller->error_404();
                 }
                 try
                 {
@@ -102,30 +95,13 @@ class Dispatcher
             }
             else
             {
-                try
-                {
-                    $controller->error_404();
-                }
-                catch(\M\Mvc\View\Exception $e)
-                {
-                    echo '<h1>404 NOT FOUND</h1>';          //default 404 page if 404 page not be set in app
-                }
-
+                $controller->error_404();
             }
         }
         else
         {
             $controller = new Controller();
-            try
-            {
-                $controller->error_404();
-            }
-            catch(\M\Mvc\View\Exception $e)
-            {
-                echo '<h1>404 NOT FOUND</h1>';
-            }
-
-
+            $controller->error_404();
         }
     }
 
@@ -142,7 +118,7 @@ class Dispatcher
         }
         else
         {
-            $this->controller = 'Index';
+            $this->controller = 'Index';        //默认控制器
         }
 
         return $this->controller;
@@ -161,7 +137,7 @@ class Dispatcher
         }
         else
         {
-            $this->action = 'index';
+            $this->action = 'index';        //默认动作
         }
 
         return $this->action;

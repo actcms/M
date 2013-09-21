@@ -83,6 +83,7 @@ class Controller extends AbstractController
         {
             //todo when $tpl is empty
         }
+
         try
         {
             $this->view->display($tpl);
@@ -119,8 +120,16 @@ class Controller extends AbstractController
      */
     public function error_404()
     {
-        $this->layout = 'error';
-        $this->display('Error/404');
+        try
+        {
+            $this->layout = 'error';
+            $this->display('Error/404');
+        }
+        catch(\M\Mvc\View\Exception $e)
+        {
+            echo '<h1>404 NOT FOUND</h1>';          //default 404 page if 404 page not be set in app
+        }
+
         exit();
     }
 }
