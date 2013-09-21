@@ -44,6 +44,7 @@ abstract class AbstractRequest
     }
 
     /**
+     * 获取实例
      * @return static
      */
     public static function getRequest()
@@ -52,7 +53,8 @@ abstract class AbstractRequest
     }
 
     /**
-     * @return string
+     * 获取请求
+     * @return array
      */
     public function getRequests()
     {
@@ -60,12 +62,37 @@ abstract class AbstractRequest
     }
 
     /**
+     * 设置请求
+     *
+     * 过滤掉除字母与数字之外的请求
+     * 控制器首字母大写
+     *
      * @param $value array
      */
     public function setRequests($value)
     {
-        $value[0] = ucfirst($value[0]);     //控制器首字母大写
-        $this->requests = $value;
+        //初始化空请求数组
+        $values = array();
+
+        foreach($value as $parameter)
+        {
+            $parameter = urldecode($parameter);
+            $parameter = strtolower($parameter);                //所有英字母转换为小写，便于统一控制
+            $pattern = '/[a-zA-Z0-9\x{4e00}-\x{9fa5}]{1,10}/u';
+            $result = preg_match($pattern,$parameter,$matches);         //过滤掉除字母与数字之外的内容
+            if(!$result)
+            {
+                $values[] = '';         //如果没有匹配，则触发默认控制器或动作
+            }
+            else
+            {
+                $values[] = $matches[0];
+            }
+        }
+
+        var_dump($values);
+        $values[0] = ucfirst($values[0]);     //控制器首字母大写
+        $this->requests = $values;
     }
 
     /**
