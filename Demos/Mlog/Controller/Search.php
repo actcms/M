@@ -8,6 +8,7 @@
 namespace Mlog\Controller;
 
 
+use M\Base\Filter;
 use M\Extend\Page;
 use M\Mvc\Model\Model;
 use Mlog\Model\Post;
@@ -28,9 +29,8 @@ class Search extends Common
         {
             if(!empty($_POST['search']))
             {
-                $pattern = '/[a-zA-Z0-9\x{4e00}-\x{9fa5}]{1,10}/u';
-                $result = preg_match($pattern,$_POST['search'],$matches);
-                if($result)
+                $matches = Filter::word($_POST['search']);      //特殊字符过滤
+                if($matches)
                 {
                     $_SESSION['search'] = $matches[0];
                 }
