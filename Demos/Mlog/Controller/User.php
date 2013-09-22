@@ -46,15 +46,14 @@ class User extends Common
             $this->data['title'] = $username.' 的主页';
 
             $Post = new Post();
-            $uid = $user['id'];
+            $uid = $user['u_id'];
 
-            $Post->cols('post.id,post.title,post.content,post.tags,post.author_id,post.create_time,post.top,user.username');
-            $Post->join('LEFT JOIN user ON post.author_id=user.id')->where("post.author_id=$uid");
+            $Post->join('LEFT JOIN user ON post.author_id=user.u_id')->where("post.author_id=$uid");
 
             $Page = new Page($Post);
             $this->assign('page', array($Page->getPage(),"User/index/$username"));
 
-            $post = $Post->order('post.top desc,post.id','desc')->limit($id?($id-1)*5:0,5)->select();
+            $post = $Post->order('post.top desc,post.p_id','desc')->limit($id?($id-1)*5:0,5)->select();
 
             $this->assign('post',$post);
             $this->getSide($uid);
@@ -70,7 +69,7 @@ class User extends Common
     {
         $this->checkPower();
         $user = $this->getUserInfo();
-        $uid = $user['id'];
+        $uid = $user['u_id'];
 
         $this->data['title'] = $user['username'].' 的账户信息';
 
@@ -82,7 +81,7 @@ class User extends Common
         $tagNumber = count($tag);
         $this->assign('tagNumber', $tagNumber);
         $this->assign('user', $user);
-        $this->getSide($user['id']);
+        $this->getSide($user['u_id']);
         $this->display('User/user');
     }
 
@@ -98,14 +97,14 @@ class User extends Common
         $this->data['title'] = '文章管理';
 
         $Post = new Post();
-        $uid = $user['id'];
+        $uid = $user['u_id'];
 
         $Post->where("author_id=$uid");
 
         $Page = new Page($Post);
         $this->assign('page', array($Page->getPage(),"User/post"));
 
-        $post = $Post->order('top desc,id','desc')->limit($id?($id-1)*5:0,5)->select();
+        $post = $Post->order('top desc,p_id','desc')->limit($id?($id-1)*5:0,5)->select();
         $this->getSide($uid);
         $this->assign('post',$post);
         $this->display('User/post');
@@ -123,7 +122,7 @@ class User extends Common
         {
             $User = new MUser();
             $User->get_Post();
-            $User->id = $user['id'];
+            $User->uid = $user['u_id'];
 
             if($User->isUserNameExist())
             {
@@ -146,7 +145,7 @@ class User extends Common
         {
             $this->data['nav'] = array('用户'=>'User/user');
             $this->data['title'] = '设置';
-            $this->getSide($user['id']);
+            $this->getSide($user['u_id']);
             $this->assign('user', $user);
             $this->display('User/setting');
         }

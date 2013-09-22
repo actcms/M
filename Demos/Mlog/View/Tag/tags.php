@@ -8,7 +8,7 @@
                         <?php $post = $Post->getTagPosts($tag);?>
                     <ul>
                         <?php foreach($post as $p){ ?>
-                            <li><a href="<?php echo \M\App::buildUrl('Post','index',$p['id'])?>"><?php echo $p['title'] ?></a></li>
+                            <li><a href="<?php echo \M\App::buildUrl('Post','index',$p['p_id'])?>"><?php echo $p['title'] ?></a></li>
                         <?php } ?>
                     </ul>
                     </p>

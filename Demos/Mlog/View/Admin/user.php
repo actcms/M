@@ -10,7 +10,7 @@
         <tbody>
         <?php foreach($user as $u){ ?>
             <tr>
-                <td><?php echo $u['id']?></td>
+                <td><?php echo $u['u_id']?></td>
                 <td><?php echo $u['username']?></td>
                 <td><?php echo $u['email']?></td>
             </tr>

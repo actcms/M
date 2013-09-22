@@ -12,7 +12,7 @@ use M\Mvc\Model\Model;
 class Comment extends Model
 {
     protected  $table = 'comment';
-    protected $primary_key = 'cid';
+    protected $primary_key = 'c_id';
 
     protected $cid;
     protected $username;
@@ -22,7 +22,7 @@ class Comment extends Model
     protected $postId;
 
     protected $data = array(
-        'cid' => 'cid',
+        'c_id' => 'cid',
         'username' => 'username',
         'email' =>'email',
         'message' => 'message',

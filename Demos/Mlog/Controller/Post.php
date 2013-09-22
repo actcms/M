@@ -7,7 +7,6 @@
 namespace Mlog\Controller;
 
 use Mlog\Model\Post as MPost;
-use Mlog\Controller\Tag;
 
 /**
  * Class Post
@@ -31,7 +30,7 @@ class Post extends Common
         $id = empty($id)?1:$id;
 
         $Post = new MPost();
-        $post = $Post->join('LEFT JOIN user ON post.author_id=user.id')->findById($id);
+        $post = $Post->join('LEFT JOIN user ON post.author_id = user.u_id')->findById($id);
 
         $this->data['title'] = $post['title'];
         $this->data['nav'] = array('文章'=>'Post/index');
@@ -80,9 +79,7 @@ class Post extends Common
     public function delete($id)
     {
         $this->checkPower($id);
-
         $Post = new MPost();
-        $Tag = new Tag();
 
         $result = $Post->delete($id);
         if($result)

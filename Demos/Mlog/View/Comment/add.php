@@ -1,7 +1,7 @@
 <div id="comment">
-    <h3><?php echo $this->data['title'] ?></h3>
+    <h3>添加评论</h3>
     <form action="<?php echo \M\App::buildUrl('Comment','add');?>" method="post" id="add-post">
-        <input type="hidden" name="postId" value="<?php echo $post['id'] ?>">
+        <input type="hidden" name="postId" value="<?php echo $post['p_id'] ?>">
         <input type="text" class="form-control" name="username" placeholder="输入昵称"><br>
         <input type="email" class="form-control" name="email" placeholder="输入邮箱"><br>
         <textarea name="message" class="form-control" rows="10"></textarea>

@@ -59,12 +59,12 @@ class Common extends Controller
         {
             $Post->where("`author_id`=$userID");
         }
-        $recentPost = $Post->order('id')->limit(10)->select();
+        $recentPost = $Post->order('p_id')->limit(10)->select();
 
         $Comment = new Comment();
         foreach($recentPost as &$post)
         {
-            $comm = $Comment->getComment($post['id']);
+            $comm = $Comment->getComment($post['p_id']);
             $post['commentNumber'] = count($comm);
         }
         $this->assign('recentPost',$recentPost);

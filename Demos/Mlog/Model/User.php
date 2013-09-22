@@ -18,7 +18,7 @@ class User extends Model
      * 用户id
      * @var
      */
-    protected $id;
+    protected $uid;
     /**
      * 用户名
      * @var
@@ -42,7 +42,7 @@ class User extends Model
     /**
      * @var string
      */
-    protected $primary_key = 'id';
+    protected $primary_key = 'u_id';
     /**
      * 数据库字段与模型属性之间的映射关系
      *
@@ -51,19 +51,19 @@ class User extends Model
      * @var array
      */
     protected $data = array(
-        'id' => 'id',
+        'u_id' => 'uid',
         'username' => 'username',
         'password' => 'password',
         'email' => 'email',
     );
 
     /**
-     * @param $id
+     * @param $uid
      * @return $this
      */
-    public function setId($id)
+    public function setUid($uid)
     {
-        $this->id = $id;
+        $this->uid = $uid;
         return $this;
     }
 
@@ -109,7 +109,7 @@ class User extends Model
         {
             if($user['password']==$this->password)
             {
-                $_SESSION['id'] = $user['id'];
+                $_SESSION['id'] = $user['u_id'];
                 $_SESSION['username'] = $user['username'];
 
                 return array(true,'登录成功');

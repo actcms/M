@@ -1,7 +1,7 @@
 <div id="post" class="list-group">
     <?php foreach($post as $p){ ?>
         <div class="article">
-            <a href="<?php echo \M\App::buildUrl('Post','index',$p['id']) ?>" class="list-group-item <?php echo $p['top']?'active':''?>">
+            <a href="<?php echo \M\App::buildUrl('Post','index',$p['p_id']) ?>" class="list-group-item <?php echo $p['top']?'active':''?>">
                 <hgroup>
                     <h1 class="list-group-item-heading">
                         <?php echo $p['title'];?>

@@ -159,7 +159,7 @@ class Model extends AbstractModel
      */
     public function save()
     {
-        if(empty($this->id))
+        if(empty($this->{$this->data[$this->primary_key]}))
         {
             return $this->add();
         }

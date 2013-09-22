@@ -23,11 +23,11 @@ class Post extends Model
      * 数据库主键
      * @var string
      */
-    protected $primary_key = 'id';
+    protected $primary_key = 'p_id';
     /**
      * @var
      */
-    protected $id;
+    protected $pid;
     /**
      * 标题
      * @var
@@ -64,7 +64,7 @@ class Post extends Model
      * @var array
      */
     protected $data = array(
-        'id' => 'id',
+        'p_id' => 'pid',
         'title' => 'title',
         'content' =>'content',
         'tags' => 'tags',
@@ -74,12 +74,12 @@ class Post extends Model
     );
 
     /**
-     * @param $id
+     * @param $pid
      * @return $this
      */
-    public function setId($id)
+    public function setPid($pid)
     {
-        $this->id = $id;
+        $this->pid = $pid;
         return $this;
     }
 
@@ -99,7 +99,7 @@ class Post extends Model
      */
     public function setContent($content)
     {
-        $this->content = htmlspecialchars($content);
+        $this->content = $content;
         return $this;
     }
 
@@ -200,6 +200,7 @@ class Post extends Model
 
     /**
      * 获取某一标签下的所有文章
+     *
      * @param $tag
      * @return mixed
      */

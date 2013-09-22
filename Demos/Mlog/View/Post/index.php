@@ -1,7 +1,7 @@
 <div id="post" class="panel panel-info">
     <div class="panel-heading">
         <h1 class="panel-title">
-            <a href="<?php \M\App::buildUrl('Post','index',$post['id']) ?>"><?php echo $post['title'] ?></a>
+            <a href="<?php \M\App::buildUrl('Post','index',$post['p_id']) ?>"><?php echo $post['title'] ?></a>
             <a class="pull-right">
                 <?php ?>
                 <span class="glyphicon glyphicon-calendar" title="发布时间">
@@ -24,11 +24,11 @@
                 </a>
             <?php } ?>
             </span>
-            <a href="" class="col-md-2 show-comment" id="<?php echo $post[0]?>"><span class="glyphicon glyphicon-comment"></span></a>
+            <a href="" class="col-md-2 show-comment" id="<?php echo $post['p_id']?>"><span class="glyphicon glyphicon-comment"></span></a>
         </div>
     </div>
 </div>
-<div class="add-comment" id="<?php echo $post[0]?>">
+<div class="add-comment" id="<?php echo $post['p_id']?>">
     <?php include_once APP.'/View/Comment/add.php'?>
 </div>
 <hr>

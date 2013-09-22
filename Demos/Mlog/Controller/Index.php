@@ -39,14 +39,14 @@ class Index extends Common
     {
         $Post = new Post();
 
-        $Post->cols('post.id,post.title,post.content,post.tags,post.author_id,post.create_time,post.top,user.username');
-        $Post->join('LEFT JOIN user ON post.author_id=user.id');
+        $Post->join('LEFT JOIN user ON post.author_id=user.u_id');
 
         $Page = new Page($Post);
         $this->assign('page', array($Page->getPage(),'Index/index'));
 
-        $Post->order('post.top desc,post.id','desc');
+        $Post->order('post.top desc,post.p_id','desc');
         $post = $Post->limit($id?($id-1)*5:0,5)->select();
+
         $this->assign('post',$post);
         $this->display('Index/index');
     }
