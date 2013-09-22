@@ -78,12 +78,14 @@ class User extends Model
     }
 
     /**
+     * 密码设置
+     * 采用md5加密
      * @param $password
      * @return $this
      */
     public function setPassword($password)
     {
-        $this->password = $password;
+        $this->password = md5($password);
         return $this;
     }
 
@@ -107,7 +109,7 @@ class User extends Model
         $user = $this->find('username',$this->username);
         if($user)
         {
-            if($user['password']==$this->password)
+            if($user['password'] == $this->password)
             {
                 $_SESSION['user'] = $user;
                 return array(true,'登录成功');
@@ -125,11 +127,21 @@ class User extends Model
 
     /**
      * 检测用户名是否已经注册
+     *
+     * @param string $username
      * @return bool
      */
-    public function isUserNameExist()
+    public function isUserNameExist($username = '')
     {
-        $user = $this->find('username',$this->username);
+        if(empty($username))
+        {
+            $user = $this->find('username',$this->username);
+        }
+        else
+        {
+            $user = $this->find('username',$username);
+        }
+
         if($user)
         {
             return true;

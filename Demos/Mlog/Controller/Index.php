@@ -94,6 +94,10 @@ class Index extends Common
             {
                 $this->error('用户名已经存在');
             }
+            else if($User->password != md5($User->rePassword))
+            {
+                $this->error('输入的密码不一致');
+            }
             else
             {
                 $result = $User->save();

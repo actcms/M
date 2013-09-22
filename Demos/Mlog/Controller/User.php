@@ -70,8 +70,8 @@ class User extends Common
         $this->checkPower();
         $user = $this->getUserInfo();
         $uid = $user['u_id'];
-
-        $this->data['title'] = $user['username'].' 的账户信息';
+        $this->data['nav'] = array('用户'=>'User/user',$user['username']=>"User/index/".$user['username']);
+        $this->data['title'] = '的账户信息';
 
         $Post = new Post();
 
@@ -143,7 +143,7 @@ class User extends Common
         }
         else
         {
-            $this->data['nav'] = array('用户'=>'User/user');
+            $this->data['nav'] = array('用户'=>'User/user',$user['username']=>"User/index/".$user['username']);
             $this->data['title'] = '设置';
             $this->getSide($user['u_id']);
             $this->assign('user', $user);
