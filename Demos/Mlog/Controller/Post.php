@@ -51,8 +51,8 @@ class Post extends Common
             $Post = new MPost();
 
             $Post->get_Post();
-            $Post->authorId = $_SESSION['id'];
-            $Post->createTime = time();
+            $Post->setAuthorId();
+            $Post->setCreateTime();
 
             $result = $Post->save();
             if($result)

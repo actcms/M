@@ -64,7 +64,7 @@ class Index extends Common
             $result = $User->login();
             if($result[0])
             {
-                $this->success($_SESSION['username'].'登录成功',array('Index','index'));
+                $this->success($_SESSION['user']['username'].'登录成功',array('Index','index'));
             }
             else
             {

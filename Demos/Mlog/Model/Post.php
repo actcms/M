@@ -121,7 +121,7 @@ class Post extends Model
     {
         if(empty($authorId))
         {
-            $this->authorId = $_SESSION['id'];
+            $this->authorId = $_SESSION['user']['u_id'];
         }
         else
         {

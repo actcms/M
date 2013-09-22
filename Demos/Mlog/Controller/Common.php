@@ -88,14 +88,14 @@ class Common extends Controller
      */
     protected function checkPower($id='')
     {
-        if(empty($_SESSION['username']))
+        if(empty($_SESSION['user']['username']))
         {
             $this->error('您没有访问权限，请登录后操作',array('Index','login'));
             exit();
         }
-        else if($_SESSION['username'] == 'admin')
+        else if($_SESSION['user']['role'] == 0)
         {
-            return $_SESSION['username'];
+            return $_SESSION['user']['username'];
         }
         else
         {
@@ -103,7 +103,7 @@ class Common extends Controller
             {
                 $Post = new Post();
                 $post = $Post->findById($id);
-                if($post['author_id'] != $_SESSION['id'])
+                if($post['author_id'] != $_SESSION['user']['u_id'])
                 {
                     $this->error('您不具备操作权限');
                 }

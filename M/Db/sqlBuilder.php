@@ -66,7 +66,8 @@ class SqlBuilder
      */
     public function deleteSqlBuild($id)
     {
-        $sql = "DELETE FROM %s WHERE $this->model->primary_key = $id";
+        $model = $this->model;
+        $sql = "DELETE FROM %s WHERE $model->primary_key = $id";
         return sprintf($sql,$this->model->table);
     }
 
@@ -79,7 +80,7 @@ class SqlBuilder
     {
         $this->parseDate();
         $model = $this->model;
-        $sql = "UPDATE `%s` SET %s WHERE $model->primary_key = $model->id";
+        $sql = "UPDATE `%s` SET %s WHERE $model->primary_key = %s";
 
         $data = array();
         foreach($this->data as $key => $value)
@@ -87,7 +88,7 @@ class SqlBuilder
             $data[] = $key.' = '.'\''.$value.'\'';
         }
         $data = join(',',$data);
-        return sprintf($sql,$this->model->table,$data);
+        return sprintf($sql,$this->model->table,$data,$this->data[$model->primary_key]);
     }
 
     /**

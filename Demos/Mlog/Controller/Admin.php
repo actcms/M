@@ -54,7 +54,7 @@ class Admin extends Common
     public function checkAdminPower()
     {
         $this->checkPower();
-        if($_SESSION['username']!='admin')
+        if($_SESSION['user']['role'] != 0)
         {
             $this->error('您不具备访问权限');
             exit();

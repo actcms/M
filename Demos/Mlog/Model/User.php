@@ -109,9 +109,7 @@ class User extends Model
         {
             if($user['password']==$this->password)
             {
-                $_SESSION['id'] = $user['u_id'];
-                $_SESSION['username'] = $user['username'];
-
+                $_SESSION['user'] = $user;
                 return array(true,'登录成功');
             }
             else

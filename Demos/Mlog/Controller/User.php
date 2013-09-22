@@ -179,7 +179,7 @@ class User extends Common
      */
     private function getUserInfo()
     {
-        $username = $_SESSION['username'];
+        $username = $_SESSION['user']['username'];
         $User = new Muser();
         $user = $User->find('username',$username);
         return $user;

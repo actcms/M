@@ -8,7 +8,7 @@
 namespace MTest\Text;
 
 
-use M\Text\Text;
+use M\Base\Text;
 
 class TextTest extends \PHPUnit_Framework_TestCase
 {
