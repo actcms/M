@@ -5,6 +5,7 @@
  * @author Ma Guowei <imaguowei@gmail.com>
  */
 namespace M\Http\Request;
+use M\Base\Filter;
 
 /**
  * Class AbstractRequest
@@ -78,9 +79,9 @@ abstract class AbstractRequest
         {
             $parameter = urldecode($parameter);                 //url解码
             $parameter = strtolower($parameter);                //所有英字母转换为小写，便于统一控制
-            $pattern = '/[a-zA-Z0-9\x{4e00}-\x{9fa5}]{1,10}/u';
-            $result = preg_match($pattern,$parameter,$matches);         //过滤掉除字母数字与汉字之外的内容
-            if(!$result)
+
+            $matches = Filter::word($parameter);                //过滤除字母、汉字和数字之外的字符
+            if(!$matches)
             {
                 $values[] = '';         //如果没有匹配，则触发默认控制器或动作
             }

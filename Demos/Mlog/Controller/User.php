@@ -71,7 +71,7 @@ class User extends Common
         $user = $this->getUserInfo();
         $uid = $user['u_id'];
         $this->data['nav'] = array('用户'=>'User/user',$user['username']=>"User/index/".$user['username']);
-        $this->data['title'] = '的账户信息';
+        $this->data['title'] = '账户信息';
 
         $Post = new Post();
 
