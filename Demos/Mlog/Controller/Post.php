@@ -107,7 +107,7 @@ class Post extends Common
 
             $Post->setAuthorId();
             $Post->setCreateTime();
-
+            $Post->setTop($Post->top);
             $result = $Post->save();
 
             if($result)

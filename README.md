@@ -7,7 +7,7 @@ M 是一个简单的PHP框架，M在原MyPHP框架的的基础上充分利用了
 
 ### 在线演示：<http://mlogtest.sinaapp.com/>
 
-## 特性：
+## 特点：
 
 * MVC分离
 

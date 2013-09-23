@@ -160,6 +160,7 @@ class Post extends Model
         {
             $this->top = '0';
         }
+        else
         {
             $this->top = $value;
         }
