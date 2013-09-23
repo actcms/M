@@ -262,13 +262,23 @@ class Model extends AbstractModel
     }
 
     /**
-     * 获取POST提交的数据
+     * 获取POST提交的数据和模型自动生成的数据
      *
      * 自动将POST方式提交的数据赋值到模型属性
      */
     public function get_Post()
     {
         Form::postToModel($this);
+        $this->autoComplete();
+    }
+
+    /**
+     * 模型自动生成的数据
+     * 可能会依赖表单提交数据
+     */
+    protected function autoComplete()
+    {
+
     }
 
     /**

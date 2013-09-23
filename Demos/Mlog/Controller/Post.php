@@ -49,11 +49,7 @@ class Post extends Common
         if(isset($_POST['post']))
         {
             $Post = new MPost();
-
             $Post->get_Post();
-            $Post->setAuthorId();
-            $Post->setCreateTime();
-
             $result = $Post->save();
             if($result)
             {
@@ -104,10 +100,6 @@ class Post extends Common
         if(isset($_POST['update']))
         {
             $Post->get_Post();       //一次获取所有属性并赋值到模型属性
-
-            $Post->setAuthorId();
-            $Post->setCreateTime();
-            $Post->setTop($Post->top);
             $result = $Post->save();
 
             if($result)

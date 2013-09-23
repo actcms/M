@@ -73,6 +73,13 @@ class Post extends Model
         'top' => 'top',
     );
 
+    protected function autoComplete()
+    {
+        $this->setAuthorId();
+        $this->setCreateTime();
+        $this->setTop($this->top);
+    }
+
     /**
      * @param $pid
      * @return $this
