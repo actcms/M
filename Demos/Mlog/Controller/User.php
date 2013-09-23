@@ -123,10 +123,12 @@ class User extends Common
             $User = new MUser();
             $User->get_Post();
             $User->uid = $user['u_id'];
-
-            if($User->isUserNameExist())
+            if($User->username != $user['username'])
             {
-                $this->error('用户名已经存在');
+                if($User->isUserNameExist())
+                {
+                    $this->error('用户名已经存在');
+                }
             }
             else
             {
