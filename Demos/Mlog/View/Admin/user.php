@@ -10,9 +10,9 @@
         <tbody>
         <?php foreach($user as $u){ ?>
             <tr>
-                <td><?php echo $u['u_id']?></td>
-                <td><?php echo $u['username']?></td>
-                <td><?php echo $u['email']?></td>
+                <td><?php $this->w($u['u_id'])?></td>
+                <td><?php $this->w($u['username'])?></td>
+                <td><?php $this->w($u['email'])?></td>
             </tr>
         <?php } ?>
         </tbody>

@@ -14,6 +14,35 @@ namespace M\Base;
  */
 class Text
 {
+    /**
+     * 字符输出
+     *
+     * @param $value
+     * @param bool $print
+     * @return string
+     */
+    public static function write($value,$print = true)
+    {
+        if($print)
+        {
+            echo $value;
+        }
+        else
+        {
+            return $value;
+        }
+
+    }
+
+    /**
+     * 字符串截取
+     *
+     * @param $str
+     * @param $start
+     * @param $length
+     * @param string $encoding
+     * @return string
+     */
     public static function substr($str,$start,$length,$encoding='utf8')
     {
         return mb_substr($str,$start,$length,$encoding);

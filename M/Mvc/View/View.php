@@ -118,6 +118,4 @@ class View extends AbstractView
     {
         $this->data = $data;
     }
-
-
 }

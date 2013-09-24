@@ -39,6 +39,7 @@ class Url
      */
     public static function buildUrl($controller,$action='',$parameter='')
     {
+        $controller = strtolower($controller);      //转换为小写
         if(empty($action))
         {
             $path = self::$mode.$controller;

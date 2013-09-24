@@ -30,6 +30,14 @@ class Comment extends Model
         'post_id' => 'postId',
     );
 
+    /**
+     * 数据自动完成
+     */
+    protected function autoComplete()
+    {
+        $this->setCreateTime();
+    }
+
     public function setCid($cid)
     {
         $this->cid = $cid;

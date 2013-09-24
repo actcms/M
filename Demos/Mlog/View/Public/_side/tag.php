@@ -4,7 +4,7 @@
     </div>
     <div class="panel-body">
         <?php foreach($tags as $tag => $number){ ?>
-            <a href="<?php echo \M\App::buildUrl('Tag','index',$tag) ?>"><?php echo $tag ?> <span class="badge"><?php echo $number ?></span></a>&nbsp
+            <a href="<?php $this->w(\M\App::buildUrl('Tag','index',$tag))?>"><?php $this->w($tag) ?> <span class="badge"><?php $this->w($number) ?></span></a>&nbsp
         <?php } ?>
     </div>
 </div>

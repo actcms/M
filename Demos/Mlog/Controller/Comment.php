@@ -35,9 +35,7 @@ class Comment extends Common
         if(isset($_POST['comment']))
         {
             $Comment = new MComment();
-
             $Comment->get_Post();
-            $Comment->createTime = time();
             $result = $Comment->save();
             if($result)
             {

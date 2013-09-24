@@ -16,6 +16,7 @@ $(document).ready(function(){
             message = $form.find("textarea[name='message']").val(),
             comment = $form.find("input[name='comment']").val(),
             url = $form.attr( "action" );
+
         $.post( url, { postId:postId,username:username,email:email,message:message,comment:comment},function(data){
             if(parseInt(data)===1)
             {
@@ -27,5 +28,4 @@ $(document).ready(function(){
             }
         });
     });
-
 });

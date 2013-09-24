@@ -19,7 +19,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
 
         $url = Url::buildUrl('Index','index','1');
 
-        $assertUrl = Server::getHomeUrl().'?Index/index/1';
+        $assertUrl = Server::getHomeUrl().'?index/index/1';
 
         $this->assertEquals($assertUrl,$url);
     }
