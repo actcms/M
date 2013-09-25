@@ -36,7 +36,7 @@ class User extends Common
     public function index($username)
     {
         $username = urldecode($username);
-        $id = \M\App::getRequest()->getParameter(3)?\M\App::getRequest()->getParameter(3):1;
+        $id = $this->getRequest()->getParameter(3)?$this->getRequest()->getParameter(3):1;
 
         $User = new MUser();
         $user = $User->find('username',$username);

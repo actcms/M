@@ -5,6 +5,7 @@
  * @author Ma Guowei <imaguowei@gmail.com>
  */
 namespace M\Mvc\Controller;
+use M\M;
 
 /**
  * Class AbstractController
@@ -32,6 +33,14 @@ abstract class AbstractController
      */
     abstract function error_404();
 
+    /**
+     * 获取Request 实例
+     * @return mixed
+     */
+    public function getRequest()
+    {
+        return M::getRequest();
+    }
 
     /**
      * @param $name
