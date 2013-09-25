@@ -23,6 +23,7 @@ class Text
      */
     public static function write($value,$print = true)
     {
+        //$value = str_replace('胡适','×××',$value);
         if($print)
         {
             echo $value;
@@ -31,7 +32,6 @@ class Text
         {
             return $value;
         }
-
     }
 
     /**

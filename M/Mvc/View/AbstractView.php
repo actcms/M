@@ -46,6 +46,4 @@ abstract class AbstractView
     {
         return Text::substr($str,$start,$length,$encoding='utf8');
     }
-
-
 }

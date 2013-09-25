@@ -6,6 +6,9 @@ M 是一个简单的PHP框架，M在原MyPHP框架的的基础上充分利用了
 目前M正在紧张的开发中，请不要将其用于正式项目！
 
 ### 在线演示：<http://mlogtest.sinaapp.com/>
+### 简易教程: <https://github.com/MaGuowei/M/wiki/Tutorial>
+
+文档正在完善中!
 
 ## 特点：
 
