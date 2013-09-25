@@ -37,7 +37,7 @@ class M
      */
     public static function run($configs)
     {
-        define('M_START',microtime());
+        define('M_START',microtime(true));
         self::init();
 
         self::$config = Config::init($configs);
@@ -58,7 +58,7 @@ class M
             $_SESSION['app'] = APP;
             Log::write(APP.' start');
         }
-        define('M_END',microtime());
+        define('M_END',microtime(true));
     }
 
     /**
