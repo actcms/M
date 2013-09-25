@@ -6,6 +6,7 @@
  */
 namespace M\Mvc\View;
 
+use M\App;
 use M\Base\Text;
 
 /**
@@ -45,5 +46,18 @@ abstract class AbstractView
     public function substr($str,$start,$length,$encoding='utf8')
     {
         return Text::substr($str,$start,$length,$encoding='utf8');
+    }
+
+    /**
+     * 视图中Url构建快捷方法
+     *
+     * @param $controller
+     * @param string $action
+     * @param string $parameter
+     * @return string
+     */
+    public function buildUrl($controller,$action='',$parameter = '')
+    {
+        return App::buildUrl($controller,$action,$parameter);
     }
 }

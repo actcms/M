@@ -1,5 +1,5 @@
 <div id="reg" class="col-md-5 col-md-offset-4">
-    <form action="<?php echo \M\App::buildUrl('Index','reg');?>" method="post">
+    <form action="<?php echo $this->buildUrl('Index','reg') ?>" method="post">
         <div class="form-group">
             <label>用户名</label>
             <input type="text" name="username" id="username" class="form-control" placeholder="username" required="required">

@@ -1,7 +1,7 @@
 <div class="comment col-md-offset-2">
     <?php foreach($comment as $c){ ?>
     <div class="media">
-        <a class="pull-left" href="<?php $this->w(\M\App::buildUrl('Post','index',$c['post_id']))?>">
+        <a class="pull-left" href="<?php echo $this->buildUrl('Post','index',$c['post_id'])?>">
             <img class="media-object" src="<?php $this->w(APP.'/Public/img/user.png')?>" width="64px" height="64px" alt="...">
         </a>
         <div class="media-body">

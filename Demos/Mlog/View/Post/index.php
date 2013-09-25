@@ -1,7 +1,7 @@
 <div id="post" class="panel panel-info">
     <div class="panel-heading">
         <h1 class="panel-title">
-            <a href="<?php $this->w(\M\App::buildUrl('Post','index',$post['p_id'])) ?>"><?php $this->w($post['title'])?></a>
+            <a href="<?php echo $this->buildUrl('Post','index',$post['p_id']) ?>"><?php $this->w($post['title'])?></a>
             <a class="pull-right">
                 <?php ?>
                 <span class="glyphicon glyphicon-calendar" title="发布时间">
@@ -19,7 +19,7 @@
         <div class="row">
             <span class="col-md-8">
             <?php foreach(explode(',',$post['tags']) as $tag) {?>
-                <a href="<?php $this->w(\M\App::buildUrl('Tag','index',$tag)) ?>">
+                <a href="<?php echo $this->buildUrl('Tag','index',$tag) ?>">
                     <span class="glyphicon glyphicon-tags"> <?php $this->w($tag) ?></span>
                 </a>
             <?php } ?>
@@ -38,7 +38,7 @@
 <hr>
 <div id="pageNav">
     <ul class="pager">
-        <li class="previous"><a href="<?php $this->w(\M\App::buildUrl('Post','index',$page-1))?>">&larr; Older</a></li>
-        <li class="next"><a href="<?php $this->w(\M\App::buildUrl('Post','index',$page+1))?>">Newer &rarr;</a></li>
+        <li class="previous"><a href="<?php echo $this->buildUrl('Post','index',$page-1)?>">&larr; Older</a></li>
+        <li class="next"><a href="<?php echo $this->buildUrl('Post','index',$page+1)?>">Newer &rarr;</a></li>
     </ul>
 </div>

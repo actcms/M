@@ -1,6 +1,6 @@
 <div id="post">
     <h3><?php $this->w($this->data['title']) ?></h3>
-    <form action="<?php $this->w(\M\App::buildUrl('Post','update')) ?>" method="post" id="add-post">
+    <form action="<?php echo $this->buildUrl('Post','update') ?>" method="post" id="add-post">
         <input type="hidden" name="pid" value="<?php $this->w($post['p_id'])?>">
         <input type="text" class="form-control" name="title" value="<?php $this->w($post['title'])?>" placeholder="Input title"><br>
         <textarea name="content" class="form-control" rows="10"><?php $this->w($post['content']) ?></textarea>

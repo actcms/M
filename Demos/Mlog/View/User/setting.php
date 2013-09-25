@@ -1,10 +1,10 @@
 <ul class="nav nav-pills nav-justified">
-    <li><a href="<?php $this->w(\M\App::buildUrl('User','post')) ?>">文章管理</a></li>
-    <li><a href="<?php $this->w(\M\App::buildUrl('User','user')) ?>">账户信息</a></li>
-    <li class="active"><a href="<?php $this->w(\M\App::buildUrl('User','setting')) ?>">账户设置</a></li>
+    <li><a href="<?php echo $this->buildUrl('User','post') ?>">文章管理</a></li>
+    <li><a href="<?php echo $this->buildUrl('User','user') ?>">账户信息</a></li>
+    <li class="active"><a href="<?php echo $this->buildUrl('User','setting') ?>">账户设置</a></li>
 </ul>
 <div class="setting">
-    <form class="form-horizontal" role="form" action="<?php $this->w(\M\App::buildUrl('User','setting'))?>" method="post">
+    <form class="form-horizontal" role="form" action="<?php echo $this->buildUrl('User','setting') ?>" method="post">
         <div class="form-group">
             <label for="username" class="col-sm-2 control-label">用户名</label>
             <div class="col-sm-10">

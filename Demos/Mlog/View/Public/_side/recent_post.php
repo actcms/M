@@ -8,7 +8,7 @@
     <ul class="list-group">
         <?php foreach($recentPost as $p){ ?>
             <li class="list-group-item">
-                <a href="<?php $this->w(\M\App::buildUrl('Post','index',$p['p_id'])) ?>"><?php $this->w($p['title']) ?> <span class="badge" title="评论数目"><?php echo $p['commentNumber']?></span></a>
+                <a href="<?php echo $this->buildUrl('Post','index',$p['p_id']) ?>"><?php $this->w($p['title']) ?> <span class="badge" title="评论数目"><?php echo $p['commentNumber']?></span></a>
             </li>
         <?php } ?>
     </ul>

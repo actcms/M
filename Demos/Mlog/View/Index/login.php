@@ -1,5 +1,5 @@
 <div id="login" class="col-md-5 col-md-offset-4">
-    <form action="<?php echo \M\App::buildUrl('Index','login'); ?>" method="post">
+    <form action="<?php echo $this->buildUrl('Index','login'); ?>" method="post">
         <div class="form-group">
             <label for="username">用户名</label>
             <input type="text" name="username" class="form-control" id="username" placeholder="请在此输入您的用户名" required="required">
