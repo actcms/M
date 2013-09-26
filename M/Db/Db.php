@@ -54,12 +54,13 @@ class Db
         try
         {
             $this->db = new \PDO($this->dsn,$this->user,$this->pwd,array(
-                \PDO::ATTR_PERSISTENT => true));
+                \PDO::ATTR_PERSISTENT => true,
+                \PDO::MYSQL_ATTR_INIT_COMMAND =>  "SET NAMES 'UTF8'",       //设置编码方式
+            ));
         }
         catch(\PDOException $e)
         {
             echo '数据库连接错误！'.$e->getMessage();
-            exit();
         }
     }
 
