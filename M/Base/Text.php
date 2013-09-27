@@ -6,6 +6,7 @@
  */
 
 namespace M\Base;
+use M\M;
 
 /**
  * 字符处理
@@ -23,10 +24,14 @@ class Text
      */
     public static function write($value,$print = true)
     {
-        //$value = str_replace('胡适','×××',$value);
+        $filter_strings = M::getConfig('filter')['string'];
+        foreach($filter_strings as $key => $string)
+        {
+            $value = str_replace($key, $string, $value);
+        }
         if($print)
         {
-            echo $value;
+            echo htmlspecialchars($value);
         }
         else
         {

@@ -20,7 +20,7 @@ class Db
     /**
      * @var \PDO 数据库连接实例
      */
-    private $db;
+    private $PDO;
     /**
      * @var string dsn
      */
@@ -67,7 +67,7 @@ class Db
     {
         try
         {
-            $this->db = new \PDO($this->dsn,$this->user,$this->pwd,array(
+            $this->PDO = new \PDO($this->dsn,$this->user,$this->pwd,array(
                 \PDO::ATTR_PERSISTENT => true,
                 \PDO::MYSQL_ATTR_INIT_COMMAND =>  "SET NAMES 'UTF8'",       //设置编码方式
             ));
@@ -81,17 +81,7 @@ class Db
     public function setModel(Model $Model)
     {
         $this->Model = $Model;
-        $this->SqlBuilder = new SqlBuilder($this->Model);
-    }
-
-    /**
-     * @param $sql
-     * @return int
-     */
-    public function exec($sql)
-    {
-        $result = $this->db->exec($sql);
-        return $result;
+        $this->SqlBuilder = new SqlBuilder($this->Model,$this->PDO);
     }
 
     /**
@@ -100,7 +90,7 @@ class Db
     public function insert()
     {
         $this->sql[] = $sql = $this->SqlBuilder->insertSqlBuild();
-        $result = $this->db->exec($sql);
+        $result = $this->PDO->exec($sql);
         return $result;
     }
 
@@ -111,7 +101,7 @@ class Db
     public function delete($id)
     {
         $this->sql[] = $sql = $this->SqlBuilder->deleteSqlBuild($id);
-        $result = $this->db->exec($sql);
+        $result = $this->PDO->exec($sql);
         return $result;
     }
 
@@ -121,7 +111,7 @@ class Db
     public function update()
     {
         $this->sql[] = $sql = $this->SqlBuilder->updateSqlBuild();
-        $result = $this->db->exec($sql);
+        $result = $this->PDO->exec($sql);
         return $result;
     }
 
@@ -131,18 +121,9 @@ class Db
     public function select()
     {
         $this->sql[] = $sql = $this->SqlBuilder->selectSqlBuild();
-        $res = $this->db->query($sql);
+        $res = $this->PDO->query($sql);
         $result = $res->fetchAll();
         return $result;
-    }
-
-    /**
-     * @param $sql
-     * @return \PDOStatement
-     */
-    public function query($sql)
-    {
-        return $res = $this->db->query($sql);
     }
 
     /**
@@ -161,9 +142,33 @@ class Db
             $this->sql[] = $sql = $this->SqlBuilder->findByIdSqlBuild($key);
         }
 
-        $res = $this->db->query($sql);
+        $res = $this->PDO->query($sql);
         $result = $res->fetch();
         return $result;
+    }
+
+    /**
+     * @param $sql
+     * @return int
+     */
+    public function exec($sql)
+    {
+        $result = $this->PDO->exec($sql);
+        return $result;
+    }
+
+    /**
+     * @param $sql
+     * @return \PDOStatement
+     */
+    public function query($sql)
+    {
+        return $res = $this->PDO->query($sql);
+    }
+
+    public function quote($value)
+    {
+        return $this->PDO->quote($value);
     }
 
     /**
@@ -172,7 +177,7 @@ class Db
      */
     public function getPdo()
     {
-        return $this->db;
+        return $this->PDO;
     }
 
     /**

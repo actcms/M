@@ -51,6 +51,7 @@ class Post extends Common
             $Post = new MPost();
             $Post->get_Post();
             $result = $Post->save();
+            $Post->getSql();
             if($result)
             {
                 $this->success('发布成功',array('Post','update',$Post->getPdo()->lastInsertId()));
@@ -101,7 +102,6 @@ class Post extends Common
         {
             $Post->get_Post();       //一次获取所有属性并赋值到模型属性
             $result = $Post->save();
-
             if($result)
             {
                 $this->success('更新成功');

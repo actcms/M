@@ -17,8 +17,14 @@ use M\Mvc\Model\Model;
 class SqlBuilder
 {
     /**
+     * PDO连接实例
+     *
+     * @var \PDO
+     */
+    private $PDO;
+    /**
      * 模型
-     * @var \M\Mvc\Model\Model
+     * @var Model
      */
     private $model;
     /**
@@ -37,10 +43,12 @@ class SqlBuilder
     /**
      * 初始化
      * @param Model $model
+     * @param \PDO $PDO
      */
-    public function __construct(Model $model)
+    public function __construct(Model $model,\PDO $PDO)
     {
         $this->model = $model;
+        $this->PDO = $PDO;
     }
 
     /**
@@ -51,9 +59,9 @@ class SqlBuilder
     public function insertSqlBuild()
     {
         $this->parseDate();
-        $sql = "INSERT INTO `%s` (`%s`) VALUES ('%s')";
+        $sql = "INSERT INTO `%s` (`%s`) VALUES (%s)";
         $fields = implode('`,`', $this->fields);
-        $values = implode('\',\'', $this->values);
+        $values = implode(',', $this->values);
 
         return sprintf($sql, $this->model->table, $fields, $values);
     }
@@ -85,7 +93,7 @@ class SqlBuilder
         $data = array();
         foreach($this->data as $key => $value)
         {
-            $data[] = $key.' = '.'\''.$value.'\'';
+            $data[] = $key.' = '.$value;
         }
         $data = join(',',$data);
         return sprintf($sql,$this->model->table,$data,$this->data[$model->primary_key]);
@@ -151,7 +159,7 @@ class SqlBuilder
             if($this->model->$value != '')
             {
                 $fields[] = $field;
-                $values[] = $this->model->$value;
+                $values[] = $this->PDO->quote($this->model->$value);
             }
         }
 

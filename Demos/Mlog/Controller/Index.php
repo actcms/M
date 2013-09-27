@@ -46,7 +46,6 @@ class Index extends Common
 
         $Post->order('post.top desc,post.p_id','desc');
         $post = $Post->limit($id?($id-1)*5:0,5)->select();
-        $Post->getSql();
         $this->assign('post',$post);
         $this->display('Index/index');
     }

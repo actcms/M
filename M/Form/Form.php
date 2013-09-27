@@ -47,7 +47,7 @@ class Form
 
         foreach(self::$post as $key=>$value)
         {
-            $model->$key = htmlspecialchars(trim($value),ENT_QUOTES);    //去除前后空格并转义特殊字符
+            $model->$key = trim($value);    //去除前后空格并转义特殊字符
         }
     }
 }
