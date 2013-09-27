@@ -1,7 +1,7 @@
 <div id="post">
     <h3><?php $this->w($this->data['title']) ?></h3>
     <form action="<?php echo $this->buildUrl('Post','add')?>" method="post" id="add-post">
-        <input type="text" class="form-control" name="title" placeholder="Input title"><br>
+        <input type="text" class="form-control" name="title" placeholder="输入标题"><br>
         <textarea name="content" class="form-control" rows="10"></textarea>
         <div class="row">
             <div class="col-md-8">

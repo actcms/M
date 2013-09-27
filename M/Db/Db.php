@@ -5,6 +5,7 @@
  * @author Ma Guowei <imaguowei@gmail.com>
  */
 namespace M\Db;
+use M\Mvc\Model\Model;
 
 /**
  * Class Db
@@ -31,6 +32,12 @@ class Db
      * @var string 数据库用户密码
      */
     private $pwd;
+
+    private $Model;
+    /**
+     * @var SqlBuilder
+     */
+    private $SqlBuilder;
 
     /**
      * @param $dsn
@@ -64,6 +71,12 @@ class Db
         }
     }
 
+    public function setModel(Model $Model)
+    {
+        $this->Model = $Model;
+        $this->SqlBuilder = new SqlBuilder($this->Model);
+    }
+
     /**
      * @param $sql
      * @return int
@@ -75,43 +88,42 @@ class Db
     }
 
     /**
-     * @param $sql
      * @return int
      */
-    public function insert($sql)
+    public function insert()
     {
+        $sql = $this->SqlBuilder->insertSqlBuild();
         $result = $this->db->exec($sql);
         return $result;
     }
 
     /**
-     * @param $sql
+     * @param $id
      * @return int
      */
-    public function delete($sql)
+    public function delete($id)
     {
+        $sql = $this->SqlBuilder->deleteSqlBuild($id);
         $result = $this->db->exec($sql);
         return $result;
     }
 
     /**
-     * @param $sql
      * @return int
      */
-    public function update($sql)
+    public function update()
     {
+        $sql = $this->SqlBuilder->updateSqlBuild();
         $result = $this->db->exec($sql);
         return $result;
     }
 
     /**
-     * 查询数据库中的记录
-     *
-     * @param $sql string
-     * @return mixed
+     * @return array
      */
-    public function select($sql)
+    public function select()
     {
+        $sql = $this->SqlBuilder->selectSqlBuild();
         $res = $this->db->query($sql);
         $result = $res->fetchAll();
         return $result;
@@ -127,11 +139,21 @@ class Db
     }
 
     /**
-     * @param $sql
+     * @param $key
+     * @param string $value
      * @return mixed
      */
-    public function find($sql)
+    public function find($key,$value = '')
     {
+        if($value != '')
+        {
+            $sql = $this->SqlBuilder->findSqlBuild($key,$value);
+        }
+        else
+        {
+            $sql = $this->SqlBuilder->findByIdSqlBuild($key);
+        }
+
         $res = $this->db->query($sql);
         $result = $res->fetch();
         return $result;

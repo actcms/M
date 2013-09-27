@@ -6,9 +6,13 @@
  */
 use M\M;
 
+//定义框架路径
 define('M','../../M');
+
+//定义应用路径
 define('APP','../Mlog');
 
+//引入配置
 $configs = require_once APP.'/Config/config.php';
 
 require_once M.'/M.php';

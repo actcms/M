@@ -6,7 +6,6 @@
  */
 namespace M\Mvc\Model;
 
-use M\Db\SqlBuilder;
 use M\M;
 use M\Db\Db;
 use M\Form\Form;
@@ -85,7 +84,7 @@ class Model extends AbstractModel
             self::$db = new Db($db['dsn'],$db['user'],$db['password']);
         }
 
-        $this->sqlBuilder = new SqlBuilder($this);
+        self::$db->setModel($this);
     }
 
     /**
@@ -174,8 +173,7 @@ class Model extends AbstractModel
      */
     public function add()
     {
-        $this->sql = $this->sqlBuilder->insertSqlBuild();
-        $result = self::$db->insert($this->sql);
+        $result = self::$db->insert();
         return $result;
     }
 
@@ -185,8 +183,7 @@ class Model extends AbstractModel
      */
     public function delete($id)
     {
-        $this->sql = $this->sqlBuilder->deleteSqlBuild($id);
-        $result = self::$db->delete($this->sql);
+        $result = self::$db->delete($id);
         return $result;
     }
 
@@ -197,8 +194,7 @@ class Model extends AbstractModel
      */
     public function update()
     {
-        $this->sql = $this->sqlBuilder->updateSqlBuild();
-        $result = self::$db->update($this->sql);
+        $result = self::$db->update();
         return $result;
     }
 
@@ -212,8 +208,7 @@ class Model extends AbstractModel
         {
             $this->cols = $cols;
         }
-        $this->sql = $this->sqlBuilder->selectSqlBuild();
-        $result = self::$db->select($this->sql);
+        $result = self::$db->select();
         return $result;
     }
 
@@ -224,8 +219,7 @@ class Model extends AbstractModel
      */
     public function find($key,$value)
     {
-        $this->sql = $this->sqlBuilder->findSqlBuild($key,$value);
-        $result = self::$db->find($this->sql);
+        $result = self::$db->find($key,$value);
         return $result;
     }
 
@@ -235,8 +229,7 @@ class Model extends AbstractModel
      */
     public function findById($id)
     {
-        $this->sql = $this->sqlBuilder->findByIdSqlBuild($id);
-        $result = self::$db->find($this->sql);
+        $result = self::$db->find($id);
         return $result;
     }
 
