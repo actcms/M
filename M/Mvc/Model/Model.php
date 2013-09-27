@@ -20,14 +20,9 @@ class Model extends AbstractModel
 {
     /**
      * 数据库连接实例
-     * @var
+     * @var Db
      */
     private static $db;
-    /**
-     * 最近执行的的sql语句
-     * @var
-     */
-    private $sql;
     /**
      * 置顶要查询的字段范围，默认是所有列: ‘*’
      * @var
@@ -57,11 +52,6 @@ class Model extends AbstractModel
     * 数据库表的主键
     * @var
     */
-    private $sqlBuilder;
-    /**
-     * 主键
-     * @var
-     */
     protected $primary_key;
     /**
      * 数据映射数组
@@ -290,15 +280,15 @@ class Model extends AbstractModel
      * @param bool $show
      * @return mixed
      */
-    public function getSql($show=false)
+    public function getSql($show = true)
     {
         if($show)
         {
-            echo $this->sql;
+            var_dump(self::$db->getSql());
         }
         else
         {
-            return $this->sql;
+            return self::$db->getSql();
         }
     }
 }

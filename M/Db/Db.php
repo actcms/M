@@ -5,6 +5,7 @@
  * @author Ma Guowei <imaguowei@gmail.com>
  */
 namespace M\Db;
+
 use M\Mvc\Model\Model;
 
 /**
@@ -32,12 +33,18 @@ class Db
      * @var string 数据库用户密码
      */
     private $pwd;
-
+    /**
+     * @var Model
+     */
     private $Model;
     /**
      * @var SqlBuilder
      */
     private $SqlBuilder;
+    /**
+     * @var
+     */
+    private $sql = array();
 
     /**
      * @param $dsn
@@ -92,7 +99,7 @@ class Db
      */
     public function insert()
     {
-        $sql = $this->SqlBuilder->insertSqlBuild();
+        $this->sql[] = $sql = $this->SqlBuilder->insertSqlBuild();
         $result = $this->db->exec($sql);
         return $result;
     }
@@ -103,7 +110,7 @@ class Db
      */
     public function delete($id)
     {
-        $sql = $this->SqlBuilder->deleteSqlBuild($id);
+        $this->sql[] = $sql = $this->SqlBuilder->deleteSqlBuild($id);
         $result = $this->db->exec($sql);
         return $result;
     }
@@ -113,7 +120,7 @@ class Db
      */
     public function update()
     {
-        $sql = $this->SqlBuilder->updateSqlBuild();
+        $this->sql[] = $sql = $this->SqlBuilder->updateSqlBuild();
         $result = $this->db->exec($sql);
         return $result;
     }
@@ -123,7 +130,7 @@ class Db
      */
     public function select()
     {
-        $sql = $this->SqlBuilder->selectSqlBuild();
+        $this->sql[] = $sql = $this->SqlBuilder->selectSqlBuild();
         $res = $this->db->query($sql);
         $result = $res->fetchAll();
         return $result;
@@ -147,11 +154,11 @@ class Db
     {
         if($value != '')
         {
-            $sql = $this->SqlBuilder->findSqlBuild($key,$value);
+            $this->sql[] = $sql = $this->SqlBuilder->findSqlBuild($key,$value);
         }
         else
         {
-            $sql = $this->SqlBuilder->findByIdSqlBuild($key);
+            $this->sql[] = $sql = $this->SqlBuilder->findByIdSqlBuild($key);
         }
 
         $res = $this->db->query($sql);
@@ -166,5 +173,14 @@ class Db
     public function getPdo()
     {
         return $this->db;
+    }
+
+    /**
+     * 获取执行的sql语句
+     * @return array
+     */
+    public function getSql()
+    {
+        return $this->sql;
     }
 }
