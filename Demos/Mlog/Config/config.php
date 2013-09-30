@@ -22,6 +22,12 @@ return array(
     //'urlRules' => 'path',         //设置为PathInfo模式
 
     /**
+     * 日志记录
+     * 默认开启
+     */
+    'log' => true,
+
+    /**
      * 数据库配置
      */
     'db'    =>   array(

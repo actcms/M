@@ -84,7 +84,7 @@ class Dispatcher
                 //如果调用的方法不是公开的则返回404错误
                 if(!$action->isPublic())
                 {
-                    $controller->error_404();
+                    $controller->error_404($this->controller.'\\'.$this->action);
                 }
 
                 try
@@ -98,13 +98,13 @@ class Dispatcher
             }
             else
             {
-                $controller->error_404();
+                $controller->error_404($this->controller.'\\'.$this->action);
             }
         }
         else
         {
             $controller = new Controller();
-            $controller->error_404();
+            $controller->error_404($this->controller);
         }
     }
 

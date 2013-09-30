@@ -6,6 +6,7 @@
  */
 namespace M\Mvc\Controller;
 
+use M\Log\Log;
 use M\M;
 use M\Mvc\View\View;
 use M\Http\Url\UrlHelper;
@@ -118,7 +119,7 @@ class Controller extends AbstractController
     /**
      * 设置404错误页
      */
-    public function error_404()
+    public function error_404($message='')
     {
         try
         {
@@ -129,6 +130,7 @@ class Controller extends AbstractController
         {
             echo '<h1>404 NOT FOUND</h1>';          //default 404 page if 404 page not be set in app
         }
+        Log::error_404($message);
 
         exit();
     }
