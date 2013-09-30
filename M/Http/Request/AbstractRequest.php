@@ -87,7 +87,7 @@ abstract class AbstractRequest
             }
             else
             {
-                $values[] = $matches[0];
+                $values[] = $matches;
             }
         }
 

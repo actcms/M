@@ -8,7 +8,7 @@ namespace M\Mvc\Model;
 
 use M\M;
 use M\Db\Db;
-use M\Form\Form;
+use M\Base\Form;
 
 /**
  * 模型类

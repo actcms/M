@@ -5,7 +5,7 @@
  * @author Ma Guowei <imaguowei@gmail.com>
  */
 
-namespace M\Form;
+namespace M\Base;
 
 use M\Mvc\Model\Model;
 

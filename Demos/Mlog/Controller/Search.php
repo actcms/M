@@ -32,7 +32,7 @@ class Search extends Common
                 $matches = Filter::word($_POST['search']);      //特殊字符过滤
                 if($matches)
                 {
-                    $_SESSION['search'] = $matches[0];
+                    $_SESSION['search'] = $matches;
                 }
                 else
                 {

@@ -120,7 +120,7 @@ class Post extends Model
         $tags = Filter::word($tags);
         if($tags)
         {
-            $this->tags = $tags[0];
+            $this->tags = $tags;
         }
         else
         {
