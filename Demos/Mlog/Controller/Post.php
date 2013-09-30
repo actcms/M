@@ -51,7 +51,6 @@ class Post extends Common
             $Post = new MPost();
             $Post->get_Post();
             $result = $Post->save();
-            $Post->getSql();
             if($result)
             {
                 $this->success('发布成功',array('Post','update',$Post->getPdo()->lastInsertId()));

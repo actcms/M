@@ -24,11 +24,14 @@ class Text
      */
     public static function write($value,$print = true)
     {
+        //获取需要屏蔽关键字
         $filter_strings = M::getConfig('filter')['string'];
+
         foreach($filter_strings as $key => $string)
         {
-            $value = str_replace($key, $string, $value);
+            $value = str_replace($key, $string, $value);        //关键字替换
         }
+
         if($print)
         {
             echo htmlspecialchars($value);

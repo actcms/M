@@ -6,6 +6,7 @@
  */
 namespace Mlog\Model;
 
+use M\Base\Filter;
 use M\Mvc\Model\Model;
 
 /**
@@ -116,7 +117,15 @@ class Post extends Model
      */
     public function setTags($tags)
     {
-        $this->tags = $tags;
+        $tags = Filter::word($tags);
+        if($tags)
+        {
+            $this->tags = $tags[0];
+        }
+        else
+        {
+            $this->tags = '';
+        }
         return $this;
     }
 
