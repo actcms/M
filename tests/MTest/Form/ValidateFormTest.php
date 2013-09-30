@@ -8,9 +8,9 @@
 namespace MTest\Form;
 
 
-use M\Form\ValidateForm;
+use M\Base\Filter;
 
-class ValidateFormTest extends \PHPUnit_Framework_TestCase
+class FilterTest extends \PHPUnit_Framework_TestCase
 {
 
     public function emailProvider()
@@ -28,18 +28,18 @@ class ValidateFormTest extends \PHPUnit_Framework_TestCase
      */
     public function testEmail($email)
     {
-        $this->assertTrue(ValidateForm::email($email));
-        $this->assertFalse(ValidateForm::email('kkkkkkkkkkkk'));
-        $this->assertFalse(ValidateForm::email('kkkk@.com'));
-        $this->assertFalse(ValidateForm::email('kkk@ll.'));
-        $this->assertFalse(ValidateForm::email('kkk.net'));
+        $this->assertTrue(Filter::email($email));
+        $this->assertFalse(Filter::email('kkkkkkkkkkkk'));
+        $this->assertFalse(Filter::email('kkkk@.com'));
+        $this->assertFalse(Filter::email('kkk@ll.'));
+        $this->assertFalse(Filter::email('kkk.net'));
     }
 
     public function testNumber()
     {
-        $this->assertTrue(ValidateForm::number(123));
-        $this->assertTrue(ValidateForm::number('123'));
-        $this->assertFalse(ValidateForm::number('hello'));
+        $this->assertTrue(Filter::number(123));
+        $this->assertTrue(Filter::number('123'));
+        $this->assertFalse(Filter::number('hello'));
     }
 
 }

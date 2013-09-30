@@ -55,9 +55,4 @@ class Text
     {
         return mb_substr($str,$start,$length,$encoding);
     }
-
-    public static function equal()
-    {
-
-    }
 }
