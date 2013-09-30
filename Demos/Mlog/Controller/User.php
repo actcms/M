@@ -117,7 +117,6 @@ class User extends Common
     {
         $this->checkPower();
         $user = $this->getUserInfo();
-
         if(!empty($_POST['setting']))
         {
             $User = new MUser();
@@ -139,7 +138,7 @@ class User extends Common
                 }
                 else
                 {
-                    $this->error('修改失败');
+                    //$this->error('修改失败');
                 }
             }
         }

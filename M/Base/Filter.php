@@ -25,11 +25,11 @@ class Filter
     {
         if($all)
         {
-            $pattern = '/^[a-zA-Z0-9\x{4e00}-\x{9fa5}]{1,10}$/u';         //匹配字母数字与汉字,必须以字母数字开头和结束
+            $pattern = '/^[a-zA-Z0-9\x{4e00}-\x{9fa5}]+$/u';         //匹配字母数字与汉字,必须以字母数字开头和结束
         }
         else
         {
-            $pattern = '/[a-zA-Z0-9\x{4e00}-\x{9fa5}]{1,10}/u';         //匹配字母数字与汉字
+            $pattern = '/[a-zA-Z0-9\x{4e00}-\x{9fa5}]+/u';         //匹配字母数字与汉字
         }
 
         $result = preg_match($pattern,$values,$matches);
