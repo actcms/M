@@ -65,12 +65,11 @@ abstract class AbstractModel
         $method = 'set'.ucfirst($name);
         if(method_exists($this,$method))
         {
-            $this->$method($value);
+            return $this->$method($value);
         }
         else
         {
-            $this->$name = $value;
-            return $this;
+            return $this->$name = $value;
         }
     }
 }

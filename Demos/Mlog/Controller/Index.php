@@ -7,6 +7,7 @@
 namespace Mlog\Controller;
 
 use M\Extend\Page;
+use M\Mvc\Model\Exception;
 use Mlog\Model\Post;
 use Mlog\Model\User;
 

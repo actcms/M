@@ -6,11 +6,11 @@
  */
 namespace M;
 
+use M\Base\Loader;
 use M\Config\Config;
 use M\Dispatcher\Dispatcher;
 use M\Http\Request\PathRequest;
 use M\Http\Request\Request;
-use M\Loader\Loader;
 use M\Log\Log;
 
 /**
@@ -72,7 +72,7 @@ class M
 
         set_include_path(get_include_path().PATH_SEPARATOR.dirname(M).PATH_SEPARATOR.dirname(APP));
 
-        require_once 'Loader/Loader.php';
+        require_once 'Base/Loader.php';
         Loader::register();
     }
 

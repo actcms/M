@@ -6,6 +6,7 @@
  */
 namespace Mlog\Model;
 
+use M\Base\Filter;
 use M\Mvc\Model\Model;
 
 /**
@@ -64,7 +65,6 @@ class User extends Model
     public function setUid($uid)
     {
         $this->uid = $uid;
-        return $this;
     }
 
     /**
@@ -73,8 +73,14 @@ class User extends Model
      */
     public function setUsername($username)
     {
-        $this->username = $username;
-        return $this;
+        if(Filter::length($username,4) && Filter::word($username,true))
+        {
+            $this->username = $username;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     /**
@@ -85,8 +91,14 @@ class User extends Model
      */
     public function setPassword($password)
     {
-        $this->password = md5($password);
-        return $this;
+        if(Filter::length($password,6) && Filter::word($password,true))
+        {
+            $this->password = md5($password);
+        }
+        else
+        {
+            return false;
+        }
     }
 
     /**
@@ -95,8 +107,15 @@ class User extends Model
      */
     public function setEmail($email)
     {
-        $this->email = $email;
-        return $this;
+        $email = Filter::email($email);
+        if($email)
+        {
+            $this->email = $email;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     /**

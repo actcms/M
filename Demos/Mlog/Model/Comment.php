@@ -7,6 +7,7 @@
 
 namespace Mlog\Model;
 
+use M\Base\Filter;
 use M\Mvc\Model\Model;
 
 class Comment extends Model
@@ -46,20 +47,31 @@ class Comment extends Model
 
     public function setUsername($username)
     {
-        $this->username = $username;
-        return $this;
+        if(Filter::length($username,4) && Filter::word($username,true))
+        {
+            $this->username = $username;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public function setEmail($email)
     {
-        $this->email = $email;
-        return $this;
+        if(Filter::email($email))
+        {
+            $this->email = $email;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public function setMessage($message)
     {
         $this->message = $message;
-        return $this;
     }
 
     public function setCreateTime($createTime='')
@@ -72,13 +84,11 @@ class Comment extends Model
         {
             $this->createTime = $createTime;
         }
-        return $this;
     }
 
     public function setPostId($postId)
     {
         $this->postId = $postId;
-        return $this;
     }
 
     public function getComment($pid)

@@ -88,7 +88,6 @@ class Post extends Model
     public function setPid($pid)
     {
         $this->pid = $pid;
-        return $this;
     }
 
     /**
@@ -97,8 +96,14 @@ class Post extends Model
      */
     public function setTitle($title)
     {
-        $this->title = $title;
-        return $this;
+        if(Filter::length($title,2,20) && Filter::word($title,true))
+        {
+            $this->title = $title;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     /**
@@ -108,7 +113,6 @@ class Post extends Model
     public function setContent($content)
     {
         $this->content = $content;
-        return $this;
     }
 
     /**
@@ -126,7 +130,6 @@ class Post extends Model
         {
             $this->tags = '';
         }
-        return $this;
     }
 
     /**
@@ -143,7 +146,6 @@ class Post extends Model
         {
             $this->authorId = $authorId;
         }
-        return $this;
     }
 
     /**
@@ -160,7 +162,6 @@ class Post extends Model
         {
             $this->createTime = $createTime;
         }
-        return $this;
     }
 
     /**
@@ -180,8 +181,6 @@ class Post extends Model
         {
             $this->top = $value;
         }
-
-        return $this;
     }
 
     /**
@@ -198,7 +197,6 @@ class Post extends Model
         if($userID != '')
         {
             $post = $this->where("`author_id` = $userID")->select('tags');
-
         }
         else
         {

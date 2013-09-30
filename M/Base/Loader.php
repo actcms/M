@@ -4,7 +4,7 @@
  * @copyright 2013 maguowei.com
  * @author Ma Guowei <imaguowei@gmail.com>
  */
-namespace M\Loader;
+namespace M\Base;
 
 /**
  * 自动加载类
@@ -43,7 +43,7 @@ class Loader
      */
     public static function register()
     {
-        spl_autoload_register('M\Loader\Loader::autoload');
+        spl_autoload_register('M\Base\Loader::autoload');
     }
 
 }

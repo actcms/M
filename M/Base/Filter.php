@@ -18,11 +18,20 @@ class Filter
      * 近获取匹配到的第一部分，匹配成功返回过滤后得到的字符串，否则返回false
      *
      * @param $values
+     * @param bool $all 默认为false ，如果设置为true则字符串必须完全匹配
      * @return bool
      */
-    public static function word($values)
+    public static function word($values,$all=false)
     {
-        $pattern = '/[a-zA-Z0-9\x{4e00}-\x{9fa5}]{1,10}/u';         //匹配字母数字与汉字
+        if($all)
+        {
+            $pattern = '/^[a-zA-Z0-9\x{4e00}-\x{9fa5}]{1,10}$/u';         //匹配字母数字与汉字,必须以字母数字开头和结束
+        }
+        else
+        {
+            $pattern = '/[a-zA-Z0-9\x{4e00}-\x{9fa5}]{1,10}/u';         //匹配字母数字与汉字
+        }
+
         $result = preg_match($pattern,$values,$matches);
 
         if($result)
@@ -45,7 +54,7 @@ class Filter
         $email = filter_var($email, FILTER_VALIDATE_EMAIL);
         if($email)
         {
-            return true;
+            return $email;
         }
         else
         {
@@ -60,7 +69,14 @@ class Filter
      */
     public static function number($number)
     {
-        return is_numeric($number);
+        if(is_numeric($number))
+        {
+            return $number;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     /**
@@ -82,23 +98,23 @@ class Filter
         }
     }
 
-    public static function length($length)
+    /**
+     * 字符串长度验证
+     * @param $value
+     * @param $min
+     * @param int $max
+     * @return bool
+     */
+    public static function length($value,$min,$max=256)
     {
-
-    }
-
-    public static function max($max)
-    {
-
-    }
-
-    public static function min($min)
-    {
-
-    }
-
-    public static function notNull()
-    {
-
+        $length = mb_strlen($value);
+        if($length < $min || $length > $max)
+        {
+            return false;
+        }
+        else
+        {
+            return $value;
+        }
     }
 }
