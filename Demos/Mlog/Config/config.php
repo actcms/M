@@ -23,9 +23,9 @@ return array(
 
     /**
      * 日志记录
-     * 默认开启
+     * 默认关闭
      */
-    'log' => true,
+    'log' => false,
 
     /**
      * 数据库配置
