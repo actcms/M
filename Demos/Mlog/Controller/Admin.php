@@ -24,6 +24,8 @@ class Admin extends Common
         'nav' => array('管理员主页'=>'Admin/index'),
     );
 
+    protected $layout = 'user';
+
     public function index()
     {
         $this->checkAdminPower();

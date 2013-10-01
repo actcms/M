@@ -52,7 +52,9 @@
                                 <span class="glyphicon glyphicon-th-large"> 后台管理</span>
                             </a>
                         </li>
-                        <li><a href="#"><span class="glyphicon glyphicon-cog"> 设置</span></a></li>
+                        <?php if($_SESSION['user']['role']==0){ ?>
+                        <li><a href="<?php echo $this->buildUrl('Admin','index');?>"><span class="glyphicon glyphicon-cog"> 设置</span></a></li>
+                        <?php } ?>
                         <li>
                             <a href="<?php echo $this->buildUrl('Index','logout') ?>">
                                 <span class="glyphicon glyphicon-off"> 退出登录</span>

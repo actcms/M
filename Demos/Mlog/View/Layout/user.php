@@ -16,5 +16,10 @@
         </div>
     </div>
     <?php include_once APP.'/View/Public/footer.php' ?>
+    <script>
+        $(document).ready(function(){
+            $('nav').addClass('navbar-inverse');
+        })
+    </script>
 </body>
 </html>
