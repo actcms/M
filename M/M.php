@@ -107,15 +107,6 @@ class M
     }
 
     /**
-     * 第三方类库导入
-     * @param $class
-     */
-    public static function import($class)
-    {
-
-    }
-
-    /**
      * 获取运行时间
      * @return mixed
      */
