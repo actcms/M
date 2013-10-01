@@ -50,4 +50,6 @@ M的前身是MyPHP，一个简单的开源PHP框架，而MyPHP的前身是xyBLOG
 * 2013年9月23日 在线演示版上线.
 * 2013年9月30日 首个稳定版本 M-0.2 发布
 
-## 许可协议：M 遵循Apache 2.0 协议发布，http://www.apache.org/licenses/LICENSE-2.0.txt
+## 许可协议：
+
+M 遵循Apache 2.0 协议发布，http://www.apache.org/licenses/LICENSE-2.0.txt
