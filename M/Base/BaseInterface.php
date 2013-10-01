@@ -8,7 +8,7 @@
 namespace M\Base;
 
 
-class BaseInterface
+interface BaseInterface
 {
 
 }
