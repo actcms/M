@@ -14,8 +14,12 @@
             <td><?php $this->w($p['title'])?></td>
             <td><?php $this->w(date('Y-m-d h:m:s',$p['create_time']))?></td>
             <td>
-                <a href="<?php echo $this->buildUrl('Post','update',$p['p_id']) ?>"><span class="glyphicon glyphicon-edit" title="编辑"></span></a>&nbsp|
-                <a href="<?php echo $this->buildUrl('Post','delete',$p['p_id']) ?>"><span class="glyphicon glyphicon-trash" title="删除"></a></span>
+                <a href="<?php echo $this->buildUrl('Post','update',$p['p_id']) ?>">
+                    <span class="glyphicon glyphicon-edit" title="编辑"></span>
+                </a>&nbsp|
+                <a href="<?php echo $this->buildUrl('Post','delete',$p['p_id']) ?>">
+                    <span class="glyphicon glyphicon-trash" title="删除"></a>
+                </span>
             </td>
         </tr>
         <?php } ?>

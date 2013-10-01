@@ -50,6 +50,22 @@ class Admin extends Common
         $this->display('Admin/setting');
     }
 
+    public function delete($id)
+    {
+        $this->checkAdminPower();
+        $User = new User();
+
+        $result = $User->delete($id);
+        if($result)
+        {
+            $this->success('删除成功');
+        }
+        else
+        {
+            $this->error('删除失败');
+        }
+    }
+
     /**
      * 管理员权限检查
      */
