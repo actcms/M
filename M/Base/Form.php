@@ -21,14 +21,6 @@ class Form
     private static $post;
 
     /**
-     *验证规则
-     */
-    public static function rule()
-    {
-
-    }
-
-    /**
      *获取Post表单提交的数据
      */
     public static function getPost()
