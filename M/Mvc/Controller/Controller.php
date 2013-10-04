@@ -121,6 +121,7 @@ class Controller extends AbstractController
      */
     public function error_404($message='')
     {
+        header("HTTP/1.0 404 Not Found");
         try
         {
             $this->layout = 'error';
